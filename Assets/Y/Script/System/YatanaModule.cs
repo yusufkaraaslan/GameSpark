@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace Yatana
 {
     
-    public interface YatanaModule : ISerializable 
+    public interface YatanaModule
     {
         /*
          *  !!!!!!!!!!   Important   !!!!!!!!!!!

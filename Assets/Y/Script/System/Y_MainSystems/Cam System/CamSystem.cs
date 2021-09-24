@@ -17,20 +17,6 @@ namespace Yatana
 
             public CameraSettingData cameraSetting;
 
-            public void GetObjectData(SerializationInfo info, StreamingContext context)
-            {
-                info.AddValue("IsOn", IsOn, typeof(bool));
-                info.AddValue("cams", cams, typeof(List<GameCam>));
-                info.AddValue("camSystem", camSystem, typeof(CamSystem));
-            }
-
-            public CamSystem(SerializationInfo info, StreamingContext context)
-            {
-                IsOn = (bool)info.GetValue("IsOn", typeof(bool));
-                cams = (List<GameCam>)info.GetValue("cams", typeof(List<GameCam>));
-                camSystem = (CamSystem)info.GetValue("poolSystem", typeof(CamSystem));
-            }
-
             public static void initilaze(GameObject[] samples)
             {
                 if (camSystem == null)
@@ -132,7 +118,7 @@ namespace Yatana
                 return IsOn;
             }
 
-            public CamSystem()
+            private CamSystem()
             {
 
             }

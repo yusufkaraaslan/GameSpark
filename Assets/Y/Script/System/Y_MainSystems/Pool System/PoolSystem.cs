@@ -16,20 +16,6 @@ namespace Yatana
 
             public PoolSettingData poolSetting;
 
-            public void GetObjectData(SerializationInfo info, StreamingContext context)
-            {
-                info.AddValue("IsOn", IsOn, typeof(bool));
-                info.AddValue("pools", pools, typeof(List<ObjPool>));
-                info.AddValue("poolSystem", poolSystem, typeof(PoolSystem));
-            }
-
-            public PoolSystem(SerializationInfo info, StreamingContext context)
-            {
-                IsOn = (bool)info.GetValue("IsOn", typeof(bool));
-                pools = (List<ObjPool>)info.GetValue("pools", typeof(List<ObjPool>));
-                poolSystem = (PoolSystem)info.GetValue("poolSystem", typeof(PoolSystem));
-            }
-
             public static void initilaze(GameObject[] samples)
             {
                 ObjPool tmp;
@@ -181,7 +167,7 @@ namespace Yatana
                 return IsOn;
             }
 
-            public PoolSystem()
+            private PoolSystem()
             {
                  
             }

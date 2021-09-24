@@ -16,20 +16,6 @@ namespace Yatana
 
             public UISettingData UISetting;
 
-            public void GetObjectData(SerializationInfo info, StreamingContext context)
-            {
-                info.AddValue("IsOn", IsOn, typeof(bool));
-                info.AddValue("uiSetups", uiSetups, typeof(List<UISetup>));
-                info.AddValue("maneger", maneger, typeof(UIManeger));
-            }
-
-            public UIManeger(SerializationInfo info, StreamingContext context)
-            {
-                IsOn = (bool)info.GetValue("IsOn", typeof(bool));
-                uiSetups = (List<UISetup>)info.GetValue("uiSetups", typeof(List<UISetup>));
-                maneger = (UIManeger)info.GetValue("poolSystem", typeof(UIManeger));
-            }
-
             public static void initilaze(GameObject[] objs)
             {
                 if (maneger == null)
@@ -149,7 +135,7 @@ namespace Yatana
                 return IsOn;
             }
 
-            public UIManeger()
+            private UIManeger()
             {
 
             }

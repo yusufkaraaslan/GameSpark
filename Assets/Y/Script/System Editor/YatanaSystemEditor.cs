@@ -19,7 +19,7 @@ namespace Yatana
         SerializedObject soTarget;
 
         //  System Settings
-        //SerializedProperty CurrScene; 
+        SerializedProperty CurrScene; 
 
         SerializedProperty PoolSetting;
         SerializedProperty PoolObjects;
@@ -46,7 +46,7 @@ namespace Yatana
             myTarget = (YatanaSystemCenter)target;
             soTarget = new SerializedObject(target);
 
-            //CurrScene = soTarget.FindProperty("CurrScene"); 
+            CurrScene = soTarget.FindProperty("CurrScene"); 
 
             PoolSetting = soTarget.FindProperty("poolSetting");
             PoolObjects = soTarget.FindProperty("poolObjects");
@@ -113,7 +113,6 @@ namespace Yatana
 
         public void DrawIntegrationTap()
         {
-            /*
             //  Scene template
 
             EditorGUILayout.PropertyField(sceneTemplate);
@@ -125,13 +124,13 @@ namespace Yatana
             }
 
             GUILayout.Space(sectionSpace);
-            */
 
             GUILayout.Label("Systems :");
             GUILayout.Space(elementSpace);
 
-            //EditorGUILayout.PropertyField(CurrScene); 
+            EditorGUILayout.PropertyField(CurrScene); 
 
+            /*
             foreach (YatanaModule m in myTarget.modules)
             {
                 GUILayout.Label(m.GetModuleName());
@@ -144,8 +143,8 @@ namespace Yatana
                     if (GUILayout.Button("Turn Off")) { m.SystemOff(); }
                 }
             }
+            */
 
-            /*
             foreach (string m in myTarget.CurrScene.modules.Keys)
             {
                 YatanaModule tmp = myTarget.GetModule(m);
@@ -160,7 +159,6 @@ namespace Yatana
                     if (GUILayout.Button("Remove")) { tmp.RemoveSystem(); }
                 }
             }
-            */
 
             GUILayout.Space(sectionSpace);
 
@@ -180,7 +178,6 @@ namespace Yatana
                 systemTabs.Add(m.GetModuleName());
             }
 
-            /*
             if (myTarget.CurrScene.PoolSystem)
             {
                 systemTabs.Add("Pool");
@@ -210,7 +207,6 @@ namespace Yatana
             {
                 systemTabs.Add("Apollo");
             }
-            */
 
             GUILayout.Space(sectionSpace);
             systemToolbarInd = GUILayout.Toolbar(systemToolbarInd, systemTabs.ToArray());
@@ -278,7 +274,6 @@ namespace Yatana
             {
                 soTarget.ApplyModifiedProperties();
             }
-
         }
 
         public void DrawYatanaSettings()

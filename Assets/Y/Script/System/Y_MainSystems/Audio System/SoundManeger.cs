@@ -49,7 +49,7 @@ namespace Yatana.MainSystems
             soundVolume = (float)info.GetValue("soundVolume", typeof(float));
         }
 
-        public SoundManeger()
+        private SoundManeger()
         {
 
         }

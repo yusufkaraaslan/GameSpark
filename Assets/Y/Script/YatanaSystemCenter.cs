@@ -10,10 +10,9 @@ namespace Yatana
 {
     public class YatanaSystemCenter : MonoBehaviour
     {
-        //public SceneSetupProfile sceneTemplate;
-        //public SceneSetupProfile CurrScene;
+        public SceneSetupProfile sceneTemplate;
+        public SceneSetupProfile CurrScene;
 
-        /*
         //  System profiles
         public PoolSettingData poolSetting;
         public PoolObj[] poolObjects;
@@ -29,21 +28,27 @@ namespace Yatana
 
         public ApolloSettingData apolloSetting;
         public GameAudio[] audios;
-        */
 
         public YatanaSettingData yatanaSetting;
 
         //  System objects
-
         [SerializeReference] public List<YatanaModule> modules;
 
-        //  Yatana Setting
+        /*
+        //  System objects
+        [SerializeReference] public List<YatanaModule> modules;
+        */
 
+        //  Yatana Setting
         public bool isYatanaSettingChanged = false;
 
-        /*
         public void ApplySceneTemplate()
         {
+            if (sceneTemplate.PoolSystem)
+            {
+                
+            }
+
             foreach (string item in sceneTemplate.modules.Keys)
             {
                 CurrScene.modules[item] = sceneTemplate.modules[item];
@@ -52,7 +57,7 @@ namespace Yatana
                 {
                     if (m.GetModuleName() == item)
                     {
-                        if (sceneTemplate.modules[item])
+                        if (sceneTemplate.modules[item].IsSystemOn())
                         {
                             m.AddSystem();
                         }
@@ -67,9 +72,7 @@ namespace Yatana
 
             }
         }
-        */
 
-        /*
         public void ClearTemplate()
         {
             sceneTemplate.PoolSystem = false;
@@ -79,7 +82,6 @@ namespace Yatana
             sceneTemplate.VisualEventSystem = false;
             sceneTemplate.ApolloSystem = false;
         }
-        */
 
         public void ClearScene()
         {
@@ -89,7 +91,6 @@ namespace Yatana
             }
         }
 
-        /*
         //  Integration System
 
         public void AddPoolSystem()
@@ -189,7 +190,6 @@ namespace Yatana
                 CurrScene.ApolloSystem = false;
             }
         }
-        */
 
         //  Editor Functions
 
@@ -262,7 +262,6 @@ namespace Yatana
             //CurrScene = new SceneSetupProfile();
             //CurrScene.UpdateSystems(yatanaSetting.modules);
             //sceneTemplate.UpdateSystems(yatanaSetting.modules);
-
         }
 
         //  Game Functions

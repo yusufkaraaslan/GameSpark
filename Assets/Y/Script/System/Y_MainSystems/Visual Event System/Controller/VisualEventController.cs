@@ -15,17 +15,6 @@ namespace Yatana.MainSystems
 
         public VisualEventSettingData visualEventSetting;
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("IsOn", IsOn, typeof(bool));
-            info.AddValue("_instance", _instance, typeof(VisualEventController));
-        }
-
-        public VisualEventController(SerializationInfo info, StreamingContext context)
-        {
-            IsOn = (bool)info.GetValue("IsOn", typeof(bool));
-            _instance = (VisualEventController)info.GetValue("_instance", typeof(VisualEventController));
-        }
 
         public static VisualEventController Instance()
         {
@@ -37,7 +26,7 @@ namespace Yatana.MainSystems
             return _instance;
         }
 
-        public VisualEventController(){ }
+        private VisualEventController(){ }
         #endregion
 
         public static List<VisualEvent> visualEvents;
