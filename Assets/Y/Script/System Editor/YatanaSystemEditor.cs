@@ -23,19 +23,14 @@ namespace Yatana
         SerializedProperty CurrScene; 
 
         SerializedProperty PoolSetting;
-        //SerializedProperty PoolObjects;
 
         SerializedProperty UISetting;
-        //SerializedProperty UISetus;
 
         SerializedProperty CameraSetting;
-        //SerializedProperty Cameras;
 
         SerializedProperty VisualEventSetting;
-        //SerializedProperty VisualEventTemplates;
 
         SerializedProperty ApolloSetting;
-        //SerializedProperty Audios;
 
         SerializedProperty YatanaSetting;
 
@@ -51,19 +46,14 @@ namespace Yatana
             CurrScene = soTarget.FindProperty("CurrScene"); 
 
             PoolSetting = soTarget.FindProperty("poolSetting");
-            //PoolObjects = (new SerializedObject(myTarget.poolSetting)).FindProperty("poolObjects");
 
             UISetting = soTarget.FindProperty("UISetting");
-            //UISetus = (new SerializedObject(myTarget.UISetting)).FindProperty("setups");
 
             CameraSetting = soTarget.FindProperty("cameraSetting");
-            //CameraSetting = (new SerializedObject(myTarget.cameraSetting)).FindProperty("cams");
 
             VisualEventSetting = soTarget.FindProperty("visualEventSetting");
-            //VisualEventTemplates = (new SerializedObject(myTarget.visualEventSetting)).FindProperty("visualEventTemplates");
 
             ApolloSetting = soTarget.FindProperty("apolloSetting");
-            //Audios = (new SerializedObject(myTarget.apolloSetting)).FindProperty("audios");
 
             YatanaSetting = soTarget.FindProperty("yatanaSetting");
         }
@@ -233,10 +223,9 @@ namespace Yatana
             {
                 case "Pool":
 
-                    EditorGUILayout.PropertyField(PoolSetting);
+                    //EditorGUILayout.PropertyField(PoolSetting);
+                    myTarget.poolSetting.DrawTap();
                     GUILayout.Space(sectionSpace);
-
-                    //EditorGUILayout.PropertyField(PoolObjects);
 
                     break;
 
@@ -258,8 +247,6 @@ namespace Yatana
 
                     EditorGUILayout.PropertyField(VisualEventSetting);
                     GUILayout.Space(elementSpace);
-
-                    //EditorGUILayout.PropertyField(VisualEventTemplates);
 
                     GUILayout.Space(sectionSpace);
 

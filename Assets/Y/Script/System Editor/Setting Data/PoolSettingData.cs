@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Yatana.MainSystems;
 
@@ -15,6 +16,11 @@ public class PoolSettingData : DataTemplate
 
     public override void DrawTap()
     {
-        throw new System.NotImplementedException();
+        SerializedObject soTarget = new SerializedObject(this);
+
+        SerializedProperty poolObjs = soTarget.FindProperty("poolObjects");
+
+        EditorGUILayout.PropertyField(poolObjs);
+        GUILayout.Space(sectionSpace);
     }
 }

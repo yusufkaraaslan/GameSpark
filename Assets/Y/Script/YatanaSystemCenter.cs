@@ -112,6 +112,8 @@ namespace Yatana
                 poolWaitPose = new GameObject("Pool Wait Pose");
                 poolWaitPose.transform.SetParent(transform);
                 poolWaitPose.transform.tag = "PoolWaiting";
+
+                poolSetting = new PoolSettingData();
             }
         }
 
@@ -120,6 +122,8 @@ namespace Yatana
             if (!CurrScene.UISystem)
             {
                 CurrScene.UISystem = true;
+
+                UISetting = new UISettingData();
             }
         }
 
@@ -128,6 +132,8 @@ namespace Yatana
             if (!CurrScene.CameraSystem)
             {
                 CurrScene.CameraSystem = true;
+
+                cameraSetting = new CameraSettingData();
             }
         }
 
@@ -139,6 +145,8 @@ namespace Yatana
                 visualEventObj = new GameObject("Visual Event");
                 visualEventObj.transform.SetParent(transform);
                 visualEventObj.AddComponent<VisualEventController>();
+
+                visualEventSetting = new VisualEventSettingData();
             }
         }
 
@@ -147,6 +155,8 @@ namespace Yatana
             if (!CurrScene.ApolloSystem)
             {
                 CurrScene.ApolloSystem = true;
+
+                apolloSetting = new ApolloSettingData();
             }
         }
 
