@@ -12,9 +12,9 @@ namespace Yatana.MainSystems
 
         static List<GameAudio> gameAudios;
         static SoundManeger manager;
-
-        static AudioSource musicApollo;
-        static AudioSource soundApollo;
+        
+        public AudioSource musicApollo;
+        public AudioSource soundApollo;
 
         //
         static bool musicOn, soundOn;
@@ -64,7 +64,7 @@ namespace Yatana.MainSystems
             return manager;
         }
 
-        public static void initilaze(GameAudio[] audios, AudioSource music, AudioSource sound)
+        public void initilaze()
         {
             if (manager == null)
             {
@@ -73,10 +73,20 @@ namespace Yatana.MainSystems
 
             gameAudios = new List<GameAudio>();
 
-            musicApollo = music;
-            soundApollo = sound;
+            musicApollo = apolloSetting.musicApollo;
+            soundApollo = apolloSetting.soundApollo;
 
-            foreach (GameAudio x in audios)
+            if (musicApollo == null)
+            {
+                Debug.LogError("Music audio source is null");
+            }
+
+            if (soundApollo == null)
+            {
+                Debug.LogError("Sound audio source is null");
+            }
+
+            foreach (GameAudio x in apolloSetting.audios)
             {
                 gameAudios.Add(x);
             }

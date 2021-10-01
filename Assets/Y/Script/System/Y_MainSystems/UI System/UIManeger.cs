@@ -16,7 +16,7 @@ namespace Yatana
 
             public UISettingData UISetting;
 
-            public static void initilaze(GameObject[] objs)
+            public void initilaze()
             {
                 if (maneger == null)
                 {
@@ -25,9 +25,9 @@ namespace Yatana
 
                 uiSetups = new List<UISetup>();
 
-                for (int i = 0; i < objs.Length; i++)
+                for (int i = 0; i < UISetting.setups.Length; i++)
                 {
-                    uiSetups.Add(objs[i].GetComponent<UISetup>());
+                    uiSetups.Add(UISetting.setups[i].GetComponent<UISetup>());
                 }
 
                 maneger.ClearScreen();

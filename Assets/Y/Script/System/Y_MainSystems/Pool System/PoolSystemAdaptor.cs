@@ -9,7 +9,7 @@ namespace MainSystems
         GameObject[] objSamples;
         public void Initialize()
         {
-            PoolSystem.initilaze(objSamples);
+            //PoolSystem.initilaze(objSamples);
         }
     }
 }

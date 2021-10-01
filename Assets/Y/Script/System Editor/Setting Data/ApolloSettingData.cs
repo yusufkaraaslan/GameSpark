@@ -9,6 +9,9 @@ public class ApolloSettingData : DataTemplate
     public string[] SoundChannels = { "Music", "FX" };
     [Range(0.0f, 1.0f)] public float maxSound = 1, minSound = 0;
 
+    public AudioSource musicApollo;
+    public AudioSource soundApollo;
+
     public GameAudio[] audios;
 
     public override void DrawTap()

@@ -17,7 +17,7 @@ namespace Yatana
 
             public CameraSettingData cameraSetting;
 
-            public static void initilaze(GameObject[] samples)
+            public void initilaze()
             {
                 if (camSystem == null)
                 {
@@ -25,9 +25,9 @@ namespace Yatana
                 }
                 cams = new List<GameCam>();
 
-                for (int i = 0; i < samples.Length; i++)
+                for (int i = 0; i < cameraSetting.cams.Length; i++)
                 {
-                    cams.Add(samples[i].GetComponent<GameCam>());
+                    cams.Add(cameraSetting.cams[i].GetComponent<GameCam>());
                     cams[i].SetICam(new OffCam(), null);
                 }
 

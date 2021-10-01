@@ -13,7 +13,7 @@ namespace Yatana
 
             public void initilaze()
             {
-                CamSystem.initilaze(cams);
+                //CamSystem.initilaze(cams);
             }
         }
     }

@@ -16,6 +16,7 @@ namespace Yatana
         //  System profiles
         public PoolSystem pool;
         public PoolSettingData poolSetting;
+        GameObject poolWaitPose;
 
         public UIManeger ui;
         public UISettingData UISetting;
@@ -25,6 +26,7 @@ namespace Yatana
 
         public VisualEventController visualEvent;
         public VisualEventSettingData visualEventSetting;
+        GameObject visualEventObj;
 
         public SoundManeger apollo = SoundManeger.GetInstance();
         public ApolloSettingData apolloSetting = new ApolloSettingData();
@@ -38,7 +40,7 @@ namespace Yatana
         {
             if (sceneTemplate.PoolSystem)
             {
-                AddApolloSystem();
+                AddPoolSystem();
             }
             else
             {
@@ -107,7 +109,9 @@ namespace Yatana
             if (!CurrScene.PoolSystem)
             {
                 CurrScene.PoolSystem = true;
-                pool.AddSystem();
+                poolWaitPose = new GameObject("Pool Wait Pose");
+                poolWaitPose.transform.SetParent(transform);
+                poolWaitPose.transform.tag = "PoolWaiting";
             }
         }
 
@@ -116,7 +120,6 @@ namespace Yatana
             if (!CurrScene.UISystem)
             {
                 CurrScene.UISystem = true;
-                ui.AddSystem();
             }
         }
 
@@ -125,7 +128,6 @@ namespace Yatana
             if (!CurrScene.CameraSystem)
             {
                 CurrScene.CameraSystem = true;
-                cam.AddSystem();
             }
         }
 
@@ -134,7 +136,9 @@ namespace Yatana
             if (!CurrScene.VisualEventSystem)
             {
                 CurrScene.VisualEventSystem = true;
-                visualEvent.AddSystem();
+                visualEventObj = new GameObject("Visual Event");
+                visualEventObj.transform.SetParent(transform);
+                visualEventObj.AddComponent<VisualEventController>();
             }
         }
 
@@ -143,7 +147,6 @@ namespace Yatana
             if (!CurrScene.ApolloSystem)
             {
                 CurrScene.ApolloSystem = true;
-                apollo.AddSystem();
             }
         }
 
@@ -154,7 +157,7 @@ namespace Yatana
             if (CurrScene.PoolSystem)
             {
                 CurrScene.PoolSystem = false;
-                pool.RemoveSystem();
+                DestroyImmediate(poolWaitPose);
             }
         }
 
@@ -163,7 +166,6 @@ namespace Yatana
             if (CurrScene.UISystem)
             {
                 CurrScene.UISystem = false;
-                ui.RemoveSystem();
             }
         }
 
@@ -172,7 +174,6 @@ namespace Yatana
             if (CurrScene.CameraSystem)
             {
                 CurrScene.CameraSystem = false;
-                cam.RemoveSystem();
             }
         }
 
@@ -181,7 +182,7 @@ namespace Yatana
             if (CurrScene.VisualEventSystem)
             {
                 CurrScene.VisualEventSystem = false;
-                visualEvent.RemoveSystem();
+                DestroyImmediate(visualEventObj);
             }
         }
 
@@ -190,7 +191,6 @@ namespace Yatana
             if (CurrScene.ApolloSystem)
             {
                 CurrScene.ApolloSystem = false;
-                apollo.RemoveSystem();
             }
         }
 
@@ -273,9 +273,48 @@ namespace Yatana
 
         //  Workflow
 
+        void InitYatana()
+        {
+            if (CurrScene.PoolSystem)
+            {
+                pool = PoolSystem.GetInstance();
+                pool.poolSetting = poolSetting;
+                pool.initilaze();
+            }
+
+            if (CurrScene.UISystem)
+            {
+                ui = UIManeger.GetInstance();
+                ui.UISetting = UISetting;
+                ui.initilaze();
+            }
+
+            if (CurrScene.CameraSystem)
+            {
+                cam = CamSystem.GetInstance();
+                cam.cameraSetting = cameraSetting;
+                cam.initilaze();
+            }
+
+            if (CurrScene.VisualEventSystem)
+            {
+                visualEvent = VisualEventController.Instance();
+                visualEvent.visualEventSetting = visualEventSetting;
+                visualEvent.initilaze();
+            }
+
+            if (CurrScene.ApolloSystem)
+            {
+                apollo = SoundManeger.GetInstance();
+                apollo.apolloSetting = apolloSetting;
+                apollo.initilaze();
+            }
+
+        }
+
         private void Awake()
         {
-
+            InitYatana();
         }
 
         private void Start()

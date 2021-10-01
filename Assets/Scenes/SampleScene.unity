@@ -260,11 +260,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneTemplate:
-    PoolSystem: 0
-    UISystem: 0
-    CameraSystem: 0
-    VisualEventSystem: 0
-    ApolloSystem: 0
+    PoolSystem: 1
+    UISystem: 1
+    CameraSystem: 1
+    VisualEventSystem: 1
+    ApolloSystem: 1
   CurrScene:
     PoolSystem: 0
     UISystem: 0
@@ -283,6 +283,8 @@ MonoBehaviour:
   visualEvent: {fileID: 0}
   visualEventSetting: {fileID: 0}
   apollo:
+    musicApollo: {fileID: 0}
+    soundApollo: {fileID: 0}
     apolloSetting: {fileID: 0}
   apolloSetting: {fileID: 0}
   yatanaSetting: {fileID: 0}

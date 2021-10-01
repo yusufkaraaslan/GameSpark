@@ -26,6 +26,11 @@ namespace Yatana.MainSystems
             return _instance;
         }
 
+        public void initilaze()
+        {
+
+        }
+
         private VisualEventController(){ }
         #endregion
 

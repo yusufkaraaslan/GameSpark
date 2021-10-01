@@ -133,7 +133,7 @@ namespace Yatana
             GUILayout.Label("Pool Sys");
             if (!myTarget.CurrScene.PoolSystem)
             {
-                if (GUILayout.Button("Add")) { myTarget.AddApolloSystem(); }
+                if (GUILayout.Button("Add")) { myTarget.AddPoolSystem(); }
             }
             else
             {

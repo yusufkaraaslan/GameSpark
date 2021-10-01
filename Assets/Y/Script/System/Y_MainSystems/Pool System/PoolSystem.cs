@@ -14,7 +14,7 @@ namespace Yatana
 
             public PoolSettingData poolSetting;
 
-            public static void initilaze(GameObject[] samples)
+            public void initilaze()
             {
                 ObjPool tmp;
 
@@ -25,10 +25,10 @@ namespace Yatana
 
                 pools = new List<ObjPool>();
 
-                for (int i = 0; i < samples.Length; i++)
+                for (int i = 0; i < poolSetting.poolObjects.Length; i++)
                 {
                     tmp = new ObjPool();
-                    tmp.initilaze(samples[i]);
+                    tmp.initilaze(poolSetting.poolObjects[i].gameObject);
                     pools.Add(tmp);
                 }
             }

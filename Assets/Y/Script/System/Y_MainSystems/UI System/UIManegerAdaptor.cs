@@ -12,7 +12,7 @@ namespace MainSystems
 
         public void initilaze()
         {
-            UIManeger.initilaze(setups);
+            //UIManeger.initilaze(setups);
         }
 
     }
