@@ -259,48 +259,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b53b06d1ad4c843b8635608915c8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yatanaSetting: {fileID: 945075167}
-  modules:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
+  sceneTemplate:
+    PoolSystem: 0
+    UISystem: 0
+    CameraSystem: 0
+    VisualEventSystem: 0
+    ApolloSystem: 0
+  CurrScene:
+    PoolSystem: 0
+    UISystem: 0
+    CameraSystem: 0
+    VisualEventSystem: 0
+    ApolloSystem: 0
+  pool:
+    poolSetting: {fileID: 0}
+  poolSetting: {fileID: 0}
+  ui:
+    UISetting: {fileID: 0}
+  UISetting: {fileID: 0}
+  cam:
+    cameraSetting: {fileID: 0}
+  cameraSetting: {fileID: 0}
+  visualEvent: {fileID: 0}
+  visualEventSetting: {fileID: 0}
+  apollo:
+    apolloSetting: {fileID: 0}
+  apolloSetting: {fileID: 0}
+  yatanaSetting: {fileID: 0}
   isYatanaSettingChanged: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: PoolSystem, ns: Yatana.MainSystems, asm: Assembly-CSharp}
-      data:
-        poolSetting: {fileID: 0}
-    00000001:
-      type: {class: UIManeger, ns: Yatana.MainSystems, asm: Assembly-CSharp}
-      data:
-        UISetting: {fileID: 0}
-    00000002:
-      type: {class: CamSystem, ns: Yatana.MainSystems, asm: Assembly-CSharp}
-      data:
-        cameraSetting: {fileID: 0}
-    00000003:
-      type: {class: SoundManeger, ns: Yatana.MainSystems, asm: Assembly-CSharp}
-      data:
-        apolloSetting: {fileID: 0}
---- !u!114 &945075167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e9c1e8a9a300640839d8494b2263fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modules:
-  - Yatana.MainSystems.PoolSystem
-  - Yatana.MainSystems.UIManeger
-  - Yatana.MainSystems.CamSystem
-  - Yatana.MainSystems.SoundManeger
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,30 +14,22 @@ namespace Yatana
         public SceneSetupProfile CurrScene;
 
         //  System profiles
+        public PoolSystem pool;
         public PoolSettingData poolSetting;
-        public PoolObj[] poolObjects;
 
+        public UIManeger ui;
         public UISettingData UISetting;
 
+        public CamSystem cam;
         public CameraSettingData cameraSetting;
 
-        public PopupSettingData popupSetting;
-
+        public VisualEventController visualEvent;
         public VisualEventSettingData visualEventSetting;
-        public VisualEventProfile[] visualEventTemplates;
 
-        public ApolloSettingData apolloSetting;
-        public GameAudio[] audios;
+        public SoundManeger apollo = SoundManeger.GetInstance();
+        public ApolloSettingData apolloSetting = new ApolloSettingData();
 
         public YatanaSettingData yatanaSetting;
-
-        //  System objects
-        [SerializeReference] public List<YatanaModule> modules;
-
-        /*
-        //  System objects
-        [SerializeReference] public List<YatanaModule> modules;
-        */
 
         //  Yatana Setting
         public bool isYatanaSettingChanged = false;
@@ -46,30 +38,47 @@ namespace Yatana
         {
             if (sceneTemplate.PoolSystem)
             {
-                
+                AddApolloSystem();
+            }
+            else
+            {
+                RemovePoolSystem();
             }
 
-            foreach (string item in sceneTemplate.modules.Keys)
+            if (sceneTemplate.UISystem)
             {
-                CurrScene.modules[item] = sceneTemplate.modules[item];
+                AddUISystem();
+            }
+            else
+            {
+                RemoveUISystem();
+            }
 
-                foreach (YatanaModule m in modules)
-                {
-                    if (m.GetModuleName() == item)
-                    {
-                        if (sceneTemplate.modules[item].IsSystemOn())
-                        {
-                            m.AddSystem();
-                        }
-                        else
-                        {
-                            m.RemoveSystem();
-                        }
+            if (sceneTemplate.CameraSystem)
+            {
+                AddCameraSystem();
+            }
+            else
+            {
+                RemoveCameraSystem();
+            }
 
-                        break;
-                    }
-                }
+            if (sceneTemplate.VisualEventSystem)
+            {
+                AddVisualEventSystem();
+            }
+            else
+            {
+                RemoveVisualEventSystem();
+            }
 
+            if (sceneTemplate.ApolloSystem)
+            {
+                AddApolloSystem();
+            }
+            else
+            {
+                RemoveApolloSystem();
             }
         }
 
@@ -78,17 +87,17 @@ namespace Yatana
             sceneTemplate.PoolSystem = false;
             sceneTemplate.UISystem = false;
             sceneTemplate.CameraSystem = false;
-            sceneTemplate.PopupSystem = false;
             sceneTemplate.VisualEventSystem = false;
             sceneTemplate.ApolloSystem = false;
         }
 
         public void ClearScene()
         {
-            foreach (YatanaModule m in modules)
-            {
-                m.RemoveSystem();
-            }
+            RemovePoolSystem();
+            RemoveUISystem();
+            RemoveCameraSystem();
+            RemoveVisualEventSystem();
+            RemoveApolloSystem();
         }
 
         //  Integration System
@@ -98,6 +107,7 @@ namespace Yatana
             if (!CurrScene.PoolSystem)
             {
                 CurrScene.PoolSystem = true;
+                pool.AddSystem();
             }
         }
 
@@ -106,6 +116,7 @@ namespace Yatana
             if (!CurrScene.UISystem)
             {
                 CurrScene.UISystem = true;
+                ui.AddSystem();
             }
         }
 
@@ -114,14 +125,7 @@ namespace Yatana
             if (!CurrScene.CameraSystem)
             {
                 CurrScene.CameraSystem = true;
-            }
-        }
-
-        public void AddPopupSystem()
-        {
-            if (!CurrScene.PopupSystem)
-            {
-                CurrScene.PopupSystem = true;
+                cam.AddSystem();
             }
         }
 
@@ -130,6 +134,7 @@ namespace Yatana
             if (!CurrScene.VisualEventSystem)
             {
                 CurrScene.VisualEventSystem = true;
+                visualEvent.AddSystem();
             }
         }
 
@@ -138,6 +143,7 @@ namespace Yatana
             if (!CurrScene.ApolloSystem)
             {
                 CurrScene.ApolloSystem = true;
+                apollo.AddSystem();
             }
         }
 
@@ -148,6 +154,7 @@ namespace Yatana
             if (CurrScene.PoolSystem)
             {
                 CurrScene.PoolSystem = false;
+                pool.RemoveSystem();
             }
         }
 
@@ -156,6 +163,7 @@ namespace Yatana
             if (CurrScene.UISystem)
             {
                 CurrScene.UISystem = false;
+                ui.RemoveSystem();
             }
         }
 
@@ -164,14 +172,7 @@ namespace Yatana
             if (CurrScene.CameraSystem)
             {
                 CurrScene.CameraSystem = false;
-            }
-        }
-
-        public void RemovePopupSystem()
-        {
-            if (CurrScene.PopupSystem)
-            {
-                CurrScene.PopupSystem = false;
+                cam.RemoveSystem();
             }
         }
 
@@ -180,6 +181,7 @@ namespace Yatana
             if (CurrScene.VisualEventSystem)
             {
                 CurrScene.VisualEventSystem = false;
+                visualEvent.RemoveSystem();
             }
         }
 
@@ -188,6 +190,7 @@ namespace Yatana
             if (CurrScene.ApolloSystem)
             {
                 CurrScene.ApolloSystem = false;
+                apollo.RemoveSystem();
             }
         }
 
@@ -195,7 +198,7 @@ namespace Yatana
 
         public void EditorUpdate()
         {
-            Debug.Log("helleoooooooo");
+            Debug.Log("ToDo : EditorUpdate");
         }
 
         public void YatanaSettingChanged()
@@ -205,6 +208,7 @@ namespace Yatana
 
         public void ApplyYatanaSettings()
         {
+            /*
             isYatanaSettingChanged = false;
 
             for (int i = 0; i < transform.childCount; i++)
@@ -262,22 +266,10 @@ namespace Yatana
             //CurrScene = new SceneSetupProfile();
             //CurrScene.UpdateSystems(yatanaSetting.modules);
             //sceneTemplate.UpdateSystems(yatanaSetting.modules);
+            */
         }
 
         //  Game Functions
-
-        public YatanaModule GetModule(string mName)
-        {
-            for (int i = 0; i < modules.Count; i++)
-            {
-                if (modules[i].GetModuleName() == mName)
-                {
-                    return modules[i];
-                }
-            }
-
-            return null;
-        }
 
         //  Workflow
 

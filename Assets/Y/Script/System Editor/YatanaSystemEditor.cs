@@ -19,22 +19,23 @@ namespace Yatana
         SerializedObject soTarget;
 
         //  System Settings
+        SerializedProperty sceneTemplate; 
         SerializedProperty CurrScene; 
 
         SerializedProperty PoolSetting;
-        SerializedProperty PoolObjects;
+        //SerializedProperty PoolObjects;
 
         SerializedProperty UISetting;
+        //SerializedProperty UISetus;
 
         SerializedProperty CameraSetting;
-
-        SerializedProperty PopupSetting;
+        //SerializedProperty Cameras;
 
         SerializedProperty VisualEventSetting;
-        SerializedProperty VisualEventTemplates;
+        //SerializedProperty VisualEventTemplates;
 
         SerializedProperty ApolloSetting;
-        SerializedProperty Audios;
+        //SerializedProperty Audios;
 
         SerializedProperty YatanaSetting;
 
@@ -46,22 +47,23 @@ namespace Yatana
             myTarget = (YatanaSystemCenter)target;
             soTarget = new SerializedObject(target);
 
+            sceneTemplate = soTarget.FindProperty("sceneTemplate"); 
             CurrScene = soTarget.FindProperty("CurrScene"); 
 
             PoolSetting = soTarget.FindProperty("poolSetting");
-            PoolObjects = soTarget.FindProperty("poolObjects");
+            //PoolObjects = (new SerializedObject(myTarget.poolSetting)).FindProperty("poolObjects");
 
             UISetting = soTarget.FindProperty("UISetting");
+            //UISetus = (new SerializedObject(myTarget.UISetting)).FindProperty("setups");
 
             CameraSetting = soTarget.FindProperty("cameraSetting");
-
-            PopupSetting = soTarget.FindProperty("popupSetting");
+            //CameraSetting = (new SerializedObject(myTarget.cameraSetting)).FindProperty("cams");
 
             VisualEventSetting = soTarget.FindProperty("visualEventSetting");
-            VisualEventTemplates = soTarget.FindProperty("visualEventTemplates");
+            //VisualEventTemplates = (new SerializedObject(myTarget.visualEventSetting)).FindProperty("visualEventTemplates");
 
             ApolloSetting = soTarget.FindProperty("apolloSetting");
-            Audios = soTarget.FindProperty("audios");
+            //Audios = (new SerializedObject(myTarget.apolloSetting)).FindProperty("audios");
 
             YatanaSetting = soTarget.FindProperty("yatanaSetting");
         }
@@ -114,7 +116,6 @@ namespace Yatana
         public void DrawIntegrationTap()
         {
             //  Scene template
-
             EditorGUILayout.PropertyField(sceneTemplate);
 
             GUILayout.Space(elementSpace);
@@ -128,36 +129,59 @@ namespace Yatana
             GUILayout.Label("Systems :");
             GUILayout.Space(elementSpace);
 
-            EditorGUILayout.PropertyField(CurrScene); 
-
-            /*
-            foreach (YatanaModule m in myTarget.modules)
+            //  Pool
+            GUILayout.Label("Pool Sys");
+            if (!myTarget.CurrScene.PoolSystem)
             {
-                GUILayout.Label(m.GetModuleName());
-                if (m.IsSystemOn())
-                {
-                    if (GUILayout.Button("Turn On")) { m.SystemOn(); }
-                }
-                else
-                {
-                    if (GUILayout.Button("Turn Off")) { m.SystemOff(); }
-                }
+                if (GUILayout.Button("Add")) { myTarget.AddApolloSystem(); }
             }
-            */
-
-            foreach (string m in myTarget.CurrScene.modules.Keys)
+            else
             {
-                YatanaModule tmp = myTarget.GetModule(m);
+                if (GUILayout.Button("Remove")) { myTarget.RemovePoolSystem(); }
+            }
 
-                GUILayout.Label(m);
-                if (!myTarget.CurrScene.modules[m])
-                {
-                    if (GUILayout.Button("Add")) { tmp.AddSystem(); }
-                }
-                else
-                {
-                    if (GUILayout.Button("Remove")) { tmp.RemoveSystem(); }
-                }
+            //  UI
+            GUILayout.Label("UI Sys");
+            if (!myTarget.CurrScene.UISystem)
+            {
+                if (GUILayout.Button("Add")) { myTarget.AddUISystem(); }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove")) { myTarget.RemoveUISystem(); }
+            }
+
+            //  Cam
+            GUILayout.Label("Camera Sys");
+            if (!myTarget.CurrScene.CameraSystem)
+            {
+                if (GUILayout.Button("Add")) { myTarget.AddCameraSystem(); }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove")) { myTarget.RemoveCameraSystem(); }
+            }
+
+            //  Visual Event
+            GUILayout.Label("Visual Event Sys");
+            if (!myTarget.CurrScene.VisualEventSystem)
+            {
+                if (GUILayout.Button("Add")) { myTarget.AddVisualEventSystem(); }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove")) { myTarget.RemoveVisualEventSystem(); }
+            }
+
+            //  Apollo
+            GUILayout.Label("Sound Sys");
+            if (!myTarget.CurrScene.ApolloSystem)
+            {
+                if (GUILayout.Button("Add")) { myTarget.AddApolloSystem(); }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove")) { myTarget.RemoveApolloSystem(); }
             }
 
             GUILayout.Space(sectionSpace);
@@ -173,11 +197,6 @@ namespace Yatana
         {
             List<string> systemTabs = new List<string>();
 
-            foreach (YatanaModule m in myTarget.modules)
-            {
-                systemTabs.Add(m.GetModuleName());
-            }
-
             if (myTarget.CurrScene.PoolSystem)
             {
                 systemTabs.Add("Pool");
@@ -191,11 +210,6 @@ namespace Yatana
             if (myTarget.CurrScene.CameraSystem)
             {
                 systemTabs.Add("Camera");
-            }
-
-            if (myTarget.CurrScene.PopupSystem)
-            {
-                systemTabs.Add("Popup");
             }
 
             if (myTarget.CurrScene.VisualEventSystem)
@@ -222,7 +236,7 @@ namespace Yatana
                     EditorGUILayout.PropertyField(PoolSetting);
                     GUILayout.Space(sectionSpace);
 
-                    EditorGUILayout.PropertyField(PoolObjects);
+                    //EditorGUILayout.PropertyField(PoolObjects);
 
                     break;
 
@@ -240,19 +254,12 @@ namespace Yatana
 
                     break;
 
-                case "Popup":
-
-                    EditorGUILayout.PropertyField(PopupSetting);
-                    GUILayout.Space(sectionSpace);
-
-                    break;
-
                 case "Visual Event":
 
                     EditorGUILayout.PropertyField(VisualEventSetting);
                     GUILayout.Space(elementSpace);
 
-                    EditorGUILayout.PropertyField(VisualEventTemplates);
+                    //EditorGUILayout.PropertyField(VisualEventTemplates);
 
                     GUILayout.Space(sectionSpace);
 
@@ -263,7 +270,7 @@ namespace Yatana
                     EditorGUILayout.PropertyField(ApolloSetting);
                     GUILayout.Space(elementSpace);
 
-                    EditorGUILayout.PropertyField(Audios);
+                    //EditorGUILayout.PropertyField(Audios);
 
                     GUILayout.Space(sectionSpace);
 

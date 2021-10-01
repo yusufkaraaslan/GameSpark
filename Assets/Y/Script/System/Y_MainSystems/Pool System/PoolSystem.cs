@@ -9,8 +9,6 @@ namespace Yatana
         [System.Serializable] 
         public class PoolSystem : YatanaModule
         {
-            static bool IsOn = false;
-
             private static List<ObjPool> pools;
             private static PoolSystem poolSystem;
 
@@ -129,12 +127,10 @@ namespace Yatana
 
             public void SystemOn()
             {
-                IsOn = true;
             }
 
             public void SystemOff()
             {
-                IsOn = false;
             }
 
             public void UpdateSystem()
@@ -164,7 +160,7 @@ namespace Yatana
 
             public bool IsSystemOn()
             {
-                return IsOn;
+                return true;
             }
 
             private PoolSystem()

@@ -5,7 +5,8 @@ using UnityEngine;
 using Yatana;
 using Yatana.MainSystems;
 
+[System.Serializable]
 public class SceneSetupProfile
 {
-    public bool PoolSystem, UISystem, CameraSystem, PopupSystem, VisualEventSystem, ApolloSystem;
+    public bool PoolSystem, UISystem, CameraSystem, VisualEventSystem, ApolloSystem;
 }
