@@ -9,45 +9,12 @@ namespace Yatana.MainSystems
     public class SoundManeger : YatanaModule
     {
         static bool IsOn = false;
-
-        static List<GameAudio> gameAudios;
         static SoundManeger manager;
-        
-        public AudioSource musicApollo;
-        public AudioSource soundApollo;
 
-        //
-        static bool musicOn, soundOn;
-        static float musicVolume, soundVolume;
-        //
+        List<GameAudio> gameAudios;
+        List<GameAudioSource> audioSources;
 
         public ApolloSettingData apolloSetting;
-
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("IsOn", IsOn, typeof(bool));
-            info.AddValue("gameAudios", gameAudios, typeof(List<GameAudio>));
-            info.AddValue("manager", manager, typeof(SoundManeger));
-
-            info.AddValue("musicOn", musicOn, typeof(bool));
-            info.AddValue("soundOn", soundOn, typeof(bool));
-
-            info.AddValue("musicVolume", musicVolume, typeof(float));
-            info.AddValue("soundVolume", soundVolume, typeof(float));
-        }
-
-        public SoundManeger(SerializationInfo info, StreamingContext context)
-        {
-            IsOn = (bool)info.GetValue("IsOn", typeof(bool));
-            gameAudios = (List<GameAudio>)info.GetValue("gameAudios", typeof(List<GameAudio>));
-            manager = (SoundManeger)info.GetValue("manager", typeof(SoundManeger));
-
-            musicOn = (bool)info.GetValue("musicOn", typeof(bool));
-            soundOn = (bool)info.GetValue("soundOn", typeof(bool));
-
-            musicVolume = (float)info.GetValue("musicVolume", typeof(float));
-            soundVolume = (float)info.GetValue("soundVolume", typeof(float));
-        }
 
         private SoundManeger()
         {
@@ -73,108 +40,146 @@ namespace Yatana.MainSystems
 
             gameAudios = new List<GameAudio>();
 
-            musicApollo = apolloSetting.musicApollo;
-            soundApollo = apolloSetting.soundApollo;
-
-            if (musicApollo == null)
-            {
-                Debug.LogError("Music audio source is null");
-            }
-
-            if (soundApollo == null)
-            {
-                Debug.LogError("Sound audio source is null");
-            }
-
             foreach (GameAudio x in apolloSetting.audios)
             {
                 gameAudios.Add(x);
             }
 
-            musicOn = PlayerPrefs.GetInt("musicOn") == 1;
-            soundOn = PlayerPrefs.GetInt("soundOn") == 1;
-
-            musicVolume = PlayerPrefs.GetFloat("musicVolume");
-            soundVolume = PlayerPrefs.GetFloat("soundVolume");
-
-        }
-
-        public void PlayMusic(string musicName)
-        {
-            if (musicOn)
+            foreach (GameAudioSource source in apolloSetting.audioSources)
             {
-                foreach (GameAudio x in gameAudios)
+                audioSources.Add(source);
+
+                if (source.sourceType == AudioSourceType.Music)
                 {
-                    if (x.audioName == musicName)
-                    {
-                        musicApollo.clip = x.clip;
-                        musicApollo.loop = true;
-                        musicApollo.volume = musicVolume;
-                        musicApollo.Play();
-                    }
+                    source.audioSource.volume = apolloSetting.musicVolume;
+                }
+                else
+                {
+                    source.audioSource.volume = apolloSetting.soundVolume;
                 }
             }
         }
 
-        public void StopMusic()
+        public void PlayMusic(string sourceName, string musicName)
         {
-            musicApollo.Stop();
+            if (apolloSetting.musicOn)
+            {
+                GameAudioSource source = null;
+                GameAudio audio = null;
+
+                foreach (GameAudioSource x in audioSources)
+                {
+                    if (x.SourceName == sourceName)
+                    {
+                        source = x;
+                        break;
+                    }
+                }
+
+                foreach (GameAudio x in gameAudios)
+                {
+                    if (x.audioName == musicName)
+                    {
+                        audio = x;
+                        break;
+                    }
+                }
+
+                source.audioSource.clip = audio.clip;
+                source.audioSource.loop = true;
+                source.audioSource.volume = apolloSetting.musicVolume;
+                source.audioSource.Play();
+            }
         }
 
-        public void PlaySound(string soundName)
+        public void StopMusic(string sourceName)
         {
-            if (soundOn)
+            foreach (GameAudioSource x in audioSources)
             {
+                if (x.SourceName == sourceName)
+                {
+                    x.audioSource.Stop();
+                    break;
+                }
+            }
+        }
+
+        public void PlaySound(string sourceName, string soundName)
+        {
+            if (apolloSetting.soundOn)
+            {
+                GameAudioSource source = null;
+                GameAudio audio = null;
+
+                foreach (GameAudioSource x in audioSources)
+                {
+                    if (x.SourceName == sourceName)
+                    {
+                        source = x;
+                        break;
+                    }
+                }
+
                 foreach (GameAudio x in gameAudios)
                 {
                     if (x.audioName == soundName)
                     {
-                        soundApollo.clip = x.clip;
-                        soundApollo.volume = soundVolume;
-                        soundApollo.Play();
+                        audio = x;
+                        break;
                     }
                 }
+
+                source.audioSource.clip = audio.clip;
+                source.audioSource.loop = false;
+                source.audioSource.volume = apolloSetting.soundVolume;
+                source.audioSource.Play();
             }
         }
 
         public void MusicOn()
         {
-            musicOn = true;
-            PlayerPrefs.SetInt("musicOn", 1);
-            musicApollo.Play();
+            apolloSetting.musicOn = true;
         }
 
         public void MusicOff()
         {
-            musicOn = false;
-            PlayerPrefs.SetInt("musicOn", 0);
-            musicApollo.Stop();
+            apolloSetting.musicOn = false;
         }
 
         public void SoundOn()
         {
-            PlayerPrefs.SetInt("soundOn", 1);
-            soundOn = true;
+            apolloSetting.soundOn = true;
         }
 
         public void SoundOff()
         {
-            PlayerPrefs.SetInt("soundOn", 0);
-            soundOn = false;
+            apolloSetting.soundOn = false;
         }
 
         public void SetMusicVolume(float volume)
         {
-            musicVolume = volume;
-            PlayerPrefs.SetFloat("musicVolume", volume);
-            musicApollo.volume = volume;
+            apolloSetting.musicVolume = volume;
+
+            foreach (GameAudioSource x in audioSources)
+            {
+                if (x.sourceType == AudioSourceType.Music)
+                {
+                    x.audioSource.volume = volume;
+                }
+            }
         }
 
         public void SetSoundValume(float volume)
         {
-            soundVolume = volume;
-            PlayerPrefs.SetFloat("soundVolume", volume);
-            soundApollo.volume = volume;
+            apolloSetting.soundVolume = volume;
+
+            foreach (GameAudioSource x in audioSources)
+            {
+                if (x.sourceType == AudioSourceType.VfxSound)
+                {
+                    x.audioSource.volume = volume;
+                }
+            }
         }
 
         public YatanaModule GetModule()

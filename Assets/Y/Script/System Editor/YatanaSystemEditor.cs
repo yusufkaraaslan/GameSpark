@@ -247,12 +247,7 @@ namespace Yatana
 
                 case "Apollo":
 
-                    EditorGUILayout.PropertyField(ApolloSetting);
-                    GUILayout.Space(elementSpace);
-
-                    //EditorGUILayout.PropertyField(Audios);
-
-                    GUILayout.Space(sectionSpace);
+                    myTarget.apolloSetting.DrawTap();
 
                     break;
             }
