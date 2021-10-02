@@ -28,8 +28,8 @@ namespace Yatana
         public VisualEventSettingData visualEventSetting;
         GameObject visualEventObj;
 
-        public SoundManeger apollo = SoundManeger.GetInstance();
-        public ApolloSettingData apolloSetting = new ApolloSettingData();
+        public SoundManeger apollo;
+        public ApolloSettingData apolloSetting;
 
         public YatanaSettingData yatanaSetting;
 

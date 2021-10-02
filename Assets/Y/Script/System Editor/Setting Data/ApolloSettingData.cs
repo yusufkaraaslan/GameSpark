@@ -8,7 +8,7 @@ using Yatana.MainSystems;
 public class ApolloSettingData : DataTemplate
 {
     public bool musicOn, soundOn;
-    [Range(0.0f, 1.0f)] public float musicVolume = 1, soundVolume = 1;
+    [Range(0.0f, 1.0f)] public float musicVolume, soundVolume;
 
     public GameAudio[] audios;
     public GameAudioSource[] audioSources;
