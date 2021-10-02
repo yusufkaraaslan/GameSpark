@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Yatana.MainSystems;
 
@@ -13,6 +14,22 @@ public class CameraSettingData : DataTemplate
 
     public override void DrawTap()
     {
-        throw new System.NotImplementedException();
+        SerializedObject soTarget = new SerializedObject(this);
+        GUILayout.Space(sectionSpace);
+
+        EditorGUI.BeginChangeCheck();
+
+        SerializedProperty offCam = soTarget.FindProperty("SetOffCamOnRegister");
+        EditorGUILayout.PropertyField(offCam);
+        GUILayout.Space(elementSpace);
+
+        SerializedProperty gameCams = soTarget.FindProperty("cams");
+        EditorGUILayout.PropertyField(gameCams);
+        GUILayout.Space(elementSpace);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            soTarget.ApplyModifiedProperties();
+        }
     }
 }

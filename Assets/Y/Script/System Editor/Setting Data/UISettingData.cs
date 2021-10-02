@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Yatana.MainSystems;
 
@@ -13,6 +14,22 @@ public class UISettingData : DataTemplate
 
     public override void DrawTap()
     {
-        throw new System.NotImplementedException();
+        SerializedObject soTarget = new SerializedObject(this);
+        GUILayout.Space(sectionSpace);
+
+        EditorGUI.BeginChangeCheck();
+
+        SerializedProperty clearAll = soTarget.FindProperty("ClearAllSceneOnRegister");
+        EditorGUILayout.PropertyField(clearAll);
+        GUILayout.Space(elementSpace);
+
+        SerializedProperty uiSetups = soTarget.FindProperty("setups");
+        EditorGUILayout.PropertyField(uiSetups);
+        GUILayout.Space(elementSpace);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            soTarget.ApplyModifiedProperties();
+        }
     }
 }

@@ -217,38 +217,31 @@ namespace Yatana
             systemToolbarString = systemTabs[systemToolbarInd];
             GUILayout.Space(elementSpace);
 
-            EditorGUI.BeginChangeCheck();
+            //EditorGUI.BeginChangeCheck();
 
             switch (systemToolbarString)
             {
                 case "Pool":
 
-                    //EditorGUILayout.PropertyField(PoolSetting);
                     myTarget.poolSetting.DrawTap();
-                    GUILayout.Space(sectionSpace);
 
                     break;
 
                 case "UI":
 
-                    EditorGUILayout.PropertyField(UISetting);
-                    GUILayout.Space(sectionSpace);
+                    myTarget.UISetting.DrawTap();
 
                     break;
 
                 case "Camera":
 
-                    EditorGUILayout.PropertyField(CameraSetting);
-                    GUILayout.Space(sectionSpace);
+                    myTarget.cameraSetting.DrawTap();
 
                     break;
 
                 case "Visual Event":
 
-                    EditorGUILayout.PropertyField(VisualEventSetting);
-                    GUILayout.Space(elementSpace);
-
-                    GUILayout.Space(sectionSpace);
+                    myTarget.visualEventSetting.DrawTap();
 
                     break;
 
@@ -263,11 +256,11 @@ namespace Yatana
 
                     break;
             }
-
+            /*
             if (EditorGUI.EndChangeCheck())
             {
                 soTarget.ApplyModifiedProperties();
-            }
+            }*/
         }
 
         public void DrawYatanaSettings()

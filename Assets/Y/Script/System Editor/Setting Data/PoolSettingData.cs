@@ -17,10 +17,21 @@ public class PoolSettingData : DataTemplate
     public override void DrawTap()
     {
         SerializedObject soTarget = new SerializedObject(this);
+        GUILayout.Space(sectionSpace);
+
+        EditorGUI.BeginChangeCheck();
+
+        SerializedProperty closeOnDespawn = soTarget.FindProperty("CloseObjectOnDespawn");
+        EditorGUILayout.PropertyField(closeOnDespawn);
+        GUILayout.Space(elementSpace);
 
         SerializedProperty poolObjs = soTarget.FindProperty("poolObjects");
-
         EditorGUILayout.PropertyField(poolObjs);
-        GUILayout.Space(sectionSpace);
+        GUILayout.Space(elementSpace);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            soTarget.ApplyModifiedProperties();
+        }
     }
 }

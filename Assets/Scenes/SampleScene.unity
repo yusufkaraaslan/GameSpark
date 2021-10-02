@@ -123,6 +123,103 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &355184853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f7f88b359d56c468140fb6fa4093d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  UseFixedUpdate: 0
+  visualEventTemplates: []
+--- !u!114 &500634353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3724c4240355914393d439158369d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundChannels:
+  - Music
+  - FX
+  maxSound: 1
+  minSound: 0
+  musicApollo: {fileID: 0}
+  soundApollo: {fileID: 0}
+  audios: []
+--- !u!1 &506028425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506028426}
+  - component: {fileID: 506028427}
+  m_Layer: 0
+  m_Name: Visual Event
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506028426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506028425}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 932270812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506028427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506028425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4d1c1beed0ae54c995002f4d423576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualEventSetting: {fileID: 0}
+--- !u!114 &636693806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f23ad71209a1c4aa752ff0b96cf7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOn: 0
+  LockSystem: 0
+  CloseObjectOnDespawn: 1
+  poolObjects:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +313,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &782973569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0e5ff2c2614b47a183d8d89bd088e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  ClearAllSceneOnRegister: 0
+  setups: []
 --- !u!1 &932270811
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +355,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4097252, y: 2.8926206, z: 0.98209}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1598324050}
+  - {fileID: 506028426}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -266,27 +380,27 @@ MonoBehaviour:
     VisualEventSystem: 1
     ApolloSystem: 1
   CurrScene:
-    PoolSystem: 0
-    UISystem: 0
-    CameraSystem: 0
-    VisualEventSystem: 0
-    ApolloSystem: 0
+    PoolSystem: 1
+    UISystem: 1
+    CameraSystem: 1
+    VisualEventSystem: 1
+    ApolloSystem: 1
   pool:
     poolSetting: {fileID: 0}
-  poolSetting: {fileID: 0}
+  poolSetting: {fileID: 636693806}
   ui:
     UISetting: {fileID: 0}
-  UISetting: {fileID: 0}
+  UISetting: {fileID: 782973569}
   cam:
     cameraSetting: {fileID: 0}
-  cameraSetting: {fileID: 0}
+  cameraSetting: {fileID: 1084442185}
   visualEvent: {fileID: 0}
-  visualEventSetting: {fileID: 0}
+  visualEventSetting: {fileID: 355184853}
   apollo:
     musicApollo: {fileID: 0}
     soundApollo: {fileID: 0}
     apolloSetting: {fileID: 0}
-  apolloSetting: {fileID: 0}
+  apolloSetting: {fileID: 500634353}
   yatanaSetting: {fileID: 0}
   isYatanaSettingChanged: 0
 --- !u!1 &963194225
@@ -370,5 +484,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084442185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ce644bf2820d042bf7ced94074d3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  SetOffCamOnRegister: 0
+  cams: []
+--- !u!1 &1598324049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598324050}
+  m_Layer: 0
+  m_Name: Pool Wait Pose
+  m_TagString: PoolWaiting
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598324050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598324049}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 932270812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
