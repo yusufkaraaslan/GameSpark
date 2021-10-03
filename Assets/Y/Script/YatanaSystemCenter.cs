@@ -8,7 +8,6 @@ using UnityEditor;
 
 namespace Yatana
 {
-    [System.Serializable]
     public class YatanaSystemCenter : MonoBehaviour
     {
         public SceneSetupProfile sceneTemplate;
@@ -17,7 +16,7 @@ namespace Yatana
         //  System profiles
         public PoolSystem pool;
         public PoolSettingData poolSetting;
-        GameObject poolWaitPose;
+        [SerializeReference] GameObject poolWaitPose;
 
         public UIManeger ui;
         public UISettingData UISetting;
@@ -27,7 +26,7 @@ namespace Yatana
 
         public VisualEventController visualEvent;
         public VisualEventSettingData visualEventSetting;
-        GameObject visualEventObj;
+        [SerializeReference] GameObject visualEventObj;
 
         public SoundManeger soundManeger;
         public ApolloSettingData SoundSetting;
