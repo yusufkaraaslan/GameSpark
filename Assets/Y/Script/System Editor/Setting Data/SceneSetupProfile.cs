@@ -8,5 +8,5 @@ using Yatana.MainSystems;
 [System.Serializable]
 public class SceneSetupProfile
 {
-    public bool PoolSystem, UISystem, CameraSystem, VisualEventSystem, ApolloSystem;
+    public bool PoolSystem, UISystem, CameraSystem, VisualEventSystem, ApolloSystem, LightSystem;
 }

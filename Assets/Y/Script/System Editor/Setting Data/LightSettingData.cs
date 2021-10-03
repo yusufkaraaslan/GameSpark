@@ -5,12 +5,9 @@ using UnityEngine;
 using Yatana.MainSystems;
 
 [System.Serializable]
-public class UISettingData : DataTemplate
+public class LightSettingData : DataTemplate
 {
-    public bool LockSystem;
-    public bool ClearAllUIOnStart;
-
-    public UISetup[] setups;
+    public SceneLight[] lights;
 
     public override void DrawTap()
     {
@@ -19,12 +16,8 @@ public class UISettingData : DataTemplate
 
         EditorGUI.BeginChangeCheck();
 
-        SerializedProperty clearAll = soTarget.FindProperty("ClearAllUIOnStart");
-        EditorGUILayout.PropertyField(clearAll);
-        GUILayout.Space(elementSpace);
-
-        SerializedProperty uiSetups = soTarget.FindProperty("setups");
-        EditorGUILayout.PropertyField(uiSetups);
+        SerializedProperty Lights = soTarget.FindProperty("lights");
+        EditorGUILayout.PropertyField(Lights);
         GUILayout.Space(elementSpace);
 
         if (EditorGUI.EndChangeCheck())

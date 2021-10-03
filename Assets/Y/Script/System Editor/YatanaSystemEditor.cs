@@ -174,6 +174,17 @@ namespace Yatana
                 if (GUILayout.Button("Remove")) { myTarget.RemoveApolloSystem(); }
             }
 
+            //  Light
+            GUILayout.Label("Light Sys");
+            if (!myTarget.CurrScene.LightSystem)
+            {
+                if (GUILayout.Button("Add")) { myTarget.AddLightSystem(); }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove")) { myTarget.RemoveLightSystem(); }
+            }
+
             GUILayout.Space(sectionSpace);
 
             if (GUILayout.Button("Clear Scene"))
@@ -212,12 +223,15 @@ namespace Yatana
                 systemTabs.Add("Apollo");
             }
 
+            if (myTarget.CurrScene.LightSystem)
+            {
+                systemTabs.Add("Light");
+            }
+
             GUILayout.Space(sectionSpace);
             systemToolbarInd = GUILayout.Toolbar(systemToolbarInd, systemTabs.ToArray());
             systemToolbarString = systemTabs[systemToolbarInd];
             GUILayout.Space(elementSpace);
-
-            //EditorGUI.BeginChangeCheck();
 
             switch (systemToolbarString)
             {
@@ -250,12 +264,13 @@ namespace Yatana
                     myTarget.apolloSetting.DrawTap();
 
                     break;
+
+                case "Light":
+
+                    myTarget.lightSetting.DrawTap();
+
+                    break;
             }
-            /*
-            if (EditorGUI.EndChangeCheck())
-            {
-                soTarget.ApplyModifiedProperties();
-            }*/
         }
 
         public void DrawYatanaSettings()

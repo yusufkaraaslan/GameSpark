@@ -31,6 +31,9 @@ namespace Yatana
         public SoundManeger apollo;
         public ApolloSettingData apolloSetting;
 
+        public LightManeger lightSys;
+        public LightSettingData lightSetting;
+
         public YatanaSettingData yatanaSetting;
 
         //  Yatana Setting
@@ -82,6 +85,15 @@ namespace Yatana
             {
                 RemoveApolloSystem();
             }
+
+            if (sceneTemplate.LightSystem)
+            {
+                AddLightSystem();
+            }
+            else
+            {
+                RemoveLightSystem();
+            }
         }
 
         public void ClearTemplate()
@@ -91,6 +103,7 @@ namespace Yatana
             sceneTemplate.CameraSystem = false;
             sceneTemplate.VisualEventSystem = false;
             sceneTemplate.ApolloSystem = false;
+            sceneTemplate.LightSystem = false;
         }
 
         public void ClearScene()
@@ -100,6 +113,7 @@ namespace Yatana
             RemoveCameraSystem();
             RemoveVisualEventSystem();
             RemoveApolloSystem();
+            RemoveLightSystem();
         }
 
         //  Integration System
@@ -160,6 +174,16 @@ namespace Yatana
             }
         }
 
+        public void AddLightSystem()
+        {
+            if (!CurrScene.LightSystem)
+            {
+                CurrScene.LightSystem = true;
+
+                lightSetting = new LightSettingData();
+            }
+        }
+
         //----
 
         public void RemovePoolSystem()
@@ -201,6 +225,14 @@ namespace Yatana
             if (CurrScene.ApolloSystem)
             {
                 CurrScene.ApolloSystem = false;
+            }
+        }
+
+        public void RemoveLightSystem()
+        {
+            if (CurrScene.LightSystem)
+            {
+                CurrScene.LightSystem = false;
             }
         }
 
@@ -318,6 +350,13 @@ namespace Yatana
                 apollo = SoundManeger.GetInstance();
                 apollo.apolloSetting = apolloSetting;
                 apollo.initilaze();
+            }
+
+            if (CurrScene.LightSystem)
+            {
+                lightSys = LightManeger.GetInstance();
+                lightSys.settingData = lightSetting;
+                lightSys.Init();
             }
 
         }
