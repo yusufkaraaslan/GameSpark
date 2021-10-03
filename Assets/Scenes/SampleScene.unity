@@ -123,51 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &62673778
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 62673780}
-  - component: {fileID: 62673779}
-  m_Layer: 0
-  m_Name: Visual Event
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &62673779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62673778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4d1c1beed0ae54c995002f4d423576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visualEventSetting: {fileID: 0}
---- !u!4 &62673780
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62673778}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 932270812}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &183519915
+--- !u!114 &67187387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,15 +132,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3724c4240355914393d439158369d85, type: 3}
+  m_Script: {fileID: 11500000, guid: 466ff7ef19370e24f86e846c47d3a321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicOn: 0
-  soundOn: 0
-  musicVolume: 0.48
-  soundVolume: 0
-  audios: []
-  audioSources: []
+  lights: []
+--- !u!1 &257331551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257331552}
+  m_Layer: 0
+  m_Name: Pool Wait Pose
+  m_TagString: PoolWaiting
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257331552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257331551}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 932270812}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323370738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ce644bf2820d042bf7ced94074d3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  SetOffCamOnRegister: 0
+  cams: []
+--- !u!114 &359071657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f7f88b359d56c468140fb6fa4093d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  UseFixedUpdate: 0
+  visualEventTemplates: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +289,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &821044765
+--- !u!1 &813525694
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,27 +297,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 821044766}
+  - component: {fileID: 813525696}
+  - component: {fileID: 813525695}
   m_Layer: 0
-  m_Name: Pool Wait Pose
-  m_TagString: PoolWaiting
+  m_Name: Visual Event
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &821044766
+--- !u!114 &813525695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813525694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4d1c1beed0ae54c995002f4d423576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualEventSetting: {fileID: 0}
+--- !u!4 &813525696
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821044765}
+  m_GameObject: {fileID: 813525694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 932270812}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &932270811
 GameObject:
@@ -336,8 +361,8 @@ Transform:
   m_LocalPosition: {x: -2.4097252, y: 2.8926206, z: 0.98209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 821044766}
-  - {fileID: 62673780}
+  - {fileID: 257331552}
+  - {fileID: 813525696}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -369,21 +394,21 @@ MonoBehaviour:
     LightSystem: 1
   pool:
     poolSetting: {fileID: 0}
-  poolSetting: {fileID: 1534017441}
-  poolWaitPose: {fileID: 821044765}
+  poolSetting: {fileID: 1874290873}
+  poolWaitPose: {fileID: 257331551}
   ui:
     UISetting: {fileID: 0}
-  UISetting: {fileID: 1056381753}
+  UISetting: {fileID: 1442012336}
   cam:
     cameraSetting: {fileID: 0}
-  cameraSetting: {fileID: 1696322204}
+  cameraSetting: {fileID: 323370738}
   visualEvent: {fileID: 0}
-  visualEventSetting: {fileID: 1545533851}
-  visualEventObj: {fileID: 62673778}
+  visualEventSetting: {fileID: 359071657}
+  visualEventObj: {fileID: 813525694}
   soundManeger:
     SettingData: {fileID: 0}
-  SoundSetting: {fileID: 183519915}
-  lightSetting: {fileID: 975828279}
+  SoundSetting: {fileID: 1394455158}
+  lightSetting: {fileID: 67187387}
   isYatanaSettingChanged: 0
 --- !u!1 &963194225
 GameObject:
@@ -468,7 +493,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &975828279
+--- !u!114 &1394455158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,11 +502,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 466ff7ef19370e24f86e846c47d3a321, type: 3}
+  m_Script: {fileID: 11500000, guid: a3724c4240355914393d439158369d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lights: []
---- !u!114 &1056381753
+  musicOn: 0
+  soundOn: 0
+  musicVolume: 0
+  soundVolume: 0
+  audios: []
+  audioSources: []
+--- !u!114 &1442012336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -496,7 +526,7 @@ MonoBehaviour:
   LockSystem: 0
   ClearAllUIOnStart: 0
   setups: []
---- !u!114 &1534017441
+--- !u!114 &1874290873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -512,33 +542,3 @@ MonoBehaviour:
   LockSystem: 0
   CloseObjectOnDespawn: 0
   poolObjects: []
---- !u!114 &1545533851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f7f88b359d56c468140fb6fa4093d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LockSystem: 0
-  UseFixedUpdate: 0
-  visualEventTemplates: []
---- !u!114 &1696322204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ce644bf2820d042bf7ced94074d3ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LockSystem: 0
-  SetOffCamOnRegister: 0
-  cams: []
