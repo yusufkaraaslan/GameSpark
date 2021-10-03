@@ -123,25 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &585116244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3724c4240355914393d439158369d85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: 0
-  soundOn: 0
-  musicVolume: 0
-  soundVolume: 0
-  audios: []
-  audioSources: []
---- !u!114 &663812448
+--- !u!114 &446227554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,6 +138,21 @@ MonoBehaviour:
   LockSystem: 0
   SetOffCamOnRegister: 0
   cams: []
+--- !u!114 &621627021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f7f88b359d56c468140fb6fa4093d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  UseFixedUpdate: 0
+  visualEventTemplates: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,36 +246,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &710550108
-GameObject:
+--- !u!114 &722846114
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710550109}
-  m_Layer: 0
-  m_Name: Pool Wait Pose
-  m_TagString: PoolWaiting
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &710550109
-Transform:
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0e5ff2c2614b47a183d8d89bd088e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  ClearAllUIOnStart: 0
+  setups: []
+--- !u!114 &876161646
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710550108}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 932270812}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3724c4240355914393d439158369d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: 0
+  soundOn: 0
+  musicVolume: 0
+  soundVolume: 0
+  audios: []
+  audioSources: []
 --- !u!1 &932270811
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,9 +306,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4097252, y: 2.8926206, z: 0.98209}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 710550109}
-  - {fileID: 1082225602}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -330,27 +328,29 @@ MonoBehaviour:
     CameraSystem: 1
     VisualEventSystem: 1
     ApolloSystem: 1
+    LightSystem: 1
   CurrScene:
-    PoolSystem: 1
-    UISystem: 1
-    CameraSystem: 1
-    VisualEventSystem: 1
-    ApolloSystem: 1
+    PoolSystem: 0
+    UISystem: 0
+    CameraSystem: 0
+    VisualEventSystem: 0
+    ApolloSystem: 0
+    LightSystem: 0
   pool:
     poolSetting: {fileID: 0}
-  poolSetting: {fileID: 1792870764}
+  poolSetting: {fileID: 1872799561}
   ui:
     UISetting: {fileID: 0}
-  UISetting: {fileID: 1076138810}
+  UISetting: {fileID: 722846114}
   cam:
     cameraSetting: {fileID: 0}
-  cameraSetting: {fileID: 663812448}
+  cameraSetting: {fileID: 446227554}
   visualEvent: {fileID: 0}
-  visualEventSetting: {fileID: 1331753225}
-  apollo:
-    apolloSetting: {fileID: 0}
-  apolloSetting: {fileID: 585116244}
-  yatanaSetting: {fileID: 1585870496}
+  visualEventSetting: {fileID: 621627021}
+  soundManeger:
+    SettingData: {fileID: 0}
+  SoundSetting: {fileID: 876161646}
+  lightSetting: {fileID: 1262721818}
   isYatanaSettingChanged: 0
 --- !u!1 &963194225
 GameObject:
@@ -435,7 +435,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1076138810
+--- !u!114 &1262721818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -444,90 +444,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d0e5ff2c2614b47a183d8d89bd088e, type: 3}
+  m_Script: {fileID: 11500000, guid: 466ff7ef19370e24f86e846c47d3a321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LockSystem: 0
-  ClearAllUIOnStart: 0
-  setups: []
---- !u!1 &1082225601
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1082225602}
-  - component: {fileID: 1082225603}
-  m_Layer: 0
-  m_Name: Visual Event
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1082225602
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082225601}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4097252, y: -2.8926206, z: -0.98209}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 932270812}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1082225603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082225601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4d1c1beed0ae54c995002f4d423576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visualEventSetting: {fileID: 0}
---- !u!114 &1331753225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f7f88b359d56c468140fb6fa4093d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LockSystem: 0
-  UseFixedUpdate: 0
-  visualEventTemplates: []
---- !u!114 &1585870496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e9c1e8a9a300640839d8494b2263fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modules:
-  - Yatana.MainSystems.PoolSystem
-  - Yatana.MainSystems.UIManeger
-  - Yatana.MainSystems.CamSystem
-  - Yatana.MainSystems.VisualEventController
-  - Yatana.MainSystems.SoundManeger
---- !u!114 &1792870764
+  lights: []
+--- !u!114 &1872799561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

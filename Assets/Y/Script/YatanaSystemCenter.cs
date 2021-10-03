@@ -8,6 +8,7 @@ using UnityEditor;
 
 namespace Yatana
 {
+    [System.Serializable]
     public class YatanaSystemCenter : MonoBehaviour
     {
         public SceneSetupProfile sceneTemplate;
@@ -28,13 +29,11 @@ namespace Yatana
         public VisualEventSettingData visualEventSetting;
         GameObject visualEventObj;
 
-        public SoundManeger apollo;
-        public ApolloSettingData apolloSetting;
+        public SoundManeger soundManeger;
+        public ApolloSettingData SoundSetting;
 
         public LightManeger lightSys;
         public LightSettingData lightSetting;
-
-        public YatanaSettingData yatanaSetting;
 
         //  Yatana Setting
         public bool isYatanaSettingChanged = false;
@@ -170,7 +169,7 @@ namespace Yatana
             {
                 CurrScene.ApolloSystem = true;
 
-                apolloSetting = new ApolloSettingData();
+                SoundSetting = new ApolloSettingData();
             }
         }
 
@@ -250,65 +249,7 @@ namespace Yatana
 
         public void ApplyYatanaSettings()
         {
-            /*
-            isYatanaSettingChanged = false;
-
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                UnityEditor.EditorApplication.delayCall += () =>
-                {
-                    DestroyImmediate(transform.GetChild(0).gameObject);
-                };
-            }
-
-            modules = new List<YatanaModule>();
-
-            foreach (string mName in yatanaSetting.modules)
-            {
-                Type typ = Type.GetType(mName);
-
-                if (typ == null)
-                {
-                    throw new Exception("Type not Found");
-                }
-
-                YatanaModule tmp = null;
-
-                try
-                {
-                    tmp = (YatanaModule)typ.GetMethod("GetInstance").Invoke(null, null);
-                }
-                catch(System.Exception )
-                {
-                    try
-                    {
-                        GameObject tmpObj = new GameObject(mName);
-                        tmpObj.transform.SetParent(transform);
-
-                        tmpObj.AddComponent(typ);
-
-                        tmp = tmpObj.GetComponent<YatanaModule>().GetModule();
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception("Module Return null (1) : " + mName);
-                        throw;
-                    }
-                }
-                
-
-                if (tmp == null)
-                {
-                    throw new Exception("Module Return null (2) : " + mName);
-                }
-
-                modules.Add(tmp);
-            }
-
-            //CurrScene = new SceneSetupProfile();
-            //CurrScene.UpdateSystems(yatanaSetting.modules);
-            //sceneTemplate.UpdateSystems(yatanaSetting.modules);
-            */
+            Debug.Log("ToDo : EditorUpdate");
         }
 
         //  Game Functions
@@ -340,16 +281,16 @@ namespace Yatana
 
             if (CurrScene.VisualEventSystem)
             {
-                visualEvent = VisualEventController.Instance();
+                visualEvent = VisualEventController.GetInstance();
                 visualEvent.visualEventSetting = visualEventSetting;
                 visualEvent.initilaze();
             }
 
             if (CurrScene.ApolloSystem)
             {
-                apollo = SoundManeger.GetInstance();
-                apollo.apolloSetting = apolloSetting;
-                apollo.initilaze();
+                soundManeger = SoundManeger.GetInstance();
+                soundManeger.SettingData = SoundSetting;
+                soundManeger.initilaze();
             }
 
             if (CurrScene.LightSystem)
@@ -364,11 +305,6 @@ namespace Yatana
         private void Awake()
         {
             InitYatana();
-        }
-
-        private void Start()
-        {
-
         }
 
     }

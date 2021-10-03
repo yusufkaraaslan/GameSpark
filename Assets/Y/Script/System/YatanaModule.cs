@@ -6,36 +6,12 @@ using System.Runtime.Serialization;
 
 namespace Yatana
 {
-    
+    /*
+     *  !!!!!!!!!!   Important   !!!!!!!!!!!
+     *  For Later Update
+     */
     public interface YatanaModule
     {
-        /*
-         *  !!!!!!!!!!   Important   !!!!!!!!!!!
-         *  this function cant use any instance specific members
-         */
-        public YatanaModule GetModule();
-
-        public void InstanceInit();
-
-        public string GetModuleName();
-
-        public void Initilaze(YatanaSystemCenter yatanaControlCenter);
-
-        public void AddSystem();
-
-        public void RemoveSystem();
-
-        public bool IsSystemOn();
-
-        public void SystemOn();
-
-        public void SystemOff();
-
-        /*
-         * May Add Later (observer)
-         */
-        public void UpdateSystem();
 
     }
-
 }

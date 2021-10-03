@@ -20,19 +20,6 @@ namespace Yatana
 
         //  System Settings
         SerializedProperty sceneTemplate; 
-        SerializedProperty CurrScene; 
-
-        SerializedProperty PoolSetting;
-
-        SerializedProperty UISetting;
-
-        SerializedProperty CameraSetting;
-
-        SerializedProperty VisualEventSetting;
-
-        SerializedProperty ApolloSetting;
-
-        SerializedProperty YatanaSetting;
 
         float elementSpace = 5;
         float sectionSpace = 20;
@@ -42,20 +29,7 @@ namespace Yatana
             myTarget = (YatanaSystemCenter)target;
             soTarget = new SerializedObject(target);
 
-            sceneTemplate = soTarget.FindProperty("sceneTemplate"); 
-            CurrScene = soTarget.FindProperty("CurrScene"); 
-
-            PoolSetting = soTarget.FindProperty("poolSetting");
-
-            UISetting = soTarget.FindProperty("UISetting");
-
-            CameraSetting = soTarget.FindProperty("cameraSetting");
-
-            VisualEventSetting = soTarget.FindProperty("visualEventSetting");
-
-            ApolloSetting = soTarget.FindProperty("apolloSetting");
-
-            YatanaSetting = soTarget.FindProperty("yatanaSetting");
+            sceneTemplate = soTarget.FindProperty("sceneTemplate");
         }
 
         public override void OnInspectorGUI()
@@ -230,7 +204,14 @@ namespace Yatana
 
             GUILayout.Space(sectionSpace);
             systemToolbarInd = GUILayout.Toolbar(systemToolbarInd, systemTabs.ToArray());
-            systemToolbarString = systemTabs[systemToolbarInd];
+            if (systemTabs.Count == 0)
+            {
+                systemToolbarString = "";
+            }
+            else
+            {
+                systemToolbarString = systemTabs[systemToolbarInd];
+            }
             GUILayout.Space(elementSpace);
 
             switch (systemToolbarString)
@@ -261,7 +242,7 @@ namespace Yatana
 
                 case "Apollo":
 
-                    myTarget.apolloSetting.DrawTap();
+                    myTarget.SoundSetting.DrawTap();
 
                     break;
 
@@ -275,34 +256,12 @@ namespace Yatana
 
         public void DrawYatanaSettings()
         {
-            EditorGUI.BeginChangeCheck();
-
-            if (myTarget.yatanaSetting == null)
-            {
-                myTarget.yatanaSetting = new YatanaSettingData();
-            }
-
-            myTarget.yatanaSetting.DrawTap();
-
-            if (GUILayout.Button("Reset Modules")) { myTarget.yatanaSetting.ResetModules(); }
-            GUILayout.Space(elementSpace);
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                soTarget.ApplyModifiedProperties();
-                myTarget.YatanaSettingChanged();
-            }
-
-            if (myTarget.isYatanaSettingChanged)
-            {
-                if (GUILayout.Button("Apply Settings")){ myTarget.ApplyYatanaSettings();}
-                GUILayout.Space(elementSpace);
-            }
+            GUILayout.Space(sectionSpace);
+            GUILayout.Label("Coming Soon :) ");
 
             GUILayout.Space(sectionSpace);
             GUILayout.Label("Made By yUSyUS");
         }
         
     }
-
 }

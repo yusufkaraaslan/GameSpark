@@ -10,28 +10,10 @@ namespace Yatana
         [System.Serializable]
         public class UIManeger : YatanaModule
         {
-            static bool IsOn = false;
-            static List<UISetup> uiSetups;
+            List<UISetup> uiSetups;
             static UIManeger maneger;
 
             public UISettingData UISetting;
-
-            public void initilaze()
-            {
-                if (maneger == null)
-                {
-                    maneger = new UIManeger();
-                }
-
-                uiSetups = new List<UISetup>();
-
-                for (int i = 0; i < UISetting.setups.Length; i++)
-                {
-                    uiSetups.Add(UISetting.setups[i].GetComponent<UISetup>());
-                }
-
-                maneger.ClearScreen();
-            }
 
             public static UIManeger GetInstance()
             {
@@ -41,6 +23,18 @@ namespace Yatana
                 }
 
                 return maneger;
+            }
+
+            public void initilaze()
+            {
+                uiSetups = new List<UISetup>();
+
+                for (int i = 0; i < UISetting.setups.Length; i++)
+                {
+                    uiSetups.Add(UISetting.setups[i].GetComponent<UISetup>());
+                }
+
+                maneger.ClearScreen();
             }
 
             public void OpenUI(string setup)
@@ -83,56 +77,6 @@ namespace Yatana
                 {
                     uiSetups[i].CloseUI();
                 }
-            }
-
-            public string GetModuleName()
-            {
-                return "UI Sys";
-            }
-
-            public void Initilaze(YatanaSystemCenter yatanaControlCenter)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void SystemOn()
-            {
-                IsOn = true;
-            }
-
-            public void SystemOff()
-            {
-                IsOn = false;
-            }
-
-            public void UpdateSystem()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public YatanaModule GetModule()
-            {
-                return GetInstance();
-            }
-
-            public void InstanceInit()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void AddSystem()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void RemoveSystem()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool IsSystemOn()
-            {
-                return IsOn;
             }
 
             private UIManeger()

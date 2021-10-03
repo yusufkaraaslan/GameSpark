@@ -2,173 +2,104 @@
 using UnityEngine;
 using System.Runtime.Serialization;
 
-namespace Yatana
+namespace Yatana.MainSystems
 {
-    namespace MainSystems
+    [System.Serializable]
+    public class PoolSystem : YatanaModule
     {
-        [System.Serializable] 
-        public class PoolSystem : YatanaModule
+        private List<ObjPool> pools;
+        private static PoolSystem poolSystem;
+
+        public PoolSettingData poolSetting;
+
+        public void initilaze()
         {
-            private static List<ObjPool> pools;
-            private static PoolSystem poolSystem;
+            pools = new List<ObjPool>();
 
-            public PoolSettingData poolSetting;
-
-            public void initilaze()
+            ObjPool tmp;
+            for (int i = 0; i < poolSetting.poolObjects.Length; i++)
             {
-                ObjPool tmp;
+                tmp = new ObjPool();
+                tmp.initilaze(poolSetting.poolObjects[i].gameObject);
+                pools.Add(tmp);
+            }
+        }
 
-                if (poolSystem == null)
+        public static PoolSystem GetInstance()
+        {
+            if (poolSystem == null)
+            {
+                poolSystem = new PoolSystem();
+            }
+
+            return poolSystem;
+        }
+
+        public PoolObj GetObj(string objName, GameObject pos, bool useRotation, bool setParent = false, bool useScale = false)
+        {
+            return GetObj(objName, pos.transform.position, useRotation, pos.transform.rotation, useScale, pos.transform.localScale, setParent, pos);
+        }
+
+        public PoolObj GetObj(string objName, Vector2Int pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
+            bool setParrent = false, GameObject obj = null)
+        {
+            return GetObj(objName, new Vector3(pos.x, pos.y), useRotation, rot, useScale, scale, setParrent, obj);
+        }
+        public PoolObj GetObj(string objName, Vector2 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
+            bool setParrent = false, GameObject obj = null)
+        {
+            for (int i = 0; i < pools.Count; i++)
+            {
+                if (string.Compare(pools[i].poolName, objName) == 0)
                 {
-                    poolSystem = new PoolSystem();
+                    return pools[i].GetObj(pos, useRotation, rot, useScale, scale, setParrent, obj);
                 }
+            }
 
-                pools = new List<ObjPool>();
-
-                for (int i = 0; i < poolSetting.poolObjects.Length; i++)
+            Debug.LogError(objName + " Cant Found");
+            return null;
+        }
+        public PoolObj GetObj(string objName, Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
+            bool setParrent = false, GameObject obj = null)
+        {
+            for (int i = 0; i < pools.Count; i++)
+            {
+                if (string.Compare(pools[i].poolName, objName) == 0)
                 {
-                    tmp = new ObjPool();
-                    tmp.initilaze(poolSetting.poolObjects[i].gameObject);
-                    pools.Add(tmp);
+                    return pools[i].GetObj(pos, useRotation, rot, useScale, scale, setParrent, obj);
                 }
             }
 
-            public static PoolSystem GetInstance()
+            Debug.LogError(objName + " Cant Found");
+            return null;
+        }
+
+        public void ClearPool(string objName, bool restartObj = true)
+        {
+
+            for (int i = 0; i < pools.Count; i++)
             {
-                if (poolSystem == null)
-                {
-                    poolSystem = new PoolSystem();
-                }
-
-                return poolSystem;
-            }
-
-            /*
-            public void Reset()
-            {
-                Name = "Pool System";
-            }
-            */
-
-            public PoolObj GetObj(string objName, GameObject pos, bool useRotation, bool setParent = false, bool useScale = false)
-            {
-                return GetObj(objName, pos.transform.position, useRotation, pos.transform.rotation, useScale, pos.transform.localScale, setParent, pos);
-            }
-
-            public PoolObj GetObj(string objName, Vector2Int pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
-                bool setParrent = false, GameObject obj = null)
-            {
-                return GetObj(objName, new Vector3(pos.x, pos.y), useRotation, rot, useScale, scale, setParrent, obj);
-            }
-            public PoolObj GetObj(string objName, Vector2 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
-                bool setParrent = false, GameObject obj = null)
-            {
-
-                for (int i = 0; i < pools.Count; i++)
-                {
-                    if (string.Compare(pools[i].poolName, objName) == 0)
-                    {
-                        return pools[i].GetObj(pos, useRotation, rot, useScale, scale, setParrent, obj);
-                    }
-                }
-
-                Debug.LogError(objName + " Cant Found");
-                return null;
-            }
-            public PoolObj GetObj(string objName, Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
-                bool setParrent = false, GameObject obj = null)
-            {
-
-                for (int i = 0; i < pools.Count; i++)
-                {
-                    if (string.Compare(pools[i].poolName, objName) == 0)
-                    {
-                        return pools[i].GetObj(pos, useRotation, rot, useScale, scale, setParrent, obj);
-                    }
-                }
-
-                Debug.LogError(objName + " Cant Found");
-                return null;
-            }
-
-            public void ClearPool(string objName, bool restartObj = true)
-            {
-
-                for (int i = 0; i < pools.Count; i++)
-                {
-                    if (pools[i].poolName == objName)
-                    {
-                        pools[i].Reload(restartObj);
-                    }
-                }
-
-                Debug.LogError(objName + " Cant Found");
-            }
-
-
-            public void ClearPool(bool restartObj = true)
-            {
-
-                for (int i = 0; i < pools.Count; i++)
+                if (pools[i].poolName == objName)
                 {
                     pools[i].Reload(restartObj);
                 }
             }
 
-            public string GetModuleName()
-            {
-                return "Pool Sys";
-            }
+            Debug.LogError(objName + " Cant Found");
+        }
 
-            public void Initilaze(YatanaSystemCenter yatanaControlCenter)
+        public void ClearPool(bool restartObj = true)
+        {
+            for (int i = 0; i < pools.Count; i++)
             {
-                throw new System.NotImplementedException();
+                pools[i].Reload(restartObj);
             }
+        }
 
-            public void SystemOn()
-            {
-            }
-
-            public void SystemOff()
-            {
-            }
-
-            public void UpdateSystem()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public YatanaModule GetModule()
-            {
-                return GetInstance();
-            }
-
-            public void InstanceInit()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void AddSystem()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public void RemoveSystem()
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public bool IsSystemOn()
-            {
-                return true;
-            }
-
-            private PoolSystem()
-            {
-                 
-            }
+        private PoolSystem()
+        {
 
         }
-    }
 
+    }
 }

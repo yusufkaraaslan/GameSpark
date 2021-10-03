@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Yatana.MainSystems
 {
-    public class LightManeger
+    public class LightManeger : YatanaModule
     {
         static LightManeger maneger;
         List<SceneLight> lights;

@@ -8,13 +8,12 @@ namespace Yatana.MainSystems
     [System.Serializable]
     public class SoundManeger : YatanaModule
     {
-        static bool IsOn = false;
         static SoundManeger manager;
 
         List<GameAudio> gameAudios;
         List<GameAudioSource> audioSources;
 
-        public ApolloSettingData apolloSetting;
+        public ApolloSettingData SettingData;
 
         private SoundManeger()
         {
@@ -40,29 +39,29 @@ namespace Yatana.MainSystems
 
             gameAudios = new List<GameAudio>();
 
-            foreach (GameAudio x in apolloSetting.audios)
+            foreach (GameAudio x in SettingData.audios)
             {
                 gameAudios.Add(x);
             }
 
-            foreach (GameAudioSource source in apolloSetting.audioSources)
+            foreach (GameAudioSource source in SettingData.audioSources)
             {
                 audioSources.Add(source);
 
                 if (source.sourceType == AudioSourceType.Music)
                 {
-                    source.audioSource.volume = apolloSetting.musicVolume;
+                    source.audioSource.volume = SettingData.musicVolume;
                 }
                 else
                 {
-                    source.audioSource.volume = apolloSetting.soundVolume;
+                    source.audioSource.volume = SettingData.soundVolume;
                 }
             }
         }
 
         public void PlayMusic(string sourceName, string musicName)
         {
-            if (apolloSetting.musicOn)
+            if (SettingData.musicOn)
             {
                 GameAudioSource source = null;
                 GameAudio audio = null;
@@ -87,26 +86,14 @@ namespace Yatana.MainSystems
 
                 source.audioSource.clip = audio.clip;
                 source.audioSource.loop = true;
-                source.audioSource.volume = apolloSetting.musicVolume;
+                source.audioSource.volume = SettingData.musicVolume;
                 source.audioSource.Play();
-            }
-        }
-
-        public void StopMusic(string sourceName)
-        {
-            foreach (GameAudioSource x in audioSources)
-            {
-                if (x.SourceName == sourceName)
-                {
-                    x.audioSource.Stop();
-                    break;
-                }
             }
         }
 
         public void PlaySound(string sourceName, string soundName)
         {
-            if (apolloSetting.soundOn)
+            if (SettingData.soundOn)
             {
                 GameAudioSource source = null;
                 GameAudio audio = null;
@@ -131,34 +118,70 @@ namespace Yatana.MainSystems
 
                 source.audioSource.clip = audio.clip;
                 source.audioSource.loop = false;
-                source.audioSource.volume = apolloSetting.soundVolume;
+                source.audioSource.volume = SettingData.soundVolume;
                 source.audioSource.Play();
+            }
+        }
+
+        public void StopSource(string sourceName)
+        {
+            foreach (GameAudioSource x in audioSources)
+            {
+                if (x.SourceName == sourceName)
+                {
+                    x.audioSource.Stop();
+                    break;
+                }
+            }
+        }
+
+        public void StopMusic()
+        {
+            foreach (GameAudioSource x in audioSources)
+            {
+                if (x.sourceType == AudioSourceType.Music)
+                {
+                    x.audioSource.Stop();
+                }
+            }
+        }
+
+        public void StopSound()
+        {
+            foreach (GameAudioSource x in audioSources)
+            {
+                if (x.sourceType == AudioSourceType.VfxSound)
+                {
+                    x.audioSource.Stop();
+                }
             }
         }
 
         public void MusicOn()
         {
-            apolloSetting.musicOn = true;
+            SettingData.musicOn = true;
         }
 
         public void MusicOff()
         {
-            apolloSetting.musicOn = false;
+            SettingData.musicOn = false;
+            StopMusic();
         }
 
         public void SoundOn()
         {
-            apolloSetting.soundOn = true;
+            SettingData.soundOn = true;
         }
 
         public void SoundOff()
         {
-            apolloSetting.soundOn = false;
+            SettingData.soundOn = false;
+            StopSound();
         }
 
         public void SetMusicVolume(float volume)
         {
-            apolloSetting.musicVolume = volume;
+            SettingData.musicVolume = volume;
 
             foreach (GameAudioSource x in audioSources)
             {
@@ -171,7 +194,7 @@ namespace Yatana.MainSystems
 
         public void SetSoundValume(float volume)
         {
-            apolloSetting.soundVolume = volume;
+            SettingData.soundVolume = volume;
 
             foreach (GameAudioSource x in audioSources)
             {
@@ -182,54 +205,5 @@ namespace Yatana.MainSystems
             }
         }
 
-        public YatanaModule GetModule()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void InstanceInit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public string GetModuleName()
-        {
-            return "Apollo";
-        }
-
-        public void Initilaze(YatanaSystemCenter yatanaControlCenter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SystemOn()
-        {
-            IsOn = true;
-        }
-
-        public void SystemOff()
-        {
-            IsOn = false;
-        }
-
-        public void UpdateSystem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void AddSystem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveSystem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool IsSystemOn()
-        {
-            return IsOn;
-        }
     }
 }

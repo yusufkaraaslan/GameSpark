@@ -1,29 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Runtime.Serialization;
 
 namespace Yatana.MainSystems
 {
     [System.Serializable]
     public class VisualEventController : MonoBehaviour, YatanaModule
     {
-        static bool IsOn = false;
-
         #region Singleton
-        private static VisualEventController _instance;
+        private static VisualEventController maneger;
 
         public VisualEventSettingData visualEventSetting;
 
-
-        public static VisualEventController Instance()
+        public static VisualEventController GetInstance()
         {
-            if (_instance == null)
+            if (maneger == null)
             {
-                _instance = new VisualEventController();
+                maneger = new VisualEventController();
             }
 
-            return _instance;
+            return maneger;
         }
 
         public void initilaze()
@@ -70,56 +66,5 @@ namespace Yatana.MainSystems
                 }
             }
         }
-
-        public YatanaModule GetModule()
-        {
-            return Instance();
-        }
-
-        public string GetModuleName()
-        {
-            return "Visual Event";
-        }
-
-        public void Initilaze(YatanaSystemCenter yatanaControlCenter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SystemOn()
-        {
-            IsOn = true;
-        }
-
-        public void SystemOff()
-        {
-            IsOn = false;
-        }
-
-        public void UpdateSystem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void InstanceInit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void AddSystem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveSystem()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool IsSystemOn()
-        {
-            return IsOn;
-        }
     }
 }
-
