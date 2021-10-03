@@ -13,7 +13,6 @@ public class PoolSettingData : DataTemplate
     public bool CloseObjectOnDespawn;
 
     public PoolObj[] poolObjects;
-    //public GameObject poolWaitPose;
     
     public override void DrawTap()
     {
