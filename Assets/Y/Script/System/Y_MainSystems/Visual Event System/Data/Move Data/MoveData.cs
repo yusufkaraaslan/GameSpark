@@ -22,7 +22,7 @@ namespace Yatana
             }
             public MoveData()
             {
-
+                moveOrders = new List<MoveOrder>();
             }
 
             public void AddMove(MoveOrder moveOrder)

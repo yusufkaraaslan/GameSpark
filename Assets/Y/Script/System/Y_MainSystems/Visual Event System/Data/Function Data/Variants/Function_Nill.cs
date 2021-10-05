@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace  Yatana.MainSystems
 {
-    public class Function_Nill : FunctionOrder
+    public class Function_Nill : FunctionWorker
     {
         bool waitDone;
         float destroyTime = -1;
         float destroyDelay = 3;
 
-        public override void Work()
+        public override bool Work()
         {
             if (destroyTime == -1)
             {
@@ -18,10 +18,10 @@ namespace  Yatana.MainSystems
             }
             else if (Time.time <= destroyTime)
             {
-                waitDone = true;
+                return true;
             }
 
-            isDone = waitDone;
+            return false;
         }
     }
 }

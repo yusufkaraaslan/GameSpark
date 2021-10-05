@@ -2,28 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yatana
+namespace Yatana.MainSystems
 {
-    namespace MainSystems
+    [System.Serializable]
+    public class FunctionOrder
     {
-        public abstract class FunctionOrder
+        [SerializeField] string functionTag; // for easy readablty 
+
+        public EventWorkPhase workPhase;
+        public float preDelay, posDelay;
+
+        [HideInInspector] public FunctionWorker worker;
+
+        bool isDone = false;
+
+        public bool IsComplete()
         {
-            public EventWorkPhase workPhase;
-            public float preDelay, posDelay;
+            return isDone;
+        }
 
-            protected bool isDone = false;
-
-            public bool IsComplete()
+        public void Work()
+        {
+            if (worker.Work())
             {
-                return isDone;
+                isDone = true;
             }
-
-            public abstract void Work();
         }
+    }
 
-        public enum EventWorkPhase
-        {
-            PreActivate, PostActivate
-        }
+    public enum EventWorkPhase
+    {
+        PreActivate, PostActivate
     }
 }

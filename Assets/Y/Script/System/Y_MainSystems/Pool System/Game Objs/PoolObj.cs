@@ -63,7 +63,10 @@ namespace Yatana
             {
                 DespawnObjWork(restartObj);
 
-                obj.SetActive(false);
+                if (PoolSystem.GetInstance().poolSetting.CloseObjectOnDespawn)
+                {
+                    obj.SetActive(false);
+                }
             }
 
             protected void DespawnObjWork(bool restartObj)

@@ -27,13 +27,6 @@ namespace Yatana
                 return res;
             }
 
-            public override void DespawnObj(bool restartObj = true)
-            {
-                base.DespawnObj(restartObj);
-
-                obj.SetActive(false);
-            }
-
             void Update()
             {
                 if (!loopParticle && inUse)

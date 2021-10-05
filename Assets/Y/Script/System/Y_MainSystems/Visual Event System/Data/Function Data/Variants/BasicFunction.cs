@@ -5,15 +5,15 @@ using System;
 
 namespace  Yatana.MainSystems
 {
-    public class BasicFunction : FunctionOrder
+    public class BasicFunction : FunctionWorker
     {
         public Action action;
 
-        public override void Work()
+        public override bool Work()
         {
             action();
 
-            isDone = true;
+            return true;
         }
     }
 }

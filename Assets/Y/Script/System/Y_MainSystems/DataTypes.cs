@@ -7,29 +7,11 @@ public class DataTypes
 {
 }
 
-namespace Y_GP
-{
-    public enum GPState
-    {
-        Ready, Start, Playing, Complete, Exit
-    }
-
-    public enum GPResult
-    {
-        Playing, Win, Lose
-    }
-
-}
-
 namespace Y_Generators
 {
 
 }
 
-namespace MainSystems
-{
-
-}
 namespace Yatana
 {
     namespace Helper

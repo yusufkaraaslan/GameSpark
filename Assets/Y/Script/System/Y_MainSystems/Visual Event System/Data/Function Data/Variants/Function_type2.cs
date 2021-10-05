@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace  Yatana.MainSystems
 {
-    public class Function_type2 : FunctionOrder
+    public class Function_type2 : FunctionWorker
     {
         public Action<string> action;
         public string input;
 
-        public override void Work()
+        public override bool Work()
         {
             action(input);
 
-            isDone = true;
+            return true;
         }
     }
 }

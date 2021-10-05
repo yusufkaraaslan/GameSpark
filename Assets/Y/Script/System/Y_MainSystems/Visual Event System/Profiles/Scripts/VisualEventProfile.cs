@@ -1,23 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MainSystems;
 
 namespace Yatana.MainSystems
 {
-    //[CreateAssetMenu(fileName = "Visual Event Profile", menuName = "Visual Event Profile", order = 51)]
     [System.Serializable]
     public class VisualEventProfile
     {
         public string Name;
 
-        [SerializeField] private List<MoveData> moveSet;
-        [SerializeField] private List<AnimData> animSet;
-        [SerializeField] private List<FunctionData> functionSet;
+        [SerializeField] private MoveData moveSet;
+        [SerializeField] private AnimData animSet;
+        [SerializeField] private FunctionData functionSet;
 
-        public List<MoveData> MoveData { get => moveSet; set => moveSet = value; }
-        public List<AnimData> AnimData { get => animSet; set => animSet = value; }
-        public List<FunctionData> FunctionData { get => functionSet; set => functionSet = value; }
+        public MoveData MoveData { get => moveSet; set => moveSet = value; }
+        public AnimData AnimData { get => animSet; set => animSet = value; }
+        public FunctionData FunctionData { get => functionSet; set => functionSet = value; }
+
+        public VisualEventData GetVisualEventData()
+        {
+            VisualEventData data = new VisualEventData();
+
+            data.SetMoveData(new MoveData(moveSet));
+            data.SetAnimData(new AnimData(animSet));
+            data.SetFunctionData(new FunctionData(functionSet));
+
+            return data;
+        }
+
     }
 
 }

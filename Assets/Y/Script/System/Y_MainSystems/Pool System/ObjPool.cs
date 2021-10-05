@@ -77,6 +77,7 @@ namespace Yatana
                 PoolObj tmp = obj.GetComponent<PoolObj>();
 
                 tmp.initilaze();
+                tmp.DespawnObj();
                 objPool.Add(tmp);
             }
 

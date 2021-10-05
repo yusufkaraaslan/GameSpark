@@ -39,6 +39,31 @@ namespace Yatana.MainSystems
             return visualEvent;
         }
 
+        public VisualEvent AddVisualEvent(VisualEventData data)
+        {
+            List<VisualEventData> eData = new List<VisualEventData>();
+            eData.Add(data);
+
+            VisualEvent visualEvent = new VisualEvent(eData);
+            visualEvents.Add(visualEvent);
+            return visualEvent;
+        }
+
+        public VisualEventData GetVisualEventData(string eventName)
+        {
+            foreach (VisualEventProfile item in visualEventSetting.visualEventTemplates)
+            {
+                if (eventName == item.Name)
+                {
+                    return item.GetVisualEventData();
+                }
+            }
+
+            Debug.LogError("Event : " + eventName + " , not found");
+
+            return null;
+        }
+
         public void ClearAllEvents()
         {
             visualEvents.Clear();

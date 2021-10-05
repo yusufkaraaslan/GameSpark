@@ -195,7 +195,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LockSystem: 0
   UseFixedUpdate: 0
-  visualEventTemplates: []
+  visualEventTemplates:
+  - Name: 
+    moveSet:
+      moveOrders:
+      - moveLock: 0
+        preDelay: 0
+        postDelay: 0
+        unitMoveTime: 0
+        maxMoveTime: 0
+        minMoveTime: 0
+        interpType: 0
+        routeType: 0
+        isRotate: 0
+        isLookAtTarget: 0
+        lockRotateAtYAxis: 0
+        arcAxis: {x: 0, y: 0, z: 0}
+        obj: {fileID: 0}
+    animSet:
+      animOrders:
+      - animLock: 0
+        preDelay: 0
+        postDelay: 0
+        triggerCondition: []
+        boolCondition: []
+        intCondition: []
+        anim: {fileID: 0}
+    functionSet:
+      functions:
+      - functionTag: 
+        workPhase: 0
+        preDelay: 0
+        posDelay: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
