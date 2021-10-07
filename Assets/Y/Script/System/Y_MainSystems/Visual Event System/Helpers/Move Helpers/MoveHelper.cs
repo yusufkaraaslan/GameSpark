@@ -186,12 +186,10 @@ namespace Yatana
                 startPos = moves.obj.transform.position;
                 shadowPos = moves.obj.transform.position;
 
-                //moves.unitMoveTime = 
-
                 realMoveTime = moves.GetRealMoveTime(Mathf.Abs((target.TarPos - moves.obj.transform.position).magnitude));
 
                 moves.arcAxis = target.Arc;
-                rotSpeed = target.RotState;
+                rotSpeed = target.Rotspeed;
                 moves.lockRotateAtYAxis = target.LockYAxis;
 
             }
@@ -320,7 +318,6 @@ namespace Yatana
                 }
 
             }
-
 
         }
 
