@@ -33,6 +33,10 @@ namespace Yatana.MainSystems
         {
             sceneLight.gameObject.transform.rotation = quaternion;
         }
+        public void SetAngle(GameCam lookObj)
+        {
+            sceneLight.gameObject.transform.LookAt(lookObj.transform);
+        }
 
         public Light GetLight()
         {
