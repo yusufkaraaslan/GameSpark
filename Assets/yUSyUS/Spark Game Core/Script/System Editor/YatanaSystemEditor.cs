@@ -138,7 +138,7 @@ namespace Yatana
 
             //  Apollo
             GUILayout.Label("Sound Sys");
-            if (!myTarget.CurrScene.ApolloSystem)
+            if (!myTarget.CurrScene.SoundManegerSystem)
             {
                 if (GUILayout.Button("Add")) { myTarget.AddApolloSystem(); }
             }
@@ -191,9 +191,9 @@ namespace Yatana
                 systemTabs.Add("Visual Event");
             }
 
-            if (myTarget.CurrScene.ApolloSystem)
+            if (myTarget.CurrScene.SoundManegerSystem)
             {
-                systemTabs.Add("Apollo");
+                systemTabs.Add("Sound");
             }
 
             if (myTarget.CurrScene.LightSystem)
@@ -239,7 +239,7 @@ namespace Yatana
 
                     break;
 
-                case "Apollo":
+                case "Sound":
 
                     myTarget.SoundSetting.DrawTap();
 

@@ -5,7 +5,7 @@ using UnityEngine;
 using Yatana.MainSystems;
 
 [System.Serializable]
-public class ApolloSettingData : DataTemplate
+public class SoundManegerData : DataTemplate
 {
     public bool musicOn, soundOn;
     [Range(0.0f, 1.0f)] public float musicVolume, soundVolume;

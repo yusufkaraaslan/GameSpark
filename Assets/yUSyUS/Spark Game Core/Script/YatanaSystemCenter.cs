@@ -28,7 +28,7 @@ namespace Yatana
         [SerializeReference] GameObject visualEventObj;
 
         public SoundManeger soundManeger;
-        public ApolloSettingData SoundSetting;
+        public SoundManegerData SoundSetting;
 
         public LightManeger lightSys;
         public LightSettingData lightSetting;
@@ -74,7 +74,7 @@ namespace Yatana
                 RemoveVisualEventSystem();
             }
 
-            if (sceneTemplate.ApolloSystem)
+            if (sceneTemplate.SoundManegerSystem)
             {
                 AddApolloSystem();
             }
@@ -99,7 +99,7 @@ namespace Yatana
             sceneTemplate.UISystem = false;
             sceneTemplate.CameraSystem = false;
             sceneTemplate.VisualEventSystem = false;
-            sceneTemplate.ApolloSystem = false;
+            sceneTemplate.SoundManegerSystem = false;
             sceneTemplate.LightSystem = false;
         }
 
@@ -163,11 +163,11 @@ namespace Yatana
 
         public void AddApolloSystem()
         {
-            if (!CurrScene.ApolloSystem)
+            if (!CurrScene.SoundManegerSystem)
             {
-                CurrScene.ApolloSystem = true;
+                CurrScene.SoundManegerSystem = true;
 
-                SoundSetting = new ApolloSettingData();
+                SoundSetting = new SoundManegerData();
             }
         }
 
@@ -219,9 +219,9 @@ namespace Yatana
 
         public void RemoveApolloSystem()
         {
-            if (CurrScene.ApolloSystem)
+            if (CurrScene.SoundManegerSystem)
             {
-                CurrScene.ApolloSystem = false;
+                CurrScene.SoundManegerSystem = false;
             }
         }
 
@@ -284,7 +284,7 @@ namespace Yatana
                 visualEvent.initilaze();
             }
 
-            if (CurrScene.ApolloSystem)
+            if (CurrScene.SoundManegerSystem)
             {
                 soundManeger = SoundManeger.GetInstance();
                 soundManeger.SettingData = SoundSetting;

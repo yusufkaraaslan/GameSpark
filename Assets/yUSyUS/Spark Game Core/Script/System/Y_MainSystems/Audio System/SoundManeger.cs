@@ -13,7 +13,7 @@ namespace Yatana.MainSystems
         List<GameAudio> gameAudios;
         List<GameAudioSource> audioSources;
 
-        public ApolloSettingData SettingData;
+        public SoundManegerData SettingData;
 
         private SoundManeger()
         {
