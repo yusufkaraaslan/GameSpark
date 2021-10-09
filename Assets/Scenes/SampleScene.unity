@@ -136,21 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lights: []
---- !u!114 &323370738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ce644bf2820d042bf7ced94074d3ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LockSystem: 0
-  SetOffCamOnRegister: 0
-  cams: []
 --- !u!114 &359071657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,81 +275,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &932270811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 932270812}
-  - component: {fileID: 932270813}
-  m_Layer: 0
-  m_Name: Yatana
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &932270812
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932270811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4097252, y: 2.8926206, z: 0.98209}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &932270813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932270811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3b53b06d1ad4c843b8635608915c8f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneTemplate:
-    PoolSystem: 1
-    UISystem: 1
-    CameraSystem: 1
-    VisualEventSystem: 1
-    SoundManegerSystem: 1
-    LightSystem: 1
-  CurrScene:
-    PoolSystem: 0
-    UISystem: 0
-    CameraSystem: 0
-    VisualEventSystem: 0
-    SoundManegerSystem: 0
-    LightSystem: 0
-  pool:
-    poolSetting: {fileID: 0}
-  poolSetting: {fileID: 1874290873}
-  poolWaitPose: {fileID: 0}
-  ui:
-    UISetting: {fileID: 0}
-  UISetting: {fileID: 1442012336}
-  cam:
-    cameraSetting: {fileID: 0}
-  cameraSetting: {fileID: 323370738}
-  visualEvent: {fileID: 0}
-  visualEventSetting: {fileID: 359071657}
-  visualEventObj: {fileID: 0}
-  soundManeger:
-    SettingData: {fileID: 0}
-  SoundSetting: {fileID: 2075027967}
-  lightSetting: {fileID: 67187387}
-  isYatanaSettingChanged: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,22 +358,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1442012336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d0e5ff2c2614b47a183d8d89bd088e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LockSystem: 0
-  ClearAllUIOnStart: 0
-  setups: []
---- !u!114 &1874290873
+--- !u!114 &1125337955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,6 +374,36 @@ MonoBehaviour:
   LockSystem: 0
   CloseObjectOnDespawn: 0
   poolObjects: []
+--- !u!114 &1442012336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d0e5ff2c2614b47a183d8d89bd088e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  ClearAllUIOnStart: 0
+  setups: []
+--- !u!114 &2004537934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ce644bf2820d042bf7ced94074d3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockSystem: 0
+  SetOffCamOnRegister: 0
+  cams: []
 --- !u!114 &2075027967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,3 +422,104 @@ MonoBehaviour:
   soundVolume: 0
   audios: []
   audioSources: []
+--- !u!1001 &281371414296314121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 281371413380961234, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_Name
+      value: Spark Game Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: UISetting
+      value: 
+      objectReference: {fileID: 1442012336}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: poolSetting
+      value: 
+      objectReference: {fileID: 1125337955}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: SoundSetting
+      value: 
+      objectReference: {fileID: 2075027967}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: lightSetting
+      value: 
+      objectReference: {fileID: 67187387}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: poolWaitPose
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: cameraSetting
+      value: 
+      objectReference: {fileID: 2004537934}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: visualEventObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: visualEventSetting
+      value: 
+      objectReference: {fileID: 359071657}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: sceneTemplate.UISystem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: sceneTemplate.PoolSystem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961236, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: sceneTemplate.CameraSystem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4097252
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.8926206
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.98209
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 281371413380961237, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 202962b0e022f5744928d58b3a5ca5bc, type: 3}
