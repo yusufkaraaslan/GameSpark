@@ -75,7 +75,7 @@ namespace SparkGameCore
             {
                 for (int i = 0; i < uiSetups.Count; i++)
                 {
-                    uiSetups[i].CloseUI();
+                    uiSetups[i].CloseUI(true);
                 }
             }
 

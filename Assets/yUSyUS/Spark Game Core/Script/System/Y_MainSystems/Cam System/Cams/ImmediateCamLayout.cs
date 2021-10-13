@@ -11,12 +11,7 @@ namespace SparkGameCore
             public GameObject camPose;
             public bool useRot;
 
-            private void Start()
-            {
-                initilaze();
-            }
-
-            void initilaze()
+            public override void initilaze()
             {
                 AddGameObject("camPose", camPose);
                 AddBool("useRot", useRot);

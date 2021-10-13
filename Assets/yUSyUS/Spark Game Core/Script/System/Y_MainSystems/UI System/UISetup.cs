@@ -44,11 +44,11 @@ namespace SparkGameCore
                 }
             }
 
-            public virtual void CloseUI()
+            public virtual void CloseUI(bool closeImm = false)
             {
                 if (isActive)
                 {
-                    if (animator != null && hideClip != "")
+                    if (animator != null && hideClip != "" && !closeImm)
                     {
                         isActive = false;
                         animator.Play(hideClip, 0, 0);

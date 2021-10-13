@@ -11,33 +11,42 @@ namespace SparkGameCore
             [SerializeField]
             GameObject followObj;
             [SerializeField]
-            Vector3 offset;
-            [SerializeField]
-            Quaternion rot;
+            GameObject lookObj;
+
             [SerializeField]
             bool follow_x, follow_y, follow_z;
             [SerializeField]
+            bool look_x, look_y, look_z;
+
+            [SerializeField]
             float moveSpeed;
             [SerializeField]
-            bool rotImmediate;
+            bool lookImmediate, rotImmediateOnInit;
             [SerializeField]
             float rotSpeed;
 
             private void Start()
             {
-                initilaze();
+                followObj.SetActive(false);
+                lookObj.SetActive(false);
             }
 
-            public void initilaze()
+            public override void initilaze()
             {
                 AddGameObject("followObj", followObj);
-                AddVector3("offset", offset);
-                AddQuaternion("rot", rot);
+                AddGameObject("lookObj", lookObj);
+
                 AddBool("follow_x", follow_x);
                 AddBool("follow_y", follow_y);
                 AddBool("follow_z", follow_z);
+
+                AddBool("look_x", look_x);
+                AddBool("look_y", look_y);
+                AddBool("look_z", look_z);
+
                 AddFloat("moveSpeed", moveSpeed);
-                AddBool("rotImmediate", rotImmediate);
+                AddBool("lookImmediate", lookImmediate);
+                AddBool("rotImmediateOnInit", rotImmediateOnInit);
                 AddFloat("rotSpeed", rotSpeed);
             }
 

@@ -10,6 +10,7 @@ namespace SparkGameCore
         {
             public override void initilaze(GameObject cam, Layout layout)
             {
+                layout.initilaze();
                 base.initilaze(cam, layout);
 
                 Dictionary<string, object> tmp = layout.GetCamData();

@@ -23,7 +23,7 @@ public class UIDemo : DemoSceneTemplate
 
     public override void EndDemo()
     {
-        ui.CloseUI("UIDemo");
+        ui.OpenUIClean("InGame");
     }
 
     public void OpenPanel(string panelName)
@@ -51,6 +51,4 @@ public class UIDemo : DemoSceneTemplate
         ui.OpenUI("InGame");
         ui.OpenUI("UIDemo");
     }
-
-
 }

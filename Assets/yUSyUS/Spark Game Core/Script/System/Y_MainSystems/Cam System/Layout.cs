@@ -17,27 +17,67 @@ namespace SparkGameCore
 
             protected void AddFloat(string name, float f)
             {
-                data.Add(name, f);
+                if (data.ContainsKey(name))
+                {
+                    data[name] = f;
+                }
+                else
+                {
+                    data.Add(name, f);
+                }
             }
 
             protected void AddGameObject(string name, GameObject g)
             {
-                data.Add(name, g);
+                if (data.ContainsKey(name))
+                {
+                    data[name] = g;
+                }
+                else
+                {
+                    data.Add(name, g);
+                }
             }
 
             protected void AddVector3(string name, Vector3 v)
             {
-                data.Add(name, v);
+                if (data.ContainsKey(name))
+                {
+                    data[name] = v;
+                }
+                else
+                {
+                    data.Add(name, v);
+                }
             }
 
             protected void AddBool(string name, bool b)
             {
-                data.Add(name, b);
+                if (data.ContainsKey(name))
+                {
+                    data[name] = b;
+                }
+                else
+                {
+                    data.Add(name, b);
+                }
             }
 
             protected void AddQuaternion(string name, Quaternion q)
             {
-                data.Add(name, q);
+                if (data.ContainsKey(name))
+                {
+                    data[name] = q;
+                }
+                else
+                {
+                    data.Add(name, q);
+                }
+            }
+
+            public virtual void initilaze()
+            {
+
             }
         }
     }
