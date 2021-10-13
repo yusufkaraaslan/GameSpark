@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization;
 
-namespace Yatana
+namespace SparkGameCore
 {
     namespace MainSystems
     {
@@ -32,9 +32,9 @@ namespace Yatana
                 for (int i = 0; i < UISetting.setups.Length; i++)
                 {
                     uiSetups.Add(UISetting.setups[i].GetComponent<UISetup>());
+                    uiSetups[i].Initilaze();
+                    uiSetups[i].Disable();
                 }
-
-                maneger.ClearScreen();
             }
 
             public void OpenUI(string setup)

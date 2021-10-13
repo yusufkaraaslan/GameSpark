@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yatana.MainSystems
+namespace SparkGameCore.MainSystems
 {
     public class AnimationHelper : HelperBase
     {

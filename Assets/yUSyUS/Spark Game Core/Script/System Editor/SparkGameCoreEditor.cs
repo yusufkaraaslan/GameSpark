@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Yatana
+namespace SparkGameCore
 {
-    [CustomEditor(typeof(YatanaSystemCenter))]
-    public class YatanaSystemEditor : Editor
+    [CustomEditor(typeof(SparkGameCoreCenter))]
+    public class SparkGameCoreEditor : Editor
     {
         int MainToolbarInt = 0;
         string[] toolbarStrings = { "integration", "Systems", "Settings" };
@@ -14,7 +14,7 @@ namespace Yatana
         int systemToolbarInd = 0;
         string systemToolbarString;
 
-        YatanaSystemCenter myTarget;
+        SparkGameCoreCenter myTarget;
         SerializedObject soTarget;
 
         //  System Settings
@@ -25,7 +25,7 @@ namespace Yatana
 
         private void OnEnable()
         {
-            myTarget = (YatanaSystemCenter)target;
+            myTarget = (SparkGameCoreCenter)target;
             soTarget = new SerializedObject(target);
 
             sceneTemplate = soTarget.FindProperty("sceneTemplate");

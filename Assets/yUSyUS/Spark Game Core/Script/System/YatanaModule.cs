@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization;
 
-namespace Yatana
+namespace SparkGameCore
 {
     /*
      *  !!!!!!!!!!   Important   !!!!!!!!!!!

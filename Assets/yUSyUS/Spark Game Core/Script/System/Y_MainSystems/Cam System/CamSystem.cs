@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization;
 
-namespace Yatana.MainSystems
+namespace SparkGameCore.MainSystems
 {
     [System.Serializable]
     public class CamSystem : YatanaModule

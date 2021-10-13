@@ -12,7 +12,7 @@ namespace Y_Generators
 
 }
 
-namespace Yatana
+namespace SparkGameCore
 {
     namespace Helper
     {

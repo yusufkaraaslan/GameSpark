@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using Yatana.MainSystems;
+using SparkGameCore.MainSystems;
 
 [System.Serializable]
 public class CameraSettingData : DataTemplate

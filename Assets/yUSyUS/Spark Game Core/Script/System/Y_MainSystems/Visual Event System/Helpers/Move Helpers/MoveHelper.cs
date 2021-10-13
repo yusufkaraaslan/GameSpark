@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yatana
+namespace SparkGameCore
 {
     namespace MainSystems
     {

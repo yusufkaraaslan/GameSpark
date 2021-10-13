@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace  Yatana.MainSystems
+namespace  SparkGameCore.MainSystems
 {
     public class BasicFunction : FunctionWorker
     {

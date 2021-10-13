@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yatana.MainSystems
+namespace SparkGameCore.MainSystems
 {
     public class GameAudioSource : MonoBehaviour
     {

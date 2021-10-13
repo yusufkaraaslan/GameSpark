@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using Yatana;
-using Yatana.MainSystems;
+using SparkGameCore;
+using SparkGameCore.MainSystems;
 
 [System.Serializable]
 public class SceneSetupProfile
 {
-    public bool PoolSystem, UISystem, CameraSystem, VisualEventSystem, SoundManegerSystem, LightSystem;
+    [SerializeField] public bool PoolSystem, UISystem, CameraSystem, VisualEventSystem, SoundManegerSystem, LightSystem;
+
 }

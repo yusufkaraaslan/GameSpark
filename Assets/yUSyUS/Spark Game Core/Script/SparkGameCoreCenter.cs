@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yatana.MainSystems;
+using SparkGameCore.MainSystems;
 using UnityEditor;
 
-namespace Yatana
+namespace SparkGameCore
 {
-    public class YatanaSystemCenter : MonoBehaviour
+    public class SparkGameCoreCenter : MonoBehaviour
     {
         public SceneSetupProfile sceneTemplate;
         public SceneSetupProfile CurrScene;
@@ -122,6 +122,7 @@ namespace Yatana
                 CurrScene.PoolSystem = true;
                 poolWaitPose = new GameObject("Pool Wait Pose");
                 poolWaitPose.transform.SetParent(transform);
+                CreateTag("PoolWaiting");
                 poolWaitPose.transform.tag = "PoolWaiting";
 
                 poolSetting = new PoolSettingData();
@@ -251,6 +252,29 @@ namespace Yatana
         }
 
         //  Game Functions
+
+        public static void CreateTag(string tag)
+        {
+            var asset = AssetDatabase.LoadMainAssetAtPath("ProjectSettings/TagManager.asset");
+            if (asset != null)
+            { // sanity checking
+                var so = new SerializedObject(asset);
+                var tags = so.FindProperty("tags");
+
+                var numTags = tags.arraySize;
+                // do not create duplicates
+                for (int i = 0; i < numTags; i++)
+                {
+                    var existingTag = tags.GetArrayElementAtIndex(i);
+                    if (existingTag.stringValue == tag) return;
+                }
+
+                tags.InsertArrayElementAtIndex(numTags);
+                tags.GetArrayElementAtIndex(numTags).stringValue = tag;
+                so.ApplyModifiedProperties();
+                so.Update();
+            }
+        }
 
         //  Workflow
 

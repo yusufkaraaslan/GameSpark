@@ -2,63 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Yatana
+namespace SparkGameCore
 {
     namespace MainSystems
     {
         public class UISetup : MonoBehaviour
         {
             public string UIName;
-            public GameObject obj;
+            protected GameObject obj;
 
+            protected bool isActive;
+
+            /*
+             *  Extra Options
+             */
             [SerializeField]
             protected Animator animator;
             [SerializeField]
             protected string showClip;
             [SerializeField]
             protected string hideClip;
-            [SerializeField]
-            protected bool isAnimated;
-            [SerializeField]
-            protected bool cancelExitAnim;
 
-            protected bool isActive;
+            public virtual void Initilaze()
+            {
+                obj = gameObject;
+            }
+
             public virtual void OpenUI()
             {
-                Enable();
-
-                if (isAnimated)
+                if (!isActive)
                 {
+                    Enable();
+
                     if (animator != null)
                     {
-                        animator.Play(showClip, 0, 0);
+                        if (showClip != "")
+                        {
+                            animator.Play(showClip, 0, 0);
+                        }
                     }
                 }
             }
 
             public virtual void CloseUI()
             {
-
-                if (cancelExitAnim)
-                {
-                    Disable();
-                    return;
-                }
-
                 if (isActive)
                 {
-                    isActive = false;
-
-                    if (isAnimated)
+                    if (animator != null && hideClip != "")
                     {
-                        if (animator != null)
-                        {
-                            animator.Play(hideClip, 0, 0);
-                        }
-                        else
-                        {
-                            Disable();
-                        }
+                        isActive = false;
+                        animator.Play(hideClip, 0, 0);
                     }
                     else
                     {
@@ -66,7 +59,6 @@ namespace Yatana
                     }
                 }
             }
-
 
             public virtual void Disable()
             {
