@@ -154,9 +154,10 @@ namespace SparkGameCore
             if (!CurrScene.VisualEventSystem)
             {
                 CurrScene.VisualEventSystem = true;
-                visualEventObj = new GameObject("Visual Event");
+
+                visualEventObj = new GameObject("Visual Event Runner");
                 visualEventObj.transform.SetParent(transform);
-                visualEventObj.AddComponent<VisualEventController>();
+                visualEventObj.AddComponent<VisualEventRunner>();
 
                 visualEventSetting = new VisualEventSettingData();
             }

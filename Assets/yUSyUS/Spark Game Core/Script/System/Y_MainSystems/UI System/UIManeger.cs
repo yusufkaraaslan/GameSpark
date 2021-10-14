@@ -8,7 +8,7 @@ namespace SparkGameCore
     namespace MainSystems
     {
         [System.Serializable]
-        public class UIManeger : YatanaModule
+        public class UIManeger : SparkGameCoreModule
         {
             List<UISetup> uiSetups;
             static UIManeger maneger;

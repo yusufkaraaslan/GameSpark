@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace SparkGameCore.MainSystems
 {
     [System.Serializable]
-    public class PoolSystem : YatanaModule
+    public class PoolSystem : SparkGameCoreModule
     {
         private List<ObjPool> pools;
         private static PoolSystem poolSystem;

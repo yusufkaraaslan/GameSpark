@@ -9,14 +9,13 @@ namespace SparkGameCore
         [System.Serializable]
         public class MoveOrder
         {
-            public bool moveLock;
+            public bool waitForMoveEnd;
             public float preDelay, postDelay, unitMoveTime, maxMoveTime, minMoveTime;
             public InterpType interpType;
             public RouteType routeType;
-            public bool isRotate;
             public bool isLookAtTarget;
-            public bool lockRotateAtYAxis;
-            public Vector3 arcAxis;
+            [HideInInspector] public bool lockRotateAtYAxis;
+            [HideInInspector] public Vector3 arcAxis;
 
             [HideInInspector]
             public Queue<Checkpoint> targetQ;
@@ -25,7 +24,7 @@ namespace SparkGameCore
 
             public MoveOrder(MoveOrder moveOrder)
             {
-                moveLock = moveOrder.moveLock;
+                waitForMoveEnd = moveOrder.waitForMoveEnd;
                 preDelay = moveOrder.preDelay;
                 postDelay = moveOrder.postDelay;
                 unitMoveTime = moveOrder.unitMoveTime;
@@ -33,7 +32,6 @@ namespace SparkGameCore
                 minMoveTime = moveOrder.minMoveTime;
                 interpType = moveOrder.interpType;
                 routeType = moveOrder.routeType;
-                isRotate = moveOrder.isRotate;
                 isLookAtTarget = moveOrder.isLookAtTarget;
                 lockRotateAtYAxis = moveOrder.lockRotateAtYAxis;
                 arcAxis = moveOrder.arcAxis;
@@ -58,6 +56,16 @@ namespace SparkGameCore
                 }
 
                 return res;
+            }
+
+            public void AddCheckPoint(Checkpoint checkpoint)
+            {
+                if (targetQ == null)
+                {
+                    targetQ = new Queue<Checkpoint>();
+                }
+
+                targetQ.Enqueue(checkpoint);
             }
 
             public MoveOrder()

@@ -5,12 +5,10 @@ using UnityEngine;
 namespace SparkGameCore.MainSystems
 {
     [System.Serializable]
-    public class VisualEventController : MonoBehaviour, YatanaModule
+    public class VisualEventController : SparkGameCoreModule
     {
         #region Singleton
         private static VisualEventController maneger;
-
-        public VisualEventSettingData visualEventSetting;
 
         public static VisualEventController GetInstance()
         {
@@ -22,13 +20,15 @@ namespace SparkGameCore.MainSystems
             return maneger;
         }
 
-        public void initilaze()
+        internal void initilaze()
         {
-
+            visualEvents = new List<VisualEvent>();
         }
 
         private VisualEventController(){ }
         #endregion
+
+        [HideInInspector] public VisualEventSettingData visualEventSetting;
 
         public static List<VisualEvent> visualEvents;
 
@@ -44,9 +44,7 @@ namespace SparkGameCore.MainSystems
             List<VisualEventData> eData = new List<VisualEventData>();
             eData.Add(data);
 
-            VisualEvent visualEvent = new VisualEvent(eData);
-            visualEvents.Add(visualEvent);
-            return visualEvent;
+            return AddVisualEvent(eData);
         }
 
         public VisualEventData GetVisualEventData(string eventName)
@@ -74,12 +72,7 @@ namespace SparkGameCore.MainSystems
             return visualEvents.Count == 0;
         }
 
-        private void Start()
-        {
-            visualEvents = new List<VisualEvent>();
-        }
-
-        private void Update()
+        internal void EventUpdate()
         {
             for (int i = visualEvents.Count - 1; i >= 0; i--)
             {

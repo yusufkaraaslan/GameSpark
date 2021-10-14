@@ -10,7 +10,7 @@ namespace SparkGameCore
      *  !!!!!!!!!!   Important   !!!!!!!!!!!
      *  For Later Update
      */
-    public interface YatanaModule
+    public interface SparkGameCoreModule
     {
 
     }

@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace SparkGameCore.MainSystems
 {
     [System.Serializable]
-    public class CamSystem : YatanaModule
+    public class CamSystem : SparkGameCoreModule
     {
         List<GameCam> cams;
         private static CamSystem maneger;

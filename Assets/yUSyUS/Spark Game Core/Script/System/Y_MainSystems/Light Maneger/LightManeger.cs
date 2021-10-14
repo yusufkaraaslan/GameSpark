@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SparkGameCore.MainSystems
 {
-    public class LightManeger : YatanaModule
+    public class LightManeger : SparkGameCoreModule
     {
         static LightManeger maneger;
         List<SceneLight> lights;

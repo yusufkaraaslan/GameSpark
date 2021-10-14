@@ -36,7 +36,7 @@ namespace SparkGameCore
 
             public override bool IsComplete()
             {
-                if (moves.moveLock)
+                if (moves.waitForMoveEnd)
                 {
                     return state == MoveLifeState.End;
                 }
@@ -115,8 +115,11 @@ namespace SparkGameCore
                                         }
                                     }
 
-                                    moves.obj.transform.position = target.TarPos;
-                                    state = MoveLifeState.PostWaiting;
+                                    if (rotComplete)
+                                    {
+                                        moves.obj.transform.position = target.TarPos;
+                                        state = MoveLifeState.PostWaiting;
+                                    }
                                 }
                             }
                         }
@@ -289,16 +292,6 @@ namespace SparkGameCore
                         break;
 
                     case RouteType.Arc:
-                        /*
-                        r = Vector3.Lerp(currPos, target.tarPos, t);
-
-                        if (t < 0.5f)
-                        {
-                            r += moves.arcAxis * 0.01f;
-                        }
-
-                        moves.obj.transform.position = r;
-                        */
                         shadowPos = Vector3.Lerp(startPos, target.TarPos, t) - startPos;
 
                         if (currTime <= realMoveTime / 2)
@@ -316,9 +309,7 @@ namespace SparkGameCore
                     default:
                         break;
                 }
-
             }
-
         }
 
         public enum MoveLifeState

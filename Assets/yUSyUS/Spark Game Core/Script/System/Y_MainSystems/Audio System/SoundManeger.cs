@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace SparkGameCore.MainSystems
 {
     [System.Serializable]
-    public class SoundManeger : YatanaModule
+    public class SoundManeger : SparkGameCoreModule
     {
         static SoundManeger manager;
 

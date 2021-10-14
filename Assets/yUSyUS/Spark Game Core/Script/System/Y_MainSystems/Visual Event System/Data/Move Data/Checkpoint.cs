@@ -26,7 +26,4 @@ public class Checkpoint : MonoBehaviour
             closeObj[i].SetActive(false);
         }
     }
-
-
-
 }
