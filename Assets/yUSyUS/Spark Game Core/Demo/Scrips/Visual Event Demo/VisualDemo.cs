@@ -17,7 +17,7 @@ public class VisualDemo : DemoSceneTemplate
 
     //  Test Scenes 1
     [SerializeField] GameObject sceneRoot;
-    [SerializeField] Checkpoint target1;
+    [SerializeField] Checkpoint target1, target2, target3;
 
 
 
@@ -57,6 +57,8 @@ public class VisualDemo : DemoSceneTemplate
 
         eventData.GetMove().moveOrders[0].obj = agentC;
         eventData.GetMove().moveOrders[0].AddCheckPoint(target1);
+        eventData.GetMove().moveOrders[0].AddCheckPoint(target2);
+        eventData.GetMove().moveOrders[0].AddCheckPoint(target3);
 
         visualEvent.AddVisualEvent(eventData);
     }

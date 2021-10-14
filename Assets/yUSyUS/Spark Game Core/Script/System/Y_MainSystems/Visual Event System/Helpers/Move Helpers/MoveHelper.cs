@@ -17,10 +17,6 @@ namespace SparkGameCore
             bool isWaiting;
             float passTime;
 
-            bool checkPointWait = false;
-            float newCheckPointStartTime;
-            float checkPointDelay = 0.03f;
-
             bool moveComplete = false;
             bool rotComplete = false;
             float rotSpeed = 80f;
@@ -67,63 +63,44 @@ namespace SparkGameCore
                     case MoveLifeState.Start:
 
                         initMove();
-                        checkPointWait = false;
                         state = MoveLifeState.Moving;
 
                         break;
 
                     case MoveLifeState.Moving:
 
-                        if (!checkPointWait && !moveComplete)
+                        if (!moveComplete)
                         {
                             Move();
+                            if (Vector3.Distance(moves.obj.transform.position, target.TarPos) < 0.01f ||
+                                currTime >= realMoveTime)
+                            {
+                                moveComplete = true;
+                            }
                         }
 
                         LookTarget();
 
-                        if (checkPointWait)
+                        if (moveComplete)
                         {
-                            if (Time.time >= newCheckPointStartTime)
+                            if (rotComplete)
                             {
-                                state = MoveLifeState.Start;
-                            }
-                        }
-                        else
-                        {
-                            if (Vector3.Distance(moves.obj.transform.position, target.TarPos) < 0.1f ||
-                                currTime >= realMoveTime)
-                            {
-                                moveComplete = true;
-
-                                if (rotComplete)
+                                if (moves.targetQ != null)
                                 {
-                                    if (moves.targetQ != null)
+                                    if (moves.targetQ.Count > 0)
                                     {
-                                        if (moves.targetQ.Count > 0)
+                                        if (moves.targetQ.Peek().TarPos.x != target.TarPos.x)
                                         {
-                                            if (moves.targetQ.Peek().TarPos.x != target.TarPos.x)
-                                            {
-                                                checkPointWait = true;
-                                                newCheckPointStartTime = Time.time + checkPointDelay;
-                                                return;
-                                            }
-                                            else
-                                            {
-                                                state = MoveLifeState.Start;
-                                                return;
-                                            }
+                                            state = MoveLifeState.Start;
+                                            return;
                                         }
                                     }
-
-                                    if (rotComplete)
-                                    {
-                                        moves.obj.transform.position = target.TarPos;
-                                        state = MoveLifeState.PostWaiting;
-                                    }
                                 }
+
+                                moves.obj.transform.position = target.TarPos;
+                                state = MoveLifeState.PostWaiting;
                             }
                         }
-
                         break;
 
                     case MoveLifeState.PostWaiting:
@@ -212,10 +189,12 @@ namespace SparkGameCore
                 }
 
                 Quaternion oldRot = moves.obj.transform.rotation;
-                moves.obj.transform.rotation = Quaternion.RotateTowards(moves.obj.transform.rotation, Quaternion.LookRotation(lTargetDir),
+                moves.obj.transform.rotation = Quaternion.RotateTowards
+                    (moves.obj.transform.rotation, Quaternion.LookRotation(lTargetDir),
                     Time.deltaTime * rotSpeed);
 
-                if (oldRot == moves.obj.transform.rotation)
+                //oldRot == moves.obj.transform.rotation
+                if ( Vector3.Angle(lTargetDir ,moves.obj.transform.forward) < 1)
                 {
                     rotComplete = true;
                 }
