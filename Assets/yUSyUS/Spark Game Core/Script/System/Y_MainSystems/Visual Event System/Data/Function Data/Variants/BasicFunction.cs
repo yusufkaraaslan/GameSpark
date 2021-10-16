@@ -7,7 +7,12 @@ namespace  SparkGameCore.MainSystems
 {
     public class BasicFunction : FunctionWorker
     {
-        public Action action;
+        Action action;
+
+        public BasicFunction(Action action)
+        {
+            this.action = action ?? throw new ArgumentNullException(nameof(action));
+        }
 
         public override bool Work()
         {

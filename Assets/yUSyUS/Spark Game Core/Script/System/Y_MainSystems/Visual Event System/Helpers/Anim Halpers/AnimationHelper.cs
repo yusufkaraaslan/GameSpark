@@ -22,7 +22,7 @@ namespace SparkGameCore.MainSystems
         }
         public override bool IsComplete()
         {
-            if (animationOrder.animLock)
+            if (animationOrder.waitForAnimEnd)
             {
                 return state == AnimState.End;
             }

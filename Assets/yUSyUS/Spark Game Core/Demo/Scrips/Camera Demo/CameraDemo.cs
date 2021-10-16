@@ -14,7 +14,7 @@ public class CameraDemo : DemoSceneTemplate
     [SerializeField] ImmediateCamLayout defult, pose1, pose2;
     [SerializeField] BasicFollowCamLayout followPose;
 
-    [SerializeField] GameObject cubeTrain;
+    [SerializeField] GameObject sceneRoot, cubeTrain;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class CameraDemo : DemoSceneTemplate
     {
         ui.OpenUI("CamDemo");
         cubeTrain.SetActive(true);
+        sceneRoot.SetActive(true);
     }
 
     public override void EndDemo()

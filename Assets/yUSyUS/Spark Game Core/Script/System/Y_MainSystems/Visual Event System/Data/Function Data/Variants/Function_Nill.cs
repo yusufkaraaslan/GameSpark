@@ -10,6 +10,13 @@ namespace  SparkGameCore.MainSystems
         float destroyTime = -1;
         float destroyDelay = 3;
 
+        public Function_Nill(bool waitDone, float destroyTime, float destroyDelay)
+        {
+            this.waitDone = waitDone;
+            this.destroyTime = destroyTime;
+            this.destroyDelay = destroyDelay;
+        }
+
         public override bool Work()
         {
             if (destroyTime == -1)

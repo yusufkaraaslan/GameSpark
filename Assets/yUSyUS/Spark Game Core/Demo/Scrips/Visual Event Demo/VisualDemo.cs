@@ -11,15 +11,14 @@ public class VisualDemo : DemoSceneTemplate
     UIManeger ui;
     VisualEventController visualEvent;
 
-    [SerializeField] GameObject agentC;
-    Vector3 agentCRespartPos;
-    Quaternion agentCResetRot;
-
-    //  Test Scenes 1
     [SerializeField] GameObject sceneRoot;
     [SerializeField] Checkpoint target1, target2, target3;
+    [SerializeField] GameCharacter agentC, enemy;
+    
+    [SerializeField] BasicFollowCamLayout followCam;
+    [SerializeField] ImmediateCamLayout defultPose;
 
-
+    [SerializeField] ColorChanger endWall;
 
     private void Start()
     {
@@ -27,38 +26,88 @@ public class VisualDemo : DemoSceneTemplate
         ui = UIManeger.GetInstance();
         visualEvent = VisualEventController.GetInstance();
 
-        agentCRespartPos = agentC.transform.position;
-        agentCResetRot = agentC.transform.rotation;
-
-        agentC.SetActive(false);
+        sceneRoot.SetActive(false);
     }
 
     public override void StartDemo()
     {
         ui.OpenUI("VisualEventDemo");
 
-        agentC.SetActive(true);
+        agentC.gameObject.SetActive(true);
+        enemy.gameObject.SetActive(true);
+
+        sceneRoot.SetActive(true);
     }
 
     public override void EndDemo()
     {
         ui.CloseUI("VisualEventDemo");
+        sceneRoot.SetActive(false);
 
-        agentC.SetActive(false);
+        ResetSetup();
+
+        agentC.gameObject.SetActive(false);
+        enemy.gameObject.SetActive(false);
     }
 
     public void StartEvent1()
     {
-        ResetAgent();
+        ResetSetup();
         StopAllEvent();
-        sceneRoot.SetActive(true);
 
         VisualEventData eventData = visualEvent.GetVisualEventData("Event 1");
 
-        eventData.GetMove().moveOrders[0].obj = agentC;
+        eventData.GetMove().moveOrders[0].obj = agentC.gameObject;
         eventData.GetMove().moveOrders[0].AddCheckPoint(target1);
         eventData.GetMove().moveOrders[0].AddCheckPoint(target2);
         eventData.GetMove().moveOrders[0].AddCheckPoint(target3);
+
+        visualEvent.AddVisualEvent(eventData);
+    }
+
+    public void StartEvent2()
+    {
+        ResetSetup();
+        StopAllEvent();
+
+        VisualEventData eventData = visualEvent.GetVisualEventData("Event 2");
+
+        eventData.GetMove().moveOrders[0].obj = agentC.gameObject;
+        eventData.GetMove().moveOrders[0].AddCheckPoint(target1);
+        eventData.GetMove().moveOrders[0].AddCheckPoint(target2);
+
+        eventData.GetMove().moveOrders[1].obj = agentC.gameObject;
+        eventData.GetMove().moveOrders[1].AddCheckPoint(target3);
+
+        eventData.GetAnim().animOrders[0].anim = agentC.GetAnimator();
+        eventData.GetAnim().animOrders[2].anim = agentC.GetAnimator();
+
+        eventData.GetAnim().animOrders[1].anim = enemy.GetAnimator();
+
+        visualEvent.AddVisualEvent(eventData);
+    }
+
+    public void StartEvent3()
+    {
+        ResetSetup();
+        StopAllEvent();
+
+        VisualEventData eventData = visualEvent.GetVisualEventData("Event 3");
+
+        eventData.GetMove().moveOrders[0].obj = agentC.gameObject;
+        eventData.GetMove().moveOrders[0].AddCheckPoint(target1);
+        eventData.GetMove().moveOrders[0].AddCheckPoint(target2);
+
+        eventData.GetMove().moveOrders[1].obj = agentC.gameObject;
+        eventData.GetMove().moveOrders[1].AddCheckPoint(target3);
+
+        eventData.GetAnim().animOrders[0].anim = agentC.GetAnimator();
+        eventData.GetAnim().animOrders[2].anim = agentC.GetAnimator();
+
+        eventData.GetAnim().animOrders[1].anim = enemy.GetAnimator();
+
+        eventData.GetFunctions().functions[0].worker = new BasicFunction(SetFollowCam);
+        eventData.GetFunctions().functions[1].worker = new BasicFunction(endWall.ChangeColor);
 
         visualEvent.AddVisualEvent(eventData);
     }
@@ -68,9 +117,16 @@ public class VisualDemo : DemoSceneTemplate
         visualEvent.ClearAllEvents();
     }
 
-    void ResetAgent()
+    void SetFollowCam()
     {
-        agentC.transform.position = agentCRespartPos;
-        agentC.transform.rotation = agentCResetRot;
+        CamSystem.GetInstance().SetCam("Main", new BasicFollowCam(), followCam);
+    }
+
+    void ResetSetup()
+    {
+        CamSystem.GetInstance().SetCam("Main", new ImmediateCam(), defultPose);
+
+        agentC.ResetCheracter();
+        enemy.ResetCheracter();
     }
 }

@@ -9,7 +9,7 @@ namespace SparkGameCore
         [System.Serializable]
         public class AnimOrder
         {
-            public bool animLock;
+            public bool waitForAnimEnd;
             public float preDelay, postDelay;
 
             public List<string> triggerCondition;
@@ -27,12 +27,12 @@ namespace SparkGameCore
 
             public AnimOrder(AnimOrder animOrder)
             {
-                animLock = animOrder.animLock;
+                waitForAnimEnd = animOrder.waitForAnimEnd;
                 preDelay = animOrder.preDelay;
                 postDelay = animOrder.postDelay;
-                animLock = animOrder.animLock;
-                animLock = animOrder.animLock;
-                animLock = animOrder.animLock;
+                waitForAnimEnd = animOrder.waitForAnimEnd;
+                waitForAnimEnd = animOrder.waitForAnimEnd;
+                waitForAnimEnd = animOrder.waitForAnimEnd;
 
                 triggerCondition = animOrder.triggerCondition;
                 boolCondition = animOrder.boolCondition;
