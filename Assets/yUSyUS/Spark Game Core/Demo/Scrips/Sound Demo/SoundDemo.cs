@@ -37,6 +37,7 @@ public class SoundDemo : DemoSceneTemplate
         sceneRoot.SetActive(false);
     }
 
+    //  Play 
     public void PlayMusic(string musicName)
     {
         soundManeger.PlayMusic("Main Music", musicName);
@@ -52,6 +53,7 @@ public class SoundDemo : DemoSceneTemplate
         soundManeger.PlaySound("Sound FX 1", soundName);
     }
 
+    //  Stop
     public void StopMusic()
     {
         soundManeger.StopSource("Main Music");
@@ -67,11 +69,7 @@ public class SoundDemo : DemoSceneTemplate
         soundManeger.StopSource("Sound FX 1");
     }
 
-    public void SetMusicVolume(float value)
-    {
-        soundManeger.SetMusicVolume(value);
-    }
-
+    //  On/off
     public void MusicOn()
     {
         soundManeger.MusicOn();
@@ -90,6 +88,12 @@ public class SoundDemo : DemoSceneTemplate
     public void SoundOff()
     {
         soundManeger.SoundOff();
+    }
+
+    //  Set Volume
+    public void SetMusicVolume(float value)
+    {
+        soundManeger.SetMusicVolume(value);
     }
 
     public void SetMusicVolume()
