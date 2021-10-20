@@ -38,8 +38,9 @@ namespace SparkGameCore.MainSystems
             }
 
             gameAudios = new List<GameAudio>();
+            audioSources = new List<GameAudioSource>();
 
-            foreach (GameAudio x in SettingData.audios)
+            foreach (GameAudio x in SettingData.clips)
             {
                 gameAudios.Add(x);
             }
@@ -47,6 +48,8 @@ namespace SparkGameCore.MainSystems
             foreach (GameAudioSource source in SettingData.audioSources)
             {
                 audioSources.Add(source);
+
+                source.Init();
 
                 if (source.sourceType == AudioSourceType.Music)
                 {
@@ -177,6 +180,18 @@ namespace SparkGameCore.MainSystems
         {
             SettingData.soundOn = false;
             StopSound();
+        }
+
+        public void SetSourceVolume(string source, float volume)
+        {
+            foreach (GameAudioSource x in audioSources)
+            {
+                if (x.SourceName == source)
+                {
+                    x.audioSource.volume = volume;
+                    return;
+                }
+            }
         }
 
         public void SetMusicVolume(float volume)

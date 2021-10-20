@@ -8,7 +8,12 @@ namespace SparkGameCore.MainSystems
     {
         public string SourceName;
         public AudioSourceType sourceType;
-        public AudioSource audioSource;
+        [HideInInspector] public AudioSource audioSource;
+
+        public void Init()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
     }
 

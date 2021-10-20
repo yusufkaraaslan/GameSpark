@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace SparkGameCore.MainSystems
 {
-    public class GameAudio : MonoBehaviour
+    [System.Serializable]
+    public class GameAudio
     {
         public string audioName;
         public AudioClip clip;

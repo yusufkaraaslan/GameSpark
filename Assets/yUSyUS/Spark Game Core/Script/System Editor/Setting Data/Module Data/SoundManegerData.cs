@@ -10,8 +10,8 @@ public class SoundManegerData : DataTemplate
     public bool musicOn, soundOn;
     [Range(0.0f, 1.0f)] public float musicVolume, soundVolume;
 
-    public GameAudio[] audios;
     public GameAudioSource[] audioSources;
+    public GameAudio[] clips;
 
     public override void DrawTap()
     {
@@ -36,12 +36,12 @@ public class SoundManegerData : DataTemplate
         EditorGUILayout.PropertyField(SoundVolume);
         GUILayout.Space(elementSpace);
 
-        SerializedProperty Audios = soTarget.FindProperty("audios");
-        EditorGUILayout.PropertyField(Audios);
-        GUILayout.Space(elementSpace);
-
         SerializedProperty AudioSources = soTarget.FindProperty("audioSources");
         EditorGUILayout.PropertyField(AudioSources);
+        GUILayout.Space(elementSpace);
+
+        SerializedProperty Clips = soTarget.FindProperty("clips");
+        EditorGUILayout.PropertyField(Clips);
         GUILayout.Space(elementSpace);
 
         if (EditorGUI.EndChangeCheck())

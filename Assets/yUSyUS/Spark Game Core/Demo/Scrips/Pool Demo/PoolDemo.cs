@@ -9,7 +9,7 @@ public class PoolDemo : DemoSceneTemplate
 {
     [SerializeField] GameObject spawnPose;
 
-    //  Pool Maneger Instance
+    // Maneger Instance
     PoolSystem pool;
     UIManeger ui;
 
