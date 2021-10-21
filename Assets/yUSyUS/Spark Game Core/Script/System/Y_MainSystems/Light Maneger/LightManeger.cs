@@ -27,6 +27,7 @@ namespace SparkGameCore.MainSystems
 
             foreach (SceneLight light in settingData.lights)
             {
+                light.Initilaze();
                 this.lights.Add(light);
             }
 

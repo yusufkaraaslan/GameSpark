@@ -7,7 +7,12 @@ namespace SparkGameCore.MainSystems
     public class SceneLight : MonoBehaviour
     {
         public string lightName;
-        [SerializeField] Light sceneLight;
+        Light sceneLight;
+
+        public void Initilaze()
+        {
+            sceneLight = GetComponent<Light>();
+        }
 
         public void LightOn()
         {
@@ -29,11 +34,16 @@ namespace SparkGameCore.MainSystems
             sceneLight.intensity = intensity;
         }
 
+        public void SetRange(float range)
+        {
+            sceneLight.range = range;
+        }
+
         public void SetAngle(Quaternion quaternion)
         {
             sceneLight.gameObject.transform.rotation = quaternion;
         }
-        public void SetAngle(GameCam lookObj)
+        public void SetAngle(GameObject lookObj)
         {
             sceneLight.gameObject.transform.LookAt(lookObj.transform);
         }
