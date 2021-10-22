@@ -1403,7 +1403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &121351881
 Transform:
   m_ObjectHideFlags: 0
@@ -17834,15 +17834,15 @@ MonoBehaviour:
   - {fileID: 1549175826}
   clips:
   - audioName: Music 1
-    clip: {fileID: 8300000, guid: f2ba235e7ecbcd94385ea719d3df5f10, type: 3}
+    clip: {fileID: 8300000, guid: 9b628c35fb87b2047a9bdeb25fe9f290, type: 3}
   - audioName: Music 2
-    clip: {fileID: 8300000, guid: b21e17bf439efd44495f9a236c9cdea9, type: 3}
+    clip: {fileID: 8300000, guid: d39ec51d517627b43afa8ab74353c236, type: 3}
   - audioName: Music 3
     clip: {fileID: 8300000, guid: a80471486719e3247b9003d06f8132cd, type: 3}
   - audioName: Music 3
     clip: {fileID: 8300000, guid: a80471486719e3247b9003d06f8132cd, type: 3}
   - audioName: Shoot 1
-    clip: {fileID: 8300000, guid: 90eb35274351fe347a6187dbd60f4e3c, type: 3}
+    clip: {fileID: 8300000, guid: 257366e695196044094e0037bf067ba0, type: 3}
   - audioName: Shoot 2
     clip: {fileID: 8300000, guid: 008c982ceb877134994842da6372d60f, type: 3}
   - audioName: Shoot 3
