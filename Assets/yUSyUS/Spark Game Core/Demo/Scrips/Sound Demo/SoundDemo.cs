@@ -6,7 +6,7 @@ using UnityEngine;
 // Needed namespace
 using SparkGameCore.MainSystems;
 
-public class SoundDemo : DemoSceneTemplate
+public class SoundDemo : SparkCoreDemoSceneTemplate
 {
     // Maneger Instance
     SoundManeger soundManeger;

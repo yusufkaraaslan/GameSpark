@@ -5,7 +5,7 @@ using UnityEngine;
 // Needed namespace
 using SparkGameCore.MainSystems;
 
-public class PoolDemo : DemoSceneTemplate
+public class PoolDemo : SparkCoreDemoSceneTemplate
 {
     [SerializeField] GameObject spawnPose;
 

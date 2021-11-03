@@ -6,18 +6,18 @@ using UnityEngine;
 // Needed namespace
 using SparkGameCore.MainSystems;
 
-public class GameManeger : MonoBehaviour
+public class SparkCoreDemo : MonoBehaviour
 {
-    DemoScene demo;
+    SparkCoreDemoScene demo;
     [SerializeField]Text demoText;
 
     //  Maneger Instances
     UIManeger ui;
 
     //  Demo Scene Maneger
-    [SerializeField] DemoSceneTemplate poolDemo, uiDemo, cameraDemo, visualEventDemo, soundDemo, lightDemo;
+    [SerializeField] SparkCoreDemoSceneTemplate poolDemo, uiDemo, cameraDemo, visualEventDemo, soundDemo, lightDemo;
 
-    DemoSceneTemplate activeDemo;
+    SparkCoreDemoSceneTemplate activeDemo;
 
     private void Start()
     {
@@ -38,9 +38,9 @@ public class GameManeger : MonoBehaviour
 
     public void PreviousDemo()
     {
-        if (demo == DemoScene.PoolDemo)
+        if (demo == SparkCoreDemoScene.PoolDemo)
         {
-            demo = DemoScene.LightDemo;
+            demo = SparkCoreDemoScene.LightDemo;
         }
         else
         {
@@ -53,9 +53,9 @@ public class GameManeger : MonoBehaviour
 
     public void NextDemo()
     {
-        if (demo == DemoScene.LightDemo)
+        if (demo == SparkCoreDemoScene.LightDemo)
         {
-            demo = DemoScene.PoolDemo;
+            demo = SparkCoreDemoScene.PoolDemo;
         }
         else
         {
@@ -72,32 +72,32 @@ public class GameManeger : MonoBehaviour
 
         switch (demo)
         {
-            case DemoScene.PoolDemo:
+            case SparkCoreDemoScene.PoolDemo:
                 poolDemo.StartDemo();
                 activeDemo = poolDemo;
                 break;
 
-            case DemoScene.UIDemo:
+            case SparkCoreDemoScene.UIDemo:
                 uiDemo.StartDemo();
                 activeDemo = uiDemo;
                 break;
 
-            case DemoScene.CameraDemo:
+            case SparkCoreDemoScene.CameraDemo:
                 cameraDemo.StartDemo();
                 activeDemo = cameraDemo;
                 break;
 
-            case DemoScene.VisualEventDemo:
+            case SparkCoreDemoScene.VisualEventDemo:
                 visualEventDemo.StartDemo();
                 activeDemo = visualEventDemo;
                 break;
 
-            case DemoScene.SoundDemo:
+            case SparkCoreDemoScene.SoundDemo:
                 soundDemo.StartDemo();
                 activeDemo = soundDemo;
                 break;
 
-            case DemoScene.LightDemo:
+            case SparkCoreDemoScene.LightDemo:
                 lightDemo.StartDemo();
                 activeDemo = lightDemo;
                 break;
@@ -106,7 +106,7 @@ public class GameManeger : MonoBehaviour
 
 }
 
-public enum DemoScene
+public enum SparkCoreDemoScene
 {
     PoolDemo, UIDemo, CameraDemo, VisualEventDemo, SoundDemo, LightDemo
 }

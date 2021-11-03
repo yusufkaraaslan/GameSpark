@@ -5,7 +5,7 @@ using UnityEngine;
 // Needed namespace
 using SparkGameCore.MainSystems;
 
-public class CameraDemo : DemoSceneTemplate
+public class CameraDemo : SparkCoreDemoSceneTemplate
 {
     //  Pool Maneger Instance
     CamSystem camSystem;

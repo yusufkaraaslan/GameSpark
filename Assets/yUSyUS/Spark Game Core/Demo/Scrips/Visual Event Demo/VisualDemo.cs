@@ -5,7 +5,7 @@ using UnityEngine;
 // Needed namespace
 using SparkGameCore.MainSystems;
 
-public class VisualDemo : DemoSceneTemplate
+public class VisualDemo : SparkCoreDemoSceneTemplate
 {
     //  Pool Maneger Instance
     UIManeger ui;

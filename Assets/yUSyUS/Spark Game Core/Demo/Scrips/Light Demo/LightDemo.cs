@@ -6,7 +6,7 @@ using UnityEngine;
 // Needed namespace
 using SparkGameCore.MainSystems;
 
-public class LightDemo : DemoSceneTemplate
+public class LightDemo : SparkCoreDemoSceneTemplate
 {
     [SerializeField] Slider intensity, range;
     [SerializeField] GameObject sceneRoot;

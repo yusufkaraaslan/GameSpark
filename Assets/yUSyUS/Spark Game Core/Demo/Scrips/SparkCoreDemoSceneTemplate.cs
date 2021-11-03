@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DemoSceneTemplate : MonoBehaviour
+public class SparkCoreDemoSceneTemplate : MonoBehaviour
 {
     public virtual void StartDemo()
     {
