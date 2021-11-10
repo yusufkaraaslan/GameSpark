@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace  SparkGameCore.MainSystems
+namespace  SparkGameCore
 {
     public class BasicFunction : FunctionWorker
     {
-        Action action;
+        Func<bool> action;
 
-        public BasicFunction(Action action)
+        public BasicFunction(Func<bool> action)
         {
             this.action = action ?? throw new ArgumentNullException(nameof(action));
         }
 
         public override bool Work()
         {
-            action();
-
-            return true;
+            return action();
         }
     }
 }

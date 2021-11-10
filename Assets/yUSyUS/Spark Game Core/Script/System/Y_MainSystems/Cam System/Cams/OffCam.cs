@@ -4,15 +4,11 @@ using UnityEngine;
 
 namespace SparkGameCore
 {
-    namespace MainSystems
+    public class OffCam : ICam
     {
-        public class OffCam : ICam
+        public override void UpdateCam()
         {
-            public override void UpdateCam()
-            {
 
-            }
         }
     }
-
 }

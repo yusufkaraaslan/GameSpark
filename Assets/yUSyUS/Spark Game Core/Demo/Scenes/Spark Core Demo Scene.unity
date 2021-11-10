@@ -8944,6 +8944,8 @@ MonoBehaviour:
   IsOn: 0
   LockSystem: 0
   CloseObjectOnDespawn: 1
+  PoolInitilazeSize: 10
+  PoolMaxSize: 500
   poolObjects:
   - {fileID: 5703795542677504306, guid: b23f5e1915b20c8438a438d731ddbf32, type: 3}
   - {fileID: 131172322995482522, guid: 608ecc240d223374eba6b9034014fb47, type: 3}

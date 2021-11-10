@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SparkGameCore.MainSystems;
 
-namespace SparkGameCore.MainSystems
+namespace SparkGameCore
 {
     [System.Serializable]
     public class VisualEventController : SparkGameCoreModule

@@ -4,31 +4,27 @@ using UnityEngine;
 
 namespace SparkGameCore
 {
-    namespace MainSystems
+    public class ImmediateCamLayout : Layout
     {
-        public class ImmediateCamLayout : Layout
+        public GameObject camPose;
+        public bool useRot;
+
+        [SerializeField] GameObject[] closeObject;
+
+        private void Start()
         {
-            public GameObject camPose;
-            public bool useRot;
+            initilaze();
 
-            [SerializeField] GameObject[] closeObject;
-
-            private void Start()
+            for (int i = 0; i < closeObject.Length; i++)
             {
-                initilaze();
-
-                for (int i = 0; i < closeObject.Length; i++)
-                {
-                    closeObject[i].SetActive(false);
-                }
-            }
-
-            public override void initilaze()
-            {
-                AddGameObject("camPose", camPose);
-                AddBool("useRot", useRot);
+                closeObject[i].SetActive(false);
             }
         }
-    }
 
+        public override void initilaze()
+        {
+            AddGameObject("camPose", camPose);
+            AddBool("useRot", useRot);
+        }
+    }
 }

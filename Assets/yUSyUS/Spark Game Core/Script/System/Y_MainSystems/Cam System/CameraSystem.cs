@@ -1,23 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Runtime.Serialization;
+using SparkGameCore.MainSystems;
 
-namespace SparkGameCore.MainSystems
+namespace SparkGameCore
 {
     [System.Serializable]
-    public class CamSystem : SparkGameCoreModule
+    public class CameraSystem : SparkGameCoreModule
     {
         List<GameCam> cams;
-        private static CamSystem maneger;
+        private static CameraSystem maneger;
 
         public CameraSettingData cameraSetting;
 
-        public static CamSystem GetInstance()
+        public static CameraSystem GetInstance()
         {
             if (maneger == null)
             {
-                maneger = new CamSystem();
+                maneger = new CameraSystem();
             }
 
             return maneger;
@@ -60,7 +60,7 @@ namespace SparkGameCore.MainSystems
             return null;
         }
 
-        private CamSystem()
+        private CameraSystem()
         {
 
         }

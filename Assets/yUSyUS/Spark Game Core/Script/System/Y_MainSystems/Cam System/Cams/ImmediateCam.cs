@@ -4,46 +4,42 @@ using UnityEngine;
 
 namespace SparkGameCore
 {
-    namespace MainSystems
+    public class ImmediateCam : ICam
     {
-        public class ImmediateCam : ICam
+        public override void initilaze(GameObject cam, Layout layout)
         {
-            public override void initilaze(GameObject cam, Layout layout)
+            layout.initilaze();
+            base.initilaze(cam, layout);
+
+            Dictionary<string, object> tmp = layout.GetCamData();
+
+            GameObject camPose;
+            bool useRot;
+
+            camPose = (GameObject)tmp["camPose"];
+            useRot = (bool)tmp["useRot"];
+
+            cam.transform.position = camPose.transform.position;
+
+            if (useRot)
             {
-                layout.initilaze();
-                base.initilaze(cam, layout);
-
-                Dictionary<string, object> tmp = layout.GetCamData();
-
-                GameObject camPose;
-                bool useRot;
-
-                camPose = (GameObject)tmp["camPose"];
-                useRot = (bool)tmp["useRot"];
-
-                cam.transform.position = camPose.transform.position;
-
-                if (useRot)
-                {
-                    cam.transform.rotation = camPose.transform.rotation;
-                }
-            }
-
-            public void SetPose(ImmediateCamLayout l)
-            {
-                cam.transform.position = l.camPose.transform.position;
-
-                if (l.useRot)
-                {
-                    cam.transform.rotation = l.camPose.transform.rotation;
-                }
-            }
-
-            public override void UpdateCam()
-            {
-
+                cam.transform.rotation = camPose.transform.rotation;
             }
         }
-    }
 
+        public void SetPose(ImmediateCamLayout l)
+        {
+            cam.transform.position = l.camPose.transform.position;
+
+            if (l.useRot)
+            {
+                cam.transform.rotation = l.camPose.transform.rotation;
+            }
+        }
+
+        public override void UpdateCam()
+        {
+
+        }
+    }
 }

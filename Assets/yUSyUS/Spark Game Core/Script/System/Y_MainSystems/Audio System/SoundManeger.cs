@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Runtime.Serialization;
+using SparkGameCore.MainSystems;
 
-namespace SparkGameCore.MainSystems
+namespace SparkGameCore
 {
     [System.Serializable]
     public class SoundManeger : SparkGameCoreModule

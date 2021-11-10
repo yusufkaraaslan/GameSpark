@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Needed namespace
-using SparkGameCore.MainSystems;
+using SparkGameCore;
 
-public class UIDemo : SparkCoreDemoSceneTemplate
+public class SparkUIDemo : SparkCoreDemoSceneTemplate
 {
     //  Pool Maneger Instance
     UIManeger ui;

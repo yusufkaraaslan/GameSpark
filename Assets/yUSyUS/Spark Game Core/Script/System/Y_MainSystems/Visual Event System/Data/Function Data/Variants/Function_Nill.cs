@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace  SparkGameCore.MainSystems
+namespace  SparkGameCore
 {
     public class Function_Nill : FunctionWorker
     {

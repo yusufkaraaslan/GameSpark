@@ -20,7 +20,7 @@ namespace SparkGameCore
         public UIManeger ui;
         public UISettingData UISetting;
 
-        public CamSystem cam;
+        public CameraSystem cam;
         public CameraSettingData cameraSetting;
 
         public VisualEventController visualEvent;
@@ -297,7 +297,7 @@ namespace SparkGameCore
 
             if (CurrScene.CameraSystem)
             {
-                cam = CamSystem.GetInstance();
+                cam = CameraSystem.GetInstance();
                 cam.cameraSetting = cameraSetting;
                 cam.initilaze();
             }

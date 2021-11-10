@@ -4,82 +4,78 @@ using UnityEngine;
 
 namespace SparkGameCore
 {
-    namespace MainSystems
+    public abstract class Layout : MonoBehaviour
     {
-        public abstract class Layout : MonoBehaviour
+        Dictionary<string, object> data = new Dictionary<string, object>();
+
+        public Dictionary<string, object> GetCamData()
         {
-            Dictionary<string, object> data = new Dictionary<string, object>();
+            return data;
+        }
 
-            public Dictionary<string, object> GetCamData()
+        protected void AddFloat(string name, float f)
+        {
+            if (data.ContainsKey(name))
             {
-                return data;
+                data[name] = f;
             }
-
-            protected void AddFloat(string name, float f)
+            else
             {
-                if (data.ContainsKey(name))
-                {
-                    data[name] = f;
-                }
-                else
-                {
-                    data.Add(name, f);
-                }
-            }
-
-            protected void AddGameObject(string name, GameObject g)
-            {
-                if (data.ContainsKey(name))
-                {
-                    data[name] = g;
-                }
-                else
-                {
-                    data.Add(name, g);
-                }
-            }
-
-            protected void AddVector3(string name, Vector3 v)
-            {
-                if (data.ContainsKey(name))
-                {
-                    data[name] = v;
-                }
-                else
-                {
-                    data.Add(name, v);
-                }
-            }
-
-            protected void AddBool(string name, bool b)
-            {
-                if (data.ContainsKey(name))
-                {
-                    data[name] = b;
-                }
-                else
-                {
-                    data.Add(name, b);
-                }
-            }
-
-            protected void AddQuaternion(string name, Quaternion q)
-            {
-                if (data.ContainsKey(name))
-                {
-                    data[name] = q;
-                }
-                else
-                {
-                    data.Add(name, q);
-                }
-            }
-
-            public virtual void initilaze()
-            {
-
+                data.Add(name, f);
             }
         }
-    }
 
+        protected void AddGameObject(string name, GameObject g)
+        {
+            if (data.ContainsKey(name))
+            {
+                data[name] = g;
+            }
+            else
+            {
+                data.Add(name, g);
+            }
+        }
+
+        protected void AddVector3(string name, Vector3 v)
+        {
+            if (data.ContainsKey(name))
+            {
+                data[name] = v;
+            }
+            else
+            {
+                data.Add(name, v);
+            }
+        }
+
+        protected void AddBool(string name, bool b)
+        {
+            if (data.ContainsKey(name))
+            {
+                data[name] = b;
+            }
+            else
+            {
+                data.Add(name, b);
+            }
+        }
+
+        protected void AddQuaternion(string name, Quaternion q)
+        {
+            if (data.ContainsKey(name))
+            {
+                data[name] = q;
+            }
+            else
+            {
+                data.Add(name, q);
+            }
+        }
+
+        public virtual void initilaze()
+        {
+
+        }
+    }
 }

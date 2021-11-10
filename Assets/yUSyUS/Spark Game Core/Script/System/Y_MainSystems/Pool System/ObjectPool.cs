@@ -51,7 +51,7 @@ namespace SparkGameCore
                 int i = 0;
                 for (; i < objPool.Count; i++)
                 {
-                    if (objPool[i].InUse)
+                    if (!objPool[i].InUse)
                     {
                         objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj);
                         return objPool[i];
@@ -62,7 +62,7 @@ namespace SparkGameCore
                 {
                     for (; i < objPool.Count; ++i)
                     {
-                        if (objPool[i].InUse)
+                        if (!objPool[i].InUse)
                         {
                             objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj);
                             return objPool[i];

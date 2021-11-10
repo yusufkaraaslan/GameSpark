@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Needed namespace
-using SparkGameCore.MainSystems;
+using SparkGameCore;
 
-public class PoolDemo : SparkCoreDemoSceneTemplate
+public class SparkPoolDemo : SparkCoreDemoSceneTemplate
 {
     [SerializeField] GameObject spawnPose;
 

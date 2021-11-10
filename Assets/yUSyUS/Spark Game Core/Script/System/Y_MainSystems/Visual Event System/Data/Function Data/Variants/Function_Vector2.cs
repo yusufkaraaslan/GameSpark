@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace SparkGameCore.MainSystems
+namespace SparkGameCore
 {
-    public class Function_type1 : FunctionWorker
+    public class Function_Vector2 : FunctionWorker
     {
-        public Action<Vector2> action;
+        public Func<Vector2,bool> action;
         public Vector2 input;
 
-        public Function_type1(Action<Vector2> action, Vector2 input)
+        public Function_Vector2(Func<Vector2, bool> action, Vector2 input)
         {
             this.action = action ?? throw new ArgumentNullException(nameof(action));
             this.input = input;
@@ -18,9 +18,7 @@ namespace SparkGameCore.MainSystems
 
         public override bool Work()
         {
-            action(input);
-
-            return true;
+            return action(input);
         }
     }
 

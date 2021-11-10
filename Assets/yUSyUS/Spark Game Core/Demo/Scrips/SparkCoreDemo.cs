@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 // Needed namespace
-using SparkGameCore.MainSystems;
+using SparkGameCore;
 
 public class SparkCoreDemo : MonoBehaviour
 {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Needed namespace
-using SparkGameCore.MainSystems;
+using SparkGameCore;
 
 public class CameraDemo : SparkCoreDemoSceneTemplate
 {
     //  Pool Maneger Instance
-    CamSystem camSystem;
+    CameraSystem camSystem;
     UIManeger ui;
 
     [SerializeField] ImmediateCamLayout defult, pose1, pose2;
@@ -21,7 +21,7 @@ public class CameraDemo : SparkCoreDemoSceneTemplate
         cubeTrain.SetActive(false);
 
         //  Get Maneger Instance
-        camSystem = CamSystem.GetInstance();
+        camSystem = CameraSystem.GetInstance();
         ui = UIManeger.GetInstance();
     }
 

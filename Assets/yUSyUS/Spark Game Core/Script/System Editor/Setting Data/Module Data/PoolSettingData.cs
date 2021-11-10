@@ -10,7 +10,7 @@ public class PoolSettingData : DataTemplate
     public bool IsOn = false;
 
     public bool LockSystem;
-    public bool CloseObjectOnDespawn;
+    public bool CloseObjectOnDespawn = true;
 
     public int PoolInitilazeSize = 10;
     public int PoolMaxSize = 500;

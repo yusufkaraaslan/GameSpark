@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCharacter : MonoBehaviour
+public class SparkDemoGuy : MonoBehaviour
 {
     Vector3 respartPos;
     Quaternion resetRot;

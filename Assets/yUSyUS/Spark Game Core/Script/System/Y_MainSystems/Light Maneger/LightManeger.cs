@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SparkGameCore.MainSystems;
 
-namespace SparkGameCore.MainSystems
+namespace SparkGameCore
 {
     public class LightManeger : SparkGameCoreModule
     {

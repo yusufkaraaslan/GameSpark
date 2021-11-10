@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Needed namespace
-using SparkGameCore.MainSystems;
+using SparkGameCore;
 
-public class VisualDemo : SparkCoreDemoSceneTemplate
+public class SparkVisualDemo : SparkCoreDemoSceneTemplate
 {
     //  Pool Maneger Instance
     UIManeger ui;
@@ -13,12 +13,12 @@ public class VisualDemo : SparkCoreDemoSceneTemplate
 
     [SerializeField] GameObject sceneRoot;
     [SerializeField] Checkpoint target1, target2, target3;
-    [SerializeField] GameCharacter agentC, enemy;
+    [SerializeField] SparkDemoGuy agentC, enemy;
     
     [SerializeField] BasicFollowCamLayout followCam;
     [SerializeField] ImmediateCamLayout defultPose;
 
-    [SerializeField] ColorChanger endWall;
+    [SerializeField] SparkColorChanger endWall;
 
     private void Start()
     {
@@ -117,14 +117,15 @@ public class VisualDemo : SparkCoreDemoSceneTemplate
         visualEvent.ClearAllEvents();
     }
 
-    void SetFollowCam()
+    bool SetFollowCam()
     {
-        CamSystem.GetInstance().SetCam("Main", new BasicFollowCam(), followCam);
+        CameraSystem.GetInstance().SetCam("Main", new BasicFollowCam(), followCam);
+        return true;
     }
 
     void ResetSetup()
     {
-        CamSystem.GetInstance().SetCam("Main", new ImmediateCam(), defultPose);
+        CameraSystem.GetInstance().SetCam("Main", new ImmediateCam(), defultPose);
 
         agentC.ResetCheracter();
         enemy.ResetCheracter();
