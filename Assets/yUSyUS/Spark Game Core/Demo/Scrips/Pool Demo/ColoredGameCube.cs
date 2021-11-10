@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SparkGameCore.MainSystems;
 
-public class ColoredGameCube : PoolObj
+public class ColoredGameCube : PoolObject
 {
     Material material;
 

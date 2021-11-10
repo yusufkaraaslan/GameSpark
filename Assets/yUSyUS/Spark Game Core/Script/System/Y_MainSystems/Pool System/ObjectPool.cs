@@ -6,24 +6,24 @@ namespace SparkGameCore
 {
     namespace MainSystems
     {
-        public class ObjPool
+        public class ObjectPool
         {
             public string poolName;
             GameObject waitingPos;
-            List<PoolObj> objPool;
+            List<PoolObject> objPool;
             GameObject ObjPref;
 
-            [SerializeField]
-            int initSize = 10;
-            [SerializeField]
-            int MaxPoolSize = 500;
+            int initSize;
+            int MaxPoolSize;
 
-            public void initilaze(GameObject sample)
+            public void initilaze(GameObject sample, PoolSettingData settingData)
             {
-                //Debug.Log(sample.transform.name);
-                poolName = sample.GetComponent<PoolObj>().objName;
-                objPool = new List<PoolObj>();
+                poolName = sample.GetComponent<PoolObject>().objName;
+                objPool = new List<PoolObject>();
                 ObjPref = sample;
+
+                initSize = settingData.PoolInitilazeSize;
+                MaxPoolSize = settingData.PoolMaxSize;
 
                 waitingPos = GameObject.FindGameObjectWithTag("PoolWaiting");
 
@@ -33,26 +33,27 @@ namespace SparkGameCore
                 }
             }
 
-            public void Reload(bool restartObj)
+            public void Reload()
             {
                 for (int i = 0; i < objPool.Count; i++)
                 {
-                    objPool[i].DespawnObj(restartObj);
+                    objPool[i].DespawnObj();
                 }
             }
 
-            public PoolObj GetObj(Transform pos, bool useRotation, bool useScale = false)
+            public PoolObject GetObj(Transform pos, bool useRotation, bool useScale = false)
             {
                 return GetObj(pos.position, useRotation, pos.rotation, useScale, pos.localScale);
             }
 
-            public PoolObj GetObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject obj = null)
+            public PoolObject GetObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject obj = null)
             {
                 int i = 0;
                 for (; i < objPool.Count; i++)
                 {
-                    if (objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj))
+                    if (objPool[i].InUse)
                     {
+                        objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj);
                         return objPool[i];
                     }
                 }
@@ -61,8 +62,9 @@ namespace SparkGameCore
                 {
                     for (; i < objPool.Count; ++i)
                     {
-                        if (objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj))
+                        if (objPool[i].InUse)
                         {
+                            objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj);
                             return objPool[i];
                         }
                     }
@@ -74,7 +76,7 @@ namespace SparkGameCore
             void AddPool()
             {
                 GameObject obj = MonoBehaviour.Instantiate(ObjPref, waitingPos.transform);
-                PoolObj tmp = obj.GetComponent<PoolObj>();
+                PoolObject tmp = obj.GetComponent<PoolObject>();
 
                 tmp.initilaze();
                 tmp.DespawnObj();

@@ -12,7 +12,10 @@ public class PoolSettingData : DataTemplate
     public bool LockSystem;
     public bool CloseObjectOnDespawn;
 
-    public PoolObj[] poolObjects;
+    public int PoolInitilazeSize = 10;
+    public int PoolMaxSize = 500;
+
+    public PoolObject[] poolObjects;
     
     public override void DrawTap()
     {
@@ -23,6 +26,14 @@ public class PoolSettingData : DataTemplate
 
         SerializedProperty closeOnDespawn = soTarget.FindProperty("CloseObjectOnDespawn");
         EditorGUILayout.PropertyField(closeOnDespawn);
+        GUILayout.Space(elementSpace);
+
+        SerializedProperty poolInitilazeSize = soTarget.FindProperty("PoolInitilazeSize");
+        EditorGUILayout.PropertyField(poolInitilazeSize);
+        GUILayout.Space(elementSpace);
+
+        SerializedProperty poolMaxSize = soTarget.FindProperty("PoolMaxSize");
+        EditorGUILayout.PropertyField(poolMaxSize);
         GUILayout.Space(elementSpace);
 
         SerializedProperty poolObjs = soTarget.FindProperty("poolObjects");

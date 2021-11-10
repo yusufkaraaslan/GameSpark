@@ -6,7 +6,7 @@ namespace SparkGameCore
 {
     namespace MainSystems
     {
-        public class PoolParticles : PoolObj
+        public class PoolParticles : PoolObject
         {
             [SerializeField]
             bool loopParticle;

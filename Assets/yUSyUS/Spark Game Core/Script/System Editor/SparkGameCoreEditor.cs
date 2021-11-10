@@ -9,7 +9,7 @@ namespace SparkGameCore
     public class SparkGameCoreEditor : Editor
     {
         int MainToolbarInt = 0;
-        string[] toolbarStrings = { "integration", "Systems", "Settings" };
+        string[] toolbarStrings = { "Systems", "integration", "Settings" };
 
         int systemToolbarInd = 0;
         string systemToolbarString;
@@ -52,13 +52,13 @@ namespace SparkGameCore
             {
                 case 0:
 
-                    DrawIntegrationTap();
+                    DrawSystemsTap();
 
                     break;
 
                 case 1:
 
-                    DrawSystemsTap();
+                    DrawIntegrationTap();
 
                     break;
 

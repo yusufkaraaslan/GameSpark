@@ -7,7 +7,7 @@ namespace SparkGameCore
     namespace MainSystems
     {
         [System.Serializable]
-        public class PoolObj : MonoBehaviour
+        public class PoolObject : MonoBehaviour
         {
             public string objName;
             protected bool inUse;
@@ -16,6 +16,8 @@ namespace SparkGameCore
             Vector3 restartPos, restartScale;
             Quaternion restartRot;
             GameObject restartParent;
+
+            public bool InUse { get => inUse; }
 
             public virtual void initilaze()
             {
@@ -30,11 +32,6 @@ namespace SparkGameCore
 
             public virtual bool SpawnObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject p = null)
             {
-                if (inUse)
-                {
-                    return false;
-                }
-
                 inUse = true;
                 obj.transform.position = pos;
                 if (useRotation)
@@ -54,9 +51,9 @@ namespace SparkGameCore
                 return true;
             }
 
-            public virtual void DespawnObj(bool restartObj = true)
+            public virtual void DespawnObj()
             {
-                DespawnObjWork(restartObj);
+                DespawnObjWork();
 
                 if (PoolSystem.GetInstance().poolSetting.CloseObjectOnDespawn)
                 {
@@ -64,25 +61,21 @@ namespace SparkGameCore
                 }
             }
 
-            protected void DespawnObjWork(bool restartObj)
+            protected void DespawnObjWork()
             {
-                if (restartObj)
-                {
-                    obj.transform.position = restartPos;
-                    obj.transform.rotation = restartRot;
-                    obj.transform.localScale = restartScale;
-                    RestartParent();
+                obj.transform.position = restartPos;
+                obj.transform.rotation = restartRot;
+                obj.transform.localScale = restartScale;
+                RestartParent();
 
-                    inUse = false;
-                }
-
+                inUse = false;
             }
 
             public void RestartParent()
             {
                 obj.transform.SetParent(restartParent.transform);
             }
-
+            
         }
     }
 }

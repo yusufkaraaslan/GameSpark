@@ -7,20 +7,20 @@ namespace SparkGameCore.MainSystems
     [System.Serializable]
     public class PoolSystem : SparkGameCoreModule
     {
-        private List<ObjPool> pools;
+        private List<ObjectPool> pools;
         private static PoolSystem poolSystem;
 
         public PoolSettingData poolSetting;
 
         public void initilaze()
         {
-            pools = new List<ObjPool>();
+            pools = new List<ObjectPool>();
 
-            ObjPool tmp;
+            ObjectPool tmp;
             for (int i = 0; i < poolSetting.poolObjects.Length; i++)
             {
-                tmp = new ObjPool();
-                tmp.initilaze(poolSetting.poolObjects[i].gameObject);
+                tmp = new ObjectPool();
+                tmp.initilaze(poolSetting.poolObjects[i].gameObject, poolSetting);
                 pools.Add(tmp);
             }
         }
@@ -38,7 +38,7 @@ namespace SparkGameCore.MainSystems
         /*
          *  Using Vector3
          */
-        public PoolObj GetObj(string objName,Vector3 pos, GameObject setParent = null)
+        public PoolObject GetObj(string objName,Vector3 pos, GameObject setParent = null)
         {
             if (setParent == null)
             {
@@ -50,7 +50,7 @@ namespace SparkGameCore.MainSystems
             }
         }
 
-        public PoolObj GetObj(string objName, Vector3 pos, Quaternion rot, GameObject setParent = null)
+        public PoolObject GetObj(string objName, Vector3 pos, Quaternion rot, GameObject setParent = null)
         {
             if (setParent == null)
             {
@@ -62,7 +62,7 @@ namespace SparkGameCore.MainSystems
             }
         }
         
-        public PoolObj GetObj(string objName, Vector3 pos, Vector3 scale, GameObject setParent = null)
+        public PoolObject GetObj(string objName, Vector3 pos, Vector3 scale, GameObject setParent = null)
         {
             if (setParent == null)
             {
@@ -74,7 +74,7 @@ namespace SparkGameCore.MainSystems
             }
         }
 
-        public PoolObj GetObj(string objName, Vector3 pos, Quaternion rot, Vector3 scale, GameObject setParent = null)
+        public PoolObject GetObj(string objName, Vector3 pos, Quaternion rot, Vector3 scale, GameObject setParent = null)
         {
             if (setParent == null)
             {
@@ -89,41 +89,41 @@ namespace SparkGameCore.MainSystems
         /*
          *  Using Gameobject
          */
-        public PoolObj GetObj(string objName, Transform targetObj, bool setParent = false)
+        public PoolObject GetObj(string objName, Transform targetObj, bool setParent = false)
         {
             return GetObj(objName, targetObj.position, false, Quaternion.identity, false, Vector3.one,
                 setParent, targetObj.gameObject);
         }
 
-        public PoolObj GetObj(string objName, Transform targetObj, bool setRot, bool setScale, bool setParent = false)
+        public PoolObject GetObj(string objName, Transform targetObj, bool setRot, bool setScale, bool setParent = false)
         {
             return GetObj(objName, targetObj.position, setRot, targetObj.rotation, setScale, targetObj.localScale,
                 setParent, targetObj.gameObject);
         }
 
 
-        public void ClearPool(string objName, bool restartObj = true)
+        public void ClearPool(string objName)
         {
 
             for (int i = 0; i < pools.Count; i++)
             {
                 if (pools[i].poolName == objName)
                 {
-                    pools[i].Reload(restartObj);
+                    pools[i].Reload();
                 }
             }
         }
 
-        public void ClearPool(bool restartObj = true)
+        public void ClearPool()
         {
             for (int i = 0; i < pools.Count; i++)
             {
-                pools[i].Reload(restartObj);
+                pools[i].Reload();
             }
         }
 
 
-        private PoolObj GetObj(string objName, Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
+        private PoolObject GetObj(string objName, Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
             bool setParrent = false, GameObject obj = null)
         {
             for (int i = 0; i < pools.Count; i++)
