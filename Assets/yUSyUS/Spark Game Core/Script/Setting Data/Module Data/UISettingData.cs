@@ -1,35 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using SparkGameCore.MainSystems;
 
 [System.Serializable]
-public class VisualEventSettingData : DataTemplate
+public class UISettingData : DataTemplate
 {
     public bool LockSystem;
-    public bool UseFixedUpdate;
+    public bool ClearAllUIOnStart;
 
-    public VisualEventProfile[] visualEventTemplates;
+    public UISetup[] setups;
 
     public override void DrawTap()
     {
+#if UNITY_EDITOR
         SerializedObject soTarget = new SerializedObject(this);
         GUILayout.Space(sectionSpace);
 
         EditorGUI.BeginChangeCheck();
 
-        SerializedProperty useFixed = soTarget.FindProperty("UseFixedUpdate");
-        EditorGUILayout.PropertyField(useFixed);
+        SerializedProperty clearAll = soTarget.FindProperty("ClearAllUIOnStart");
+        EditorGUILayout.PropertyField(clearAll);
         GUILayout.Space(elementSpace);
 
-        SerializedProperty events = soTarget.FindProperty("visualEventTemplates");
-        EditorGUILayout.PropertyField(events);
+        SerializedProperty uiSetups = soTarget.FindProperty("setups");
+        EditorGUILayout.PropertyField(uiSetups);
         GUILayout.Space(elementSpace);
 
         if (EditorGUI.EndChangeCheck())
         {
             soTarget.ApplyModifiedProperties();
         }
+#endif
     }
 }

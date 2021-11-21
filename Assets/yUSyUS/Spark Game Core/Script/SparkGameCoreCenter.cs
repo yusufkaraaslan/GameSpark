@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SparkGameCore.MainSystems;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace SparkGameCore
 {
@@ -256,6 +258,7 @@ namespace SparkGameCore
 
         public static void CreateTag(string tag)
         {
+#if UNITY_EDITOR
             var asset = AssetDatabase.LoadMainAssetAtPath("ProjectSettings/TagManager.asset");
             if (asset != null)
             { // sanity checking
@@ -275,6 +278,7 @@ namespace SparkGameCore
                 so.ApplyModifiedProperties();
                 so.Update();
             }
+#endif
         }
 
         //  Workflow

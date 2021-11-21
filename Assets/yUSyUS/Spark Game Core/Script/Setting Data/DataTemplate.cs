@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public abstract class DataTemplate: ScriptableObject
 {
+#if UNITY_EDITOR
     protected SerializedObject myView;
+#endif
 
     public static float elementSpace = 5;
     public static float sectionSpace = 20;

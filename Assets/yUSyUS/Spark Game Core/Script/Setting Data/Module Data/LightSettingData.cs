@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using SparkGameCore.MainSystems;
 
@@ -11,6 +13,7 @@ public class LightSettingData : DataTemplate
 
     public override void DrawTap()
     {
+#if UNITY_EDITOR
         SerializedObject soTarget = new SerializedObject(this);
         GUILayout.Space(sectionSpace);
 
@@ -24,5 +27,6 @@ public class LightSettingData : DataTemplate
         {
             soTarget.ApplyModifiedProperties();
         }
+#endif
     }
 }
