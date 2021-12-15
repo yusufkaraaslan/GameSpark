@@ -9,13 +9,13 @@ namespace GameSpark
     {
         public string objName;
         protected bool inUse;
+        public bool InUse { get => inUse; }
+
         protected GameObject obj;
 
         Vector3 restartPos, restartScale;
         Quaternion restartRot;
         GameObject restartParent;
-
-        public bool InUse { get => inUse; }
 
         public virtual void initilaze()
         {
@@ -28,7 +28,7 @@ namespace GameSpark
             restartParent = transform.parent.gameObject;
         }
 
-        public virtual bool SpawnObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject p = null)
+        public virtual void SpawnObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject p = null)
         {
             inUse = true;
             obj.transform.position = pos;
@@ -45,8 +45,6 @@ namespace GameSpark
                 obj.transform.SetParent(p.transform);
 
             obj.SetActive(true);
-
-            return true;
         }
 
         public virtual void DespawnObj()

@@ -4,37 +4,39 @@ using UnityEngine;
 
 namespace GameSpark
 {
-    namespace MainSystems
+    public class PoolParticles : PoolObject
     {
-        public class PoolParticles : PoolObject
+        ParticleSystem particle;
+
+        bool loopParticle;
+        float completeTime;
+        float destrotTime;
+
+        public override void initilaze()
         {
-            [SerializeField]
-            bool loopParticle;
-            [SerializeField]
-            float completeTime;
-            float destrotTime;
+            base.initilaze();
+            particle = GetComponent<ParticleSystem>();
 
-            public override bool SpawnObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject p = null)
+            loopParticle = particle.main.loop;
+            completeTime = particle.main.duration;
+        }
+
+        public override void SpawnObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject p = null)
+        {
+            base.SpawnObj(pos, useRotation, rot, useScale, scale, setParent, p);
+
+            obj.SetActive(true);
+            destrotTime = Time.time + completeTime;
+
+        }
+
+        void Update()
+        {
+            if (!loopParticle && inUse)
             {
-                bool res = base.SpawnObj(pos, useRotation, rot, useScale, scale, setParent, p);
-
-                if (res)
+                if (Time.time >= destrotTime)
                 {
-                    obj.SetActive(true);
-                    destrotTime = Time.time + completeTime;
-                }
-
-                return res;
-            }
-
-            void Update()
-            {
-                if (!loopParticle && inUse)
-                {
-                    if (Time.time >= destrotTime)
-                    {
-                        DespawnObj();
-                    }
+                    DespawnObj();
                 }
             }
         }

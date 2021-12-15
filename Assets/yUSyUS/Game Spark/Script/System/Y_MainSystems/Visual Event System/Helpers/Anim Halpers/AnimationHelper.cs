@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark.MainSystems
+namespace GameSpark.Plus
 {
-    public class AnimationHelper : HelperBase
+    public class AnimationHelper
     {
         AnimOrder animationOrder;
         Animator animator;
@@ -20,7 +20,8 @@ namespace GameSpark.MainSystems
             animator = animationOrder.anim;
             animControllerProxy = animator.GetComponent<AnimControllerProxy>();
         }
-        public override bool IsComplete()
+
+        public bool IsComplete()
         {
             if (animationOrder.waitForAnimEnd)
             {
@@ -29,6 +30,7 @@ namespace GameSpark.MainSystems
 
             return true;
         }
+
         private void Wait(float delay, AnimState animState)
         {
             if (!isWaiting)
@@ -45,6 +47,7 @@ namespace GameSpark.MainSystems
                 }
             }
         }
+
         private void SetCondition()
         {
             //foreach (string x in animationOrder.boolCondition.Keys)
@@ -73,7 +76,7 @@ namespace GameSpark.MainSystems
                 animator.SetInteger(x.key, x.value);
             }
         }
-        public override void Work()
+        public void Work()
         {
             switch (state)
             {
@@ -106,7 +109,6 @@ namespace GameSpark.MainSystems
         }
         
     }
-
 }
 
 public enum AnimState

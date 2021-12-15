@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark
+namespace GameSpark.Plus
 {
     public class OffCam : ICam
     {

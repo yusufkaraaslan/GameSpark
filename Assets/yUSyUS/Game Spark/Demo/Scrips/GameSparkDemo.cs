@@ -12,7 +12,7 @@ public class GameSparkDemo : MonoBehaviour
     [SerializeField]Text demoText;
 
     //  Maneger Instances
-    UIManeger ui;
+    UIManager ui;
 
     //  Demo Scene Maneger
     [SerializeField] GameSparkDemoSceneTemplate poolDemo, uiDemo, cameraDemo, visualEventDemo, soundDemo, lightDemo;
@@ -22,7 +22,7 @@ public class GameSparkDemo : MonoBehaviour
     private void Start()
     {
         //  Get Maneger Instance
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
 
         ui.OpenUIClean("Menu");
         ui.OpenUI("StartButton");

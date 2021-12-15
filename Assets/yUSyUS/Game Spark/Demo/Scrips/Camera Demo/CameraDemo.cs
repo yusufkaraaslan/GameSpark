@@ -9,9 +9,9 @@ public class CameraDemo : GameSparkDemoSceneTemplate
 {
     //  Pool Maneger Instance
     CameraSystem camSystem;
-    UIManeger ui;
+    UIManager ui;
 
-    [SerializeField] ImmediateCamLayout defult, pose1, pose2;
+    [SerializeField] FixedCamLayout defult, pose1, pose2;
     [SerializeField] BasicFollowCamLayout followPose;
 
     [SerializeField] GameObject sceneRoot, cubeTrain;
@@ -22,7 +22,7 @@ public class CameraDemo : GameSparkDemoSceneTemplate
 
         //  Get Maneger Instance
         camSystem = CameraSystem.GetInstance();
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
     }
 
     public override void StartDemo()
@@ -37,7 +37,7 @@ public class CameraDemo : GameSparkDemoSceneTemplate
         ui.CloseUI("CamDemo");
         cubeTrain.SetActive(false);
 
-        camSystem.SetCam("Main", new ImmediateCam(), defult);
+        camSystem.SetCam("Main", defult);
     }
 
     public void SetPose(string pose)
@@ -45,19 +45,19 @@ public class CameraDemo : GameSparkDemoSceneTemplate
         switch (pose)
         {
             case "Defult":
-                camSystem.SetCam("Main", new ImmediateCam(), defult);
+                camSystem.SetCam("Main", defult);
                 break;
 
             case "Pose1":
-                camSystem.SetCam("Main", new ImmediateCam(), pose1);
+                camSystem.SetCam("Main", pose1);
                 break;
 
             case "Pose2":
-                camSystem.SetCam("Main", new ImmediateCam(), pose2);
+                camSystem.SetCam("Main", pose2);
                 break;
 
             case "FollowPose":
-                camSystem.SetCam("Main", new BasicFollowCam(), followPose);
+                camSystem.SetCam("Main", followPose);
                 break;
         }
     }

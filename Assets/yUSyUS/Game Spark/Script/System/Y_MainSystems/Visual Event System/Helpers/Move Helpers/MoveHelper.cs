@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace GameSpark
 {
-    namespace MainSystems
+    namespace Plus
     {
-        public class MoveHelper : HelperBase
+        public class MoveHelper
         {
             MoveLifeState state;
             MoveOrder moves;
             float currTime, realMoveTime;
-            Checkpoint target;
+            SparkMoveCheckpoint target;
             Vector3 startPos;
 
             bool isWaiting;
@@ -30,7 +30,7 @@ namespace GameSpark
                 state = MoveLifeState.PreWaiting;
             }
 
-            public override bool IsComplete()
+            public bool IsComplete()
             {
                 if (moves.waitForMoveEnd)
                 {
@@ -40,7 +40,7 @@ namespace GameSpark
                 return true;
             }
 
-            public override void Work()
+            public void Work()
             {
                 switch (state)
                 {

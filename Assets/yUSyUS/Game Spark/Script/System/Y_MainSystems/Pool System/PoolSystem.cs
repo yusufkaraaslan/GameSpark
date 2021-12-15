@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
 namespace GameSpark
 {
     [System.Serializable]
     public class PoolSystem : GameSparkModule
     {
+        public PoolSettingData poolSetting;
+
         private List<ObjectPool> pools;
         private static PoolSystem poolSystem;
-
-        public PoolSettingData poolSetting;
 
         public void initilaze()
         {
@@ -124,13 +124,13 @@ namespace GameSpark
 
 
         private PoolObject GetObj(string objName, Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale,
-            bool setParrent = false, GameObject obj = null)
+            bool setParent = false, GameObject obj = null)
         {
             for (int i = 0; i < pools.Count; i++)
             {
                 if (string.Compare(pools[i].poolName, objName) == 0)
                 {
-                    return pools[i].GetObj(pos, useRotation, rot, useScale, scale, setParrent, obj);
+                    return pools[i].GetObj(pos, useRotation, rot, useScale, scale, setParent, obj);
                 }
             }
 

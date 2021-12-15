@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark
+namespace GameSpark.Plus
 {
     public class BasicFollowCam : ICam
     {
@@ -16,7 +16,7 @@ namespace GameSpark
         bool lookImmediate, rotImmediateOnInit;
         float rotSpeed;
 
-        public override void initilaze(GameObject cam, Layout layout)
+        public override void initilaze(GameObject cam, SparkCameraLayout layout)
         {
             layout.initilaze();
             base.initilaze(cam, layout);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameSpark
 {
-    namespace MainSystems
+    namespace Plus
     {
         [System.Serializable]
         public class MoveData

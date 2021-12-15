@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark.MainSystems
+namespace GameSpark.Plus
 {
     public class VisualEventRunner : MonoBehaviour
     {

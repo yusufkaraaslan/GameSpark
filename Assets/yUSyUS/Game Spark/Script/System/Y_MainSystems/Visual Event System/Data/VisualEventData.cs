@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
 namespace GameSpark
 {
@@ -25,16 +25,6 @@ namespace GameSpark
         public void SetFunctionData(FunctionData f)
         {
             functionDat = f;
-        }
-
-        public void SetPreDelay(float time)
-        {
-            preDelay = time;
-        }
-
-        public void setPosDelay(float time)
-        {
-            posDelay = time;
         }
 
         public MoveData GetMove()

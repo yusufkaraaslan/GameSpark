@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
 namespace GameSpark
 {
@@ -9,9 +9,6 @@ namespace GameSpark
     public class SoundManeger : GameSparkModule
     {
         static SoundManeger manager;
-
-        List<GameAudio> gameAudios;
-        List<GameAudioSource> audioSources;
 
         public SoundManegerData SettingData;
 
@@ -37,18 +34,8 @@ namespace GameSpark
                 manager = new SoundManeger();
             }
 
-            gameAudios = new List<GameAudio>();
-            audioSources = new List<GameAudioSource>();
-
-            foreach (GameAudio x in SettingData.clips)
-            {
-                gameAudios.Add(x);
-            }
-
             foreach (GameAudioSource source in SettingData.audioSources)
             {
-                audioSources.Add(source);
-
                 source.Init();
 
                 if (source.sourceType == AudioSourceType.Music)
@@ -69,7 +56,7 @@ namespace GameSpark
                 GameAudioSource source = null;
                 GameAudio audio = null;
 
-                foreach (GameAudioSource x in audioSources)
+                foreach (GameAudioSource x in SettingData.audioSources)
                 {
                     if (x.SourceName == sourceName)
                     {
@@ -78,7 +65,7 @@ namespace GameSpark
                     }
                 }
 
-                foreach (GameAudio x in gameAudios)
+                foreach (GameAudio x in SettingData.clips)
                 {
                     if (x.audioName == musicName)
                     {
@@ -101,7 +88,7 @@ namespace GameSpark
                 GameAudioSource source = null;
                 GameAudio audio = null;
 
-                foreach (GameAudioSource x in audioSources)
+                foreach (GameAudioSource x in SettingData.audioSources)
                 {
                     if (x.SourceName == sourceName)
                     {
@@ -110,7 +97,7 @@ namespace GameSpark
                     }
                 }
 
-                foreach (GameAudio x in gameAudios)
+                foreach (GameAudio x in SettingData.clips)
                 {
                     if (x.audioName == soundName)
                     {
@@ -128,7 +115,7 @@ namespace GameSpark
 
         public void StopSource(string sourceName)
         {
-            foreach (GameAudioSource x in audioSources)
+            foreach (GameAudioSource x in SettingData.audioSources)
             {
                 if (x.SourceName == sourceName)
                 {
@@ -140,7 +127,7 @@ namespace GameSpark
 
         public void StopMusic()
         {
-            foreach (GameAudioSource x in audioSources)
+            foreach (GameAudioSource x in SettingData.audioSources)
             {
                 if (x.sourceType == AudioSourceType.Music)
                 {
@@ -151,7 +138,7 @@ namespace GameSpark
 
         public void StopSound()
         {
-            foreach (GameAudioSource x in audioSources)
+            foreach (GameAudioSource x in SettingData.audioSources)
             {
                 if (x.sourceType == AudioSourceType.VfxSound)
                 {
@@ -184,7 +171,7 @@ namespace GameSpark
 
         public void SetSourceVolume(string source, float volume)
         {
-            foreach (GameAudioSource x in audioSources)
+            foreach (GameAudioSource x in SettingData.audioSources)
             {
                 if (x.SourceName == source)
                 {
@@ -198,7 +185,7 @@ namespace GameSpark
         {
             SettingData.musicVolume = volume;
 
-            foreach (GameAudioSource x in audioSources)
+            foreach (GameAudioSource x in SettingData.audioSources)
             {
                 if (x.sourceType == AudioSourceType.Music)
                 {
@@ -211,7 +198,7 @@ namespace GameSpark
         {
             SettingData.soundVolume = volume;
 
-            foreach (GameAudioSource x in audioSources)
+            foreach (GameAudioSource x in SettingData.audioSources)
             {
                 if (x.sourceType == AudioSourceType.VfxSound)
                 {

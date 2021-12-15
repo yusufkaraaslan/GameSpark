@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
 namespace GameSpark
 {
@@ -9,16 +9,16 @@ namespace GameSpark
     public class VisualEventController : GameSparkModule
     {
         #region Singleton
-        private static VisualEventController maneger;
+        private static VisualEventController manager;
 
         public static VisualEventController GetInstance()
         {
-            if (maneger == null)
+            if (manager == null)
             {
-                maneger = new VisualEventController();
+                manager = new VisualEventController();
             }
 
-            return maneger;
+            return manager;
         }
 
         internal void initilaze()
@@ -33,19 +33,19 @@ namespace GameSpark
 
         public static List<VisualEvent> visualEvents;
 
-        public VisualEvent AddVisualEvent(List<VisualEventData> data)
-        {
-            VisualEvent visualEvent = new VisualEvent(data);
-            visualEvents.Add(visualEvent);
-            return visualEvent;
-        }
-
         public VisualEvent AddVisualEvent(VisualEventData data)
         {
             List<VisualEventData> eData = new List<VisualEventData>();
             eData.Add(data);
 
             return AddVisualEvent(eData);
+        }
+
+        public VisualEvent AddVisualEvent(List<VisualEventData> data)
+        {
+            VisualEvent visualEvent = new VisualEvent(data);
+            visualEvents.Add(visualEvent);
+            return visualEvent;
         }
 
         public VisualEventData GetVisualEventData(string eventName)

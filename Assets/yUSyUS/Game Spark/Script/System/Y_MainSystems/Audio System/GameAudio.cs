@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark.MainSystems
+namespace GameSpark.Plus
 {
     [System.Serializable]
     public class GameAudio

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameSpark
 {
-    namespace MainSystems
+    namespace Plus
     {
         [System.Serializable]
         public class AnimOrder
@@ -49,6 +49,7 @@ namespace GameSpark
             public string key;
             public bool value;
         }
+
         [System.Serializable]
         public class IntCondition
         {

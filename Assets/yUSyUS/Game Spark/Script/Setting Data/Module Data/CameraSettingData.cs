@@ -4,37 +4,40 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
-[System.Serializable]
-public class CameraSettingData : DataTemplate
+namespace GameSpark
 {
-    public bool LockSystem;
-    public bool SetOffCamOnRegister;
-
-    public GameCam[] cams;
-
-    public override void DrawTap()
+    [System.Serializable]
+    public class CameraSettingData : DataTemplate
     {
+        public bool LockSystem;
+        public bool SetOffCamOnRegister;
+
+        public GameCam[] cams;
+
+        public override void DrawTap()
+        {
 
 #if UNITY_EDITOR
-        SerializedObject soTarget = new SerializedObject(this);
-        GUILayout.Space(sectionSpace);
+            SerializedObject soTarget = new SerializedObject(this);
+            GUILayout.Space(sectionSpace);
 
-        EditorGUI.BeginChangeCheck();
+            EditorGUI.BeginChangeCheck();
 
-        SerializedProperty offCam = soTarget.FindProperty("SetOffCamOnRegister");
-        EditorGUILayout.PropertyField(offCam);
-        GUILayout.Space(elementSpace);
+            SerializedProperty offCam = soTarget.FindProperty("SetOffCamOnRegister");
+            EditorGUILayout.PropertyField(offCam);
+            GUILayout.Space(elementSpace);
 
-        SerializedProperty gameCams = soTarget.FindProperty("cams");
-        EditorGUILayout.PropertyField(gameCams);
-        GUILayout.Space(elementSpace);
+            SerializedProperty gameCams = soTarget.FindProperty("cams");
+            EditorGUILayout.PropertyField(gameCams);
+            GUILayout.Space(elementSpace);
 
-        if (EditorGUI.EndChangeCheck())
-        {
-            soTarget.ApplyModifiedProperties();
-        }
+            if (EditorGUI.EndChangeCheck())
+            {
+                soTarget.ApplyModifiedProperties();
+            }
 #endif
+        }
     }
 }

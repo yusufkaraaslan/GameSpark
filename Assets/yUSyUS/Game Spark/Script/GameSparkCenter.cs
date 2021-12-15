@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -19,7 +19,7 @@ namespace GameSpark
         public PoolSettingData poolSetting;
         [SerializeReference] GameObject poolWaitPose;
 
-        public UIManeger ui;
+        public UIManager ui;
         public UISettingData UISetting;
 
         public CameraSystem cam;
@@ -294,7 +294,7 @@ namespace GameSpark
 
             if (CurrScene.UISystem)
             {
-                ui = UIManeger.GetInstance();
+                ui = UIManager.GetInstance();
                 ui.UISetting = UISetting;
                 ui.initilaze();
             }

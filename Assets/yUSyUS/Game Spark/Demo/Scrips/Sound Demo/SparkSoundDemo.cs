@@ -10,7 +10,7 @@ public class SparkSoundDemo : GameSparkDemoSceneTemplate
 {
     // Maneger Instance
     SoundManeger soundManeger;
-    UIManeger ui;
+    UIManager ui;
 
     [SerializeField] Slider musicSlider, soundSlider, noiseSlider;
     [SerializeField] GameObject sceneRoot;
@@ -19,7 +19,7 @@ public class SparkSoundDemo : GameSparkDemoSceneTemplate
     {
         //  Get Maneger Instance
         soundManeger = SoundManeger.GetInstance();
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
     }
 
     public override void StartDemo()

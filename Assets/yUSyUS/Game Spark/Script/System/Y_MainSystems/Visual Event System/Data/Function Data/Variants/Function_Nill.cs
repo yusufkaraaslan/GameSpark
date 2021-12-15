@@ -6,24 +6,22 @@ namespace  GameSpark
 {
     public class Function_Nill : FunctionWorker
     {
-        bool waitDone;
-        float destroyTime = -1;
-        float destroyDelay = 3;
+        float completeTime = -1;
+        float completeDelay = 3;
 
-        public Function_Nill(bool waitDone, float destroyTime, float destroyDelay)
+        public Function_Nill(float completeDelay)
         {
-            this.waitDone = waitDone;
-            this.destroyTime = destroyTime;
-            this.destroyDelay = destroyDelay;
+            this.completeTime = -1;
+            this.completeDelay = completeDelay;
         }
 
         public override bool Work()
         {
-            if (destroyTime == -1)
+            if (completeTime == -1)
             {
-                destroyTime = Time.time + destroyDelay;
+                completeTime = Time.time + completeDelay;
             }
-            else if (Time.time <= destroyTime)
+            else if (Time.time > completeTime)
             {
                 return true;
             }

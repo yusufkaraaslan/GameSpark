@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark.MainSystems
+namespace GameSpark.Plus
 {
-    public class FunctionHelper : HelperBase
+    public class FunctionHelper
     {
         FunctionOrder functionOrder;
         FunctionState state;
@@ -20,15 +20,18 @@ namespace GameSpark.MainSystems
             othersComplete = false;
             preWorkDone = false;
         }
+
         public EventWorkPhase GetWorkState()
         {
             return functionOrder.workPhase;
         }
+
         public void CompleteEventFunction()
         {
             othersComplete = true;
         }
-        public override bool IsComplete()
+
+        public bool IsComplete()
         {
             bool res = false;
 
@@ -44,7 +47,8 @@ namespace GameSpark.MainSystems
 
             return res;
         }
-        public override void Work()
+
+        public void Work()
         {
             switch (state)
             {
@@ -98,6 +102,7 @@ namespace GameSpark.MainSystems
                     break;
             }
         }
+
         private void Wait(float delay, FunctionState funcState)
         {
             if (!isWaiting)

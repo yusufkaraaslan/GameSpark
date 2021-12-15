@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameSpark.Plus;
 
 namespace GameSpark
 {
-    public class BasicFollowCamLayout : Layout
+    public class BasicFollowCamLayout : SparkCameraLayout
     {
         [SerializeField]
         GameObject followObj;

@@ -4,36 +4,40 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
-[System.Serializable]
-public class VisualEventSettingData : DataTemplate
+namespace GameSpark
 {
-    public bool LockSystem;
-    public bool UseFixedUpdate;
-
-    public VisualEventProfile[] visualEventTemplates;
-
-    public override void DrawTap()
+    [System.Serializable]
+    public class VisualEventSettingData : DataTemplate
     {
-#if UNITY_EDITOR
-        SerializedObject soTarget = new SerializedObject(this);
-        GUILayout.Space(sectionSpace);
+        public bool LockSystem;
+        public bool UseFixedUpdate;
 
-        EditorGUI.BeginChangeCheck();
+        public VisualEventProfile[] visualEventTemplates;
 
-        SerializedProperty useFixed = soTarget.FindProperty("UseFixedUpdate");
-        EditorGUILayout.PropertyField(useFixed);
-        GUILayout.Space(elementSpace);
-
-        SerializedProperty events = soTarget.FindProperty("visualEventTemplates");
-        EditorGUILayout.PropertyField(events);
-        GUILayout.Space(elementSpace);
-
-        if (EditorGUI.EndChangeCheck())
+        public override void DrawTap()
         {
-            soTarget.ApplyModifiedProperties();
-        }
+#if UNITY_EDITOR
+            SerializedObject soTarget = new SerializedObject(this);
+            GUILayout.Space(sectionSpace);
+
+            EditorGUI.BeginChangeCheck();
+
+            SerializedProperty useFixed = soTarget.FindProperty("UseFixedUpdate");
+            EditorGUILayout.PropertyField(useFixed);
+            GUILayout.Space(elementSpace);
+
+            SerializedProperty events = soTarget.FindProperty("visualEventTemplates");
+            EditorGUILayout.PropertyField(events);
+            GUILayout.Space(elementSpace);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                soTarget.ApplyModifiedProperties();
+            }
 #endif
+        }
     }
+
 }

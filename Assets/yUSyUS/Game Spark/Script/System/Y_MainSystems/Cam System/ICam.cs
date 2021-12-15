@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark
+namespace GameSpark.Plus
 {
     public abstract class ICam
     {
         protected GameObject cam;
 
-        public virtual void initilaze(GameObject cam, Layout layout)
+        public virtual void initilaze(GameObject cam, SparkCameraLayout layout)
         {
             this.cam = cam;
         }

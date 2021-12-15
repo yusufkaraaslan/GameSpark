@@ -2,26 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark
+namespace GameSpark.Plus
 {
-    namespace MainSystems
+    public class GameCam : MonoBehaviour
     {
-        public class GameCam : MonoBehaviour
+        public string camName;
+        ICam camAtr;
+
+        public void SetICam(ICam atr, SparkCameraLayout layout)
         {
-            public string camName;
-            ICam camAtr;
+            atr.initilaze(gameObject, layout);
+            camAtr = atr;
+        }
 
-            public void SetICam(ICam atr, Layout layout)
-            {
-                atr.initilaze(gameObject, layout);
-                camAtr = atr;
-            }
-
-            private void Update()
-            {
-                if (camAtr != null)
-                    camAtr.UpdateCam();
-            }
+        private void Update()
+        {
+            if (camAtr != null)
+                camAtr.UpdateCam();
         }
     }
 

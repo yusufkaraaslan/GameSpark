@@ -5,14 +5,18 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public abstract class DataTemplate: ScriptableObject
+namespace GameSpark
 {
+    public abstract class DataTemplate : ScriptableObject
+    {
 #if UNITY_EDITOR
-    protected SerializedObject myView;
+        protected SerializedObject myView;
 #endif
 
-    public static float elementSpace = 5;
-    public static float sectionSpace = 20;
+        public static float elementSpace = 5;
+        public static float sectionSpace = 20;
 
-    public abstract void DrawTap();
+        public abstract void DrawTap();
+    }
 }
+

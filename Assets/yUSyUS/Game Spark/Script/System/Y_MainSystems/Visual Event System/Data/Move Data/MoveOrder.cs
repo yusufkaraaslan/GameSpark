@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark.MainSystems
+namespace GameSpark.Plus
 {
     [System.Serializable]
     public class MoveOrder
@@ -16,7 +16,7 @@ namespace GameSpark.MainSystems
         [HideInInspector] public Vector3 arcAxis;
 
         [HideInInspector]
-        public Queue<Checkpoint> targetQ;
+        public Queue<SparkMoveCheckpoint> targetQ;
         [HideInInspector]
         public GameObject obj;
 
@@ -56,11 +56,11 @@ namespace GameSpark.MainSystems
             return res;
         }
 
-        public void AddCheckPoint(Checkpoint checkpoint)
+        public void AddCheckPoint(SparkMoveCheckpoint checkpoint)
         {
             if (targetQ == null)
             {
-                targetQ = new Queue<Checkpoint>();
+                targetQ = new Queue<SparkMoveCheckpoint>();
             }
 
             targetQ.Enqueue(checkpoint);

@@ -4,36 +4,39 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
-[System.Serializable]
-public class UISettingData : DataTemplate
+namespace GameSpark
 {
-    public bool LockSystem;
-    public bool ClearAllUIOnStart;
-
-    public UISetup[] setups;
-
-    public override void DrawTap()
+    [System.Serializable]
+    public class UISettingData : DataTemplate
     {
-#if UNITY_EDITOR
-        SerializedObject soTarget = new SerializedObject(this);
-        GUILayout.Space(sectionSpace);
+        public bool LockSystem;
+        public bool ClearAllUIOnStart;
 
-        EditorGUI.BeginChangeCheck();
+        public UISetup[] setups;
 
-        SerializedProperty clearAll = soTarget.FindProperty("ClearAllUIOnStart");
-        EditorGUILayout.PropertyField(clearAll);
-        GUILayout.Space(elementSpace);
-
-        SerializedProperty uiSetups = soTarget.FindProperty("setups");
-        EditorGUILayout.PropertyField(uiSetups);
-        GUILayout.Space(elementSpace);
-
-        if (EditorGUI.EndChangeCheck())
+        public override void DrawTap()
         {
-            soTarget.ApplyModifiedProperties();
-        }
+#if UNITY_EDITOR
+            SerializedObject soTarget = new SerializedObject(this);
+            GUILayout.Space(sectionSpace);
+
+            EditorGUI.BeginChangeCheck();
+
+            SerializedProperty clearAll = soTarget.FindProperty("ClearAllUIOnStart");
+            EditorGUILayout.PropertyField(clearAll);
+            GUILayout.Space(elementSpace);
+
+            SerializedProperty uiSetups = soTarget.FindProperty("setups");
+            EditorGUILayout.PropertyField(uiSetups);
+            GUILayout.Space(elementSpace);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                soTarget.ApplyModifiedProperties();
+            }
 #endif
+        }
     }
 }

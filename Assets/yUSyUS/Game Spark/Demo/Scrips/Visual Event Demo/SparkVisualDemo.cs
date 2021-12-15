@@ -8,22 +8,22 @@ using GameSpark;
 public class SparkVisualDemo : GameSparkDemoSceneTemplate
 {
     //  Pool Maneger Instance
-    UIManeger ui;
+    UIManager ui;
     VisualEventController visualEvent;
 
     [SerializeField] GameObject sceneRoot;
-    [SerializeField] Checkpoint target1, target2, target3;
+    [SerializeField] SparkMoveCheckpoint target1, target2, target3;
     [SerializeField] SparkDemoGuy agentC, enemy;
     
     [SerializeField] BasicFollowCamLayout followCam;
-    [SerializeField] ImmediateCamLayout defultPose;
+    [SerializeField] FixedCamLayout defultPose;
 
     [SerializeField] SparkColorChanger endWall;
 
     private void Start()
     {
         //  Get Maneger Instance
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
         visualEvent = VisualEventController.GetInstance();
 
         sceneRoot.SetActive(false);
@@ -119,13 +119,13 @@ public class SparkVisualDemo : GameSparkDemoSceneTemplate
 
     bool SetFollowCam()
     {
-        CameraSystem.GetInstance().SetCam("Main", new BasicFollowCam(), followCam);
+        CameraSystem.GetInstance().SetCam("Main", followCam);
         return true;
     }
 
     void ResetSetup()
     {
-        CameraSystem.GetInstance().SetCam("Main", new ImmediateCam(), defultPose);
+        CameraSystem.GetInstance().SetCam("Main", defultPose);
 
         agentC.ResetCheracter();
         enemy.ResetCheracter();

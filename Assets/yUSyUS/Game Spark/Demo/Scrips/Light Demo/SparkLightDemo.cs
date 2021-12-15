@@ -14,13 +14,13 @@ public class SparkLightDemo : GameSparkDemoSceneTemplate
 
     // Maneger Instance
     LightManeger lightManeger;
-    UIManeger ui;
+    UIManager ui;
 
     private void Start()
     {
         //  Get Maneger Instance
         lightManeger = LightManeger.GetInstance();
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
 
         lightManeger.GetLight("Spotlight").LightOff();
     }

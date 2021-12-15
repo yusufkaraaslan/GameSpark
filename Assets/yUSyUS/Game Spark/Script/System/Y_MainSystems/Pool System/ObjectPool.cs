@@ -2,54 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark
+namespace GameSpark.Plus
 {
-    namespace MainSystems
+    public class ObjectPool
     {
-        public class ObjectPool
+        public string poolName;
+        GameObject waitingPos;
+        List<PoolObject> objPool;
+        GameObject ObjPref;
+
+        int initSize;
+        int maxPoolSize;
+
+        public void initilaze(GameObject sample, PoolSettingData settingData)
         {
-            public string poolName;
-            GameObject waitingPos;
-            List<PoolObject> objPool;
-            GameObject ObjPref;
+            poolName = sample.GetComponent<PoolObject>().objName;
+            objPool = new List<PoolObject>();
+            ObjPref = sample;
 
-            int initSize;
-            int MaxPoolSize;
+            initSize = settingData.PoolInitilazeSize;
+            maxPoolSize = settingData.PoolMaxSize;
 
-            public void initilaze(GameObject sample, PoolSettingData settingData)
+            waitingPos = GameObject.FindGameObjectWithTag("PoolWaiting");
+
+            for (int i = 0; i < initSize; ++i)
             {
-                poolName = sample.GetComponent<PoolObject>().objName;
-                objPool = new List<PoolObject>();
-                ObjPref = sample;
+                AddPool();
+            }
+        }
 
-                initSize = settingData.PoolInitilazeSize;
-                MaxPoolSize = settingData.PoolMaxSize;
+        public void Reload()
+        {
+            for (int i = 0; i < objPool.Count; i++)
+            {
+                objPool[i].DespawnObj();
+            }
+        }
 
-                waitingPos = GameObject.FindGameObjectWithTag("PoolWaiting");
+        public PoolObject GetObj(Transform pos, bool useRotation, bool useScale = false)
+        {
+            return GetObj(pos.position, useRotation, pos.rotation, useScale, pos.localScale);
+        }
 
-                for (int i = 0; i < initSize; ++i)
+        public PoolObject GetObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject obj = null)
+        {
+            int i = 0;
+            for (; i < objPool.Count; i++)
+            {
+                if (!objPool[i].InUse)
                 {
-                    AddPool();
+                    objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj);
+                    return objPool[i];
                 }
             }
 
-            public void Reload()
+            if (IncreasePool())
             {
-                for (int i = 0; i < objPool.Count; i++)
-                {
-                    objPool[i].DespawnObj();
-                }
-            }
-
-            public PoolObject GetObj(Transform pos, bool useRotation, bool useScale = false)
-            {
-                return GetObj(pos.position, useRotation, pos.rotation, useScale, pos.localScale);
-            }
-
-            public PoolObject GetObj(Vector3 pos, bool useRotation, Quaternion rot, bool useScale, Vector3 scale, bool setParent = false, GameObject obj = null)
-            {
-                int i = 0;
-                for (; i < objPool.Count; i++)
+                for (; i < objPool.Count; ++i)
                 {
                     if (!objPool[i].InUse)
                     {
@@ -57,54 +66,42 @@ namespace GameSpark
                         return objPool[i];
                     }
                 }
-
-                if (IncreasePool())
-                {
-                    for (; i < objPool.Count; ++i)
-                    {
-                        if (!objPool[i].InUse)
-                        {
-                            objPool[i].SpawnObj(pos, useRotation, rot, useScale, scale, setParent, obj);
-                            return objPool[i];
-                        }
-                    }
-                }
-
-                return null;
             }
 
-            void AddPool()
+            return null;
+        }
+
+        void AddPool()
+        {
+            GameObject obj = MonoBehaviour.Instantiate(ObjPref, waitingPos.transform);
+            PoolObject tmp = obj.GetComponent<PoolObject>();
+
+            tmp.initilaze();
+            tmp.DespawnObj();
+            objPool.Add(tmp);
+        }
+
+        bool IncreasePool()
+        {
+            if (objPool.Count >= maxPoolSize)
             {
-                GameObject obj = MonoBehaviour.Instantiate(ObjPref, waitingPos.transform);
-                PoolObject tmp = obj.GetComponent<PoolObject>();
-
-                tmp.initilaze();
-                tmp.DespawnObj();
-                objPool.Add(tmp);
+                return false;
             }
 
-            bool IncreasePool()
+            int newSize = objPool.Count * 2;
+
+            if (newSize >= maxPoolSize)
             {
-                if (objPool.Count >= MaxPoolSize)
-                {
-                    return false;
-                }
-
-                int newSize = objPool.Count * 2;
-
-                if (newSize >= MaxPoolSize)
-                {
-                    newSize = MaxPoolSize;
-                }
-
-                for (int i = objPool.Count; i < newSize; i++)
-                {
-                    AddPool();
-                }
-
-
-                return true;
+                newSize = maxPoolSize;
             }
+
+            for (int i = objPool.Count; i < newSize; i++)
+            {
+                AddPool();
+            }
+
+
+            return true;
         }
     }
 }

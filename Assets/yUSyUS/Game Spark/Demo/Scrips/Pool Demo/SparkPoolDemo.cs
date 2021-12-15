@@ -11,13 +11,13 @@ public class SparkPoolDemo : GameSparkDemoSceneTemplate
 
     // Maneger Instance
     PoolSystem pool;
-    UIManeger ui;
+    UIManager ui;
 
     private void Start()
     {
         //  Get Maneger Instance
         pool = PoolSystem.GetInstance();
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
     }
 
     public override void StartDemo()

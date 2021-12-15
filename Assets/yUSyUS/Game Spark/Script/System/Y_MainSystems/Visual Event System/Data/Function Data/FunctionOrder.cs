@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameSpark.MainSystems
+namespace GameSpark.Plus
 {
     [System.Serializable]
     public class FunctionOrder
     {
-        [SerializeField] string functionTag; // for easy readablty 
+        [SerializeField] string functionTag; // Only for easy readability on editor
 
         public EventWorkPhase workPhase;
         public float preDelay, posDelay;

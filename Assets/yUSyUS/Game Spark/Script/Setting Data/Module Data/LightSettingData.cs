@@ -4,29 +4,32 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
-[System.Serializable]
-public class LightSettingData : DataTemplate
+namespace GameSpark
 {
-    public SceneLight[] lights;
-
-    public override void DrawTap()
+    [System.Serializable]
+    public class LightSettingData : DataTemplate
     {
-#if UNITY_EDITOR
-        SerializedObject soTarget = new SerializedObject(this);
-        GUILayout.Space(sectionSpace);
+        public SceneLight[] lights;
 
-        EditorGUI.BeginChangeCheck();
-
-        SerializedProperty Lights = soTarget.FindProperty("lights");
-        EditorGUILayout.PropertyField(Lights);
-        GUILayout.Space(elementSpace);
-
-        if (EditorGUI.EndChangeCheck())
+        public override void DrawTap()
         {
-            soTarget.ApplyModifiedProperties();
-        }
+#if UNITY_EDITOR
+            SerializedObject soTarget = new SerializedObject(this);
+            GUILayout.Space(sectionSpace);
+
+            EditorGUI.BeginChangeCheck();
+
+            SerializedProperty Lights = soTarget.FindProperty("lights");
+            EditorGUILayout.PropertyField(Lights);
+            GUILayout.Space(elementSpace);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                soTarget.ApplyModifiedProperties();
+            }
 #endif
+        }
     }
 }

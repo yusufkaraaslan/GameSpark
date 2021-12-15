@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameSpark.MainSystems;
+using GameSpark.Plus;
 
 namespace GameSpark
 {
@@ -9,18 +9,18 @@ namespace GameSpark
     public class CameraSystem : GameSparkModule
     {
         List<GameCam> cams;
-        private static CameraSystem maneger;
+        private static CameraSystem manager;
 
         public CameraSettingData cameraSetting;
 
         public static CameraSystem GetInstance()
         {
-            if (maneger == null)
+            if (manager == null)
             {
-                maneger = new CameraSystem();
+                manager = new CameraSystem();
             }
 
-            return maneger;
+            return manager;
         }
 
         public void initilaze()
@@ -35,7 +35,23 @@ namespace GameSpark
 
         }
 
-        public void SetCam(string camName, ICam atr, Layout layout)
+        public void SetCamOff(string camName)
+        {
+            SetCam(camName, new OffCam(), null);
+        }
+
+        public void SetCam(string camName, FixedCamLayout layout)
+        {
+            SetCam(camName, new FixedCam(), layout);
+        }
+
+        public void SetCam(string camName, BasicFollowCamLayout layout)
+        {
+            SetCam(camName, new BasicFollowCam(), layout);
+        }
+
+        //  For custom cam atribute
+        public void SetCam(string camName, ICam atr, SparkCameraLayout layout)
         {
             for (int i = 0; i < cams.Count; i++)
             {

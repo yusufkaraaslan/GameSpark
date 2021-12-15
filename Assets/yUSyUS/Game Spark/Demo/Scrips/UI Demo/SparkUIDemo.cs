@@ -8,12 +8,12 @@ using GameSpark;
 public class SparkUIDemo : GameSparkDemoSceneTemplate
 {
     //  Pool Maneger Instance
-    UIManeger ui;
+    UIManager ui;
 
     private void Start()
     {
         //  Get Maneger Instance
-        ui = UIManeger.GetInstance();
+        ui = UIManager.GetInstance();
     }
 
     public override void StartDemo()
