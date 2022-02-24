@@ -15,7 +15,11 @@ Download the GameSpark.unitypackage and add the package to your projet than add 
 ## Structure
 
 ###### simplified overall view
-<img src= "UML\Game%20Spark%20_simplified%20overall%20view.png">
+Part 1 :
+<img src= "UML\Game%20Spark%20_simplified%20overall%20view%201.png">
+
+Part 2:
+<img src= "UML\Game%20Spark%20_simplified%20overall%20view%202.png">
 
 ###### Pool system
 <img src= "UML\Pool%20System.png">
