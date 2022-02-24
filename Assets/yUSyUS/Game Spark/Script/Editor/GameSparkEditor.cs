@@ -78,19 +78,10 @@ namespace GameSpark
 
         public void DrawIntegrationTap()
         {
-            //  Scene template
-            EditorGUILayout.PropertyField(sceneTemplate);
-
-            GUILayout.Space(elementSpace);
-            if (GUILayout.Button("Apply Template"))
-            {
-                myTarget.ApplySceneTemplate();
-            }
-
             GUILayout.Space(sectionSpace);
 
             GUILayout.Label("Systems :");
-            GUILayout.Space(elementSpace);
+            GUILayout.Space(sectionSpace);
 
             //  Pool
             GUILayout.Label("Pool Sys");

@@ -11,99 +11,31 @@ namespace GameSpark
 {
     public class GameSparkCenter : MonoBehaviour
     {
-        public SceneSetupProfile sceneTemplate;
         public SceneSetupProfile CurrScene;
 
         //  System profiles
-        public PoolSystem pool;
+        PoolSystem pool;
         public PoolSettingData poolSetting;
         [SerializeReference] GameObject poolWaitPose;
 
-        public UIManager ui;
+        UIManager ui;
         public UISettingData UISetting;
 
-        public CameraSystem cam;
+        CameraSystem cam;
         public CameraSettingData cameraSetting;
 
-        public VisualEventController visualEvent;
+        VisualEventController visualEvent;
         public VisualEventSettingData visualEventSetting;
         [SerializeReference] GameObject visualEventObj;
 
-        public SoundManeger soundManeger;
+        SoundManeger soundManeger;
         public SoundManegerData SoundSetting;
 
-        public LightManeger lightSys;
+        LightManeger lightSys;
         public LightSettingData lightSetting;
 
         //  Yatana Setting
-        public bool isYatanaSettingChanged = false;
-
-        public void ApplySceneTemplate()
-        {
-            if (sceneTemplate.PoolSystem)
-            {
-                AddPoolSystem();
-            }
-            else
-            {
-                RemovePoolSystem();
-            }
-
-            if (sceneTemplate.UISystem)
-            {
-                AddUISystem();
-            }
-            else
-            {
-                RemoveUISystem();
-            }
-
-            if (sceneTemplate.CameraSystem)
-            {
-                AddCameraSystem();
-            }
-            else
-            {
-                RemoveCameraSystem();
-            }
-
-            if (sceneTemplate.VisualEventSystem)
-            {
-                AddVisualEventSystem();
-            }
-            else
-            {
-                RemoveVisualEventSystem();
-            }
-
-            if (sceneTemplate.SoundManegerSystem)
-            {
-                AddApolloSystem();
-            }
-            else
-            {
-                RemoveApolloSystem();
-            }
-
-            if (sceneTemplate.LightSystem)
-            {
-                AddLightSystem();
-            }
-            else
-            {
-                RemoveLightSystem();
-            }
-        }
-
-        public void ClearTemplate()
-        {
-            sceneTemplate.PoolSystem = false;
-            sceneTemplate.UISystem = false;
-            sceneTemplate.CameraSystem = false;
-            sceneTemplate.VisualEventSystem = false;
-            sceneTemplate.SoundManegerSystem = false;
-            sceneTemplate.LightSystem = false;
-        }
+        //bool isYatanaSettingChanged = false;
 
         public void ClearScene()
         {
@@ -246,7 +178,7 @@ namespace GameSpark
 
         public void YatanaSettingChanged()
         {
-            isYatanaSettingChanged = true;
+            //isYatanaSettingChanged = true;
         }
 
         public void ApplyYatanaSettings()
@@ -283,7 +215,7 @@ namespace GameSpark
 
         //  Workflow
 
-        void InitYatana()
+        void InitGameSpark()
         {
             if (CurrScene.PoolSystem)
             {
@@ -331,7 +263,7 @@ namespace GameSpark
 
         private void Awake()
         {
-            InitYatana();
+            InitGameSpark();
         }
 
     }
