@@ -14,7 +14,7 @@ Download the GameSpark.unitypackage and add the package to your projet than add 
 
 ## Structure
 
-![](UML\Game%20Spark%20_simplified%20overall%20view.png)
+![simplified overall view](UML\Game%20Spark%20_simplified%20overall%20view.png)
 
 ![Pool system](UML\Pool%20System.png)
 
