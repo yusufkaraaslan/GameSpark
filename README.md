@@ -14,18 +14,23 @@ Download the GameSpark.unitypackage and add the package to your projet than add 
 
 ## Structure
 
+simplified overall view
 <img src= "UML\Game%20Spark%20_simplified%20overall%20view.png">
 
-![simplified overall view](UML\Game%20Spark%20_simplified%20overall%20view.png)
+Pool system
+<img src= "UML\Pool%20System.png">
 
-![Pool system](UML\Pool%20System.png)
+UI System
+<img src= "UML\UI%20System.png">
 
-![UI System](UML\UI%20System.png)
+Camera system
+<img src= "UML\Camera%20System.png">
 
-![Camera system](UML\Camera%20System.png)
+Visual Event System
+<img src= "UML\Visual%20Event%20System.png">
 
-![Visual Event System](UML\Visual%20Event%20System.png)
+Sound System
+<img src= "UML\Sound%20System.png">
 
-![Sound System](UML\Sound%20System.png)
-
-![Light Manager](UML\Light%20Manager.png)
+Light Manager
+<img src= "UML\Light%20Manager.png">
