@@ -6,7 +6,7 @@ You can find class diagram for this project in tje UML folder (Game Spark UML.md
 
 ## Current Unity Version
 
-Unity 2020.3.25f1
+Unity 2020.3.33f1
 
 ## Usage
 
