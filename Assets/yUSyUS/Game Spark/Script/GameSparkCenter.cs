@@ -17,7 +17,7 @@ namespace GameSpark
         PoolSystem pool;
         public PoolSettingData poolSetting;
         [SerializeReference] GameObject poolWaitPose;
-
+        
         UIManager ui;
         public UISettingData UISetting;
 
