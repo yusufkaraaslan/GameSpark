@@ -22,7 +22,7 @@ namespace GameSpark
 
                 foreach (FunctionOrder item in functionData.functions)
                 {
-                    functions.Add(item);
+                    functions.Add(new FunctionOrder(item));
                 }
             }
 

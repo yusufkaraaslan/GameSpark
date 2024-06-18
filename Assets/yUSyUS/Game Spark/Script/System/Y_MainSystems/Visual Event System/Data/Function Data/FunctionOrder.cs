@@ -16,9 +16,29 @@ namespace GameSpark.Plus
 
         bool isDone = false;
 
+        public FunctionOrder()
+        {
+
+        }
+
+        public FunctionOrder(FunctionOrder other)
+        {
+            workPhase = other.workPhase;
+            preDelay = other.preDelay;
+            posDelay = other.posDelay;
+
+            worker = null;
+        }
+
         public bool IsComplete()
         {
-            return isDone;
+            if (isDone)
+            {
+                isDone = false;
+                return true;
+            }
+
+            return false;
         }
 
         public void Work()

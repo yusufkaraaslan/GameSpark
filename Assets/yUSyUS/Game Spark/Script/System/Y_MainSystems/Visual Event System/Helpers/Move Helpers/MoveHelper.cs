@@ -89,11 +89,8 @@ namespace GameSpark
                                 {
                                     if (moves.targetQ.Count > 0)
                                     {
-                                        if (moves.targetQ.Peek().TarPos.x != target.TarPos.x)
-                                        {
-                                            state = MoveLifeState.Start;
-                                            return;
-                                        }
+                                        state = MoveLifeState.Start;
+                                        return;
                                     }
                                 }
 
@@ -237,7 +234,7 @@ namespace GameSpark
                 switch (moves.routeType)
                 {
                     case RouteType.Lineer:
-                        moves.obj.transform.position = Vector3.Lerp(currPos, target.TarPos, t);
+                        moves.obj.transform.position = Vector3.Lerp(startPos, target.TarPos, t);
                         break;
 
                     case RouteType.Spiral:
